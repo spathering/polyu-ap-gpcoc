@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "environments": {
+    "clear": { "penalty": 0 },
+    "storm": { "penalty": 20 },
+    "dark": { "penalty": 40 }
+  }
+}
