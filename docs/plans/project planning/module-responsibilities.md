@@ -6,6 +6,12 @@
 - 最后更新：2026-10-30
 - 关联文档：[计划索引](../README.md)、[后端与联机分析](backend-network-analysis.md)、[抽象数据结构与容器设计](data-container-model.md)、[前后端对接](frontend-backend-contract.md)
 
+2026-10-30 范围更新：聊天室后端已作为追加任务实现，实际数据结构、权限和命令以 [聊天室后端](../../current/engineering/chat-backend.md) 为准；聊天页面仍待制作。完整 COC 等规则归配置包实现，地图/逻辑图/2D/3D 空间及地图战斗暂不作为必要实现。本文保留相关候选设计作为按游戏需要扩展的参考，不列为本次必交能力。
+
+## 首测实现对照（2026-10-30）
+
+本主题已有本机首测实现子集，实际接口和限制见 [当前工程](../../current/engineering/first-test.md) 与 [Lua 编写](../../current/engineering/lua-authoring.md)。本文仍保存通用设计和后续扩展讨论，不将所有候选字段、接口或运行方式视为已实现。验收状态统一见 [首测报告](../../current/engineering/first-test-acceptance.md)。
+
 ## 1. 目标与范围
 
 将用户模块图中的概念整理为系统模块、职责边界及协作关系，为后续实现和接口设计提供依据。本设计仍待原型验证，正式命名不代表已经实现或接受全部方案。

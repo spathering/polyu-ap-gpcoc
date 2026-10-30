@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "roomId": "demo",
+  "name": "首测调查室",
+  "runId": "203adb130fa34ab5b9b139b5fd4cb0bc",
+  "status": "active",
+  "entities": {
+    "actor-player1": {
+      "instanceId": "actor-player1",
+      "roomId": "demo",
+      "configurationId": "demo.actor",
+      "configurationRevision": "1",
+      "typeRef": "actor",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "调查员 1",
+      "owner": "player1",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "hp": 9,
+        "maxHp": 10,
+        "armor": 2,
+        "attack": 5
+      },
+      "components": {},
+      "rules": {}
+    },
+    "bag-player1": {
+      "instanceId": "bag-player1",
+      "roomId": "demo",
+      "configurationId": "demo.bag",
+      "configurationRevision": "1",
+      "typeRef": "bag",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "背包 1",
+      "owner": "player1",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "capacity": 2000
+      },
+      "components": {
+        "core.container": {
+          "allowed": [
+            "item",
+            "weapon"
+          ]
+        }
+      },
+      "rules": {}
+    },
+    "skill-player1": {
+      "instanceId": "skill-player1",
+      "roomId": "demo",
+      "configurationId": "demo.skill",
+      "configurationRevision": "1",
+      "typeRef": "skill",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "侦查",
+      "owner": "player1",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "value": 60
+      },
+      "components": {},
+      "rules": {}
+    },
+    "item-player1": {
+      "instanceId": "item-player1",
+      "roomId": "demo",
+      "configurationId": "demo.item",
+      "configurationRevision": "1",
+      "typeRef": "item",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "补给品",
+      "owner": "player1",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "quantity": 3,
+        "unitMass": 400,
+        "durability": 85
+      },
+      "components": {},
+      "rules": {}
+    },
+    "actor-player2": {
+      "instanceId": "actor-player2",
+      "roomId": "demo",
+      "configurationId": "demo.actor",
+      "configurationRevision": "1",
+      "typeRef": "actor",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "调查员 2",
+      "owner": "player2",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "hp": 9,
+        "maxHp": 10,
+        "armor": 2,
+        "attack": 5
+      },
+      "components": {},
+      "rules": {}
+    },
+    "bag-player2": {
+      "instanceId": "bag-player2",
+      "roomId": "demo",
+      "configurationId": "demo.bag",
+      "configurationRevision": "1",
+      "typeRef": "bag",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "背包 2",
+      "owner": "player2",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "capacity": 2000
+      },
+      "components": {
+        "core.container": {
+          "allowed": [
+            "item",
+            "weapon"
+          ]
+        }
+      },
+      "rules": {}
+    },
+    "skill-player2": {
+      "instanceId": "skill-player2",
+      "roomId": "demo",
+      "configurationId": "demo.skill",
+      "configurationRevision": "1",
+      "typeRef": "skill",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "侦查",
+      "owner": "player2",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "value": 60
+      },
+      "components": {},
+      "rules": {}
+    },
+    "item-player2": {
+      "instanceId": "item-player2",
+      "roomId": "demo",
+      "configurationId": "demo.item",
+      "configurationRevision": "1",
+      "typeRef": "item",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "补给品",
+      "owner": "player2",
+      "visibility": "public",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "quantity": 3,
+        "unitMass": 400,
+        "durability": 85
+      },
+      "components": {},
+      "rules": {}
+    },
+    "secret-clue": {
+      "instanceId": "secret-clue",
+      "roomId": "demo",
+      "configurationId": "demo.item",
+      "configurationRevision": "1",
+      "typeRef": "item",
+      "schemaVersion": 1,
+      "revision": 1,
+      "lifecycle": "active",
+      "name": "隐藏线索",
+      "owner": null,
+      "visibility": "kp",
+      "metadata": {},
+      "tags": [],
+      "numbers": {
+        "quantity": 1,
+        "unitMass": 0
+      },
+      "components": {},
+      "rules": {}
+    }
+  },
+  "relations": {
+    "896d2d9e09754979820e1912fd025b2b": {
+      "relationId": "896d2d9e09754979820e1912fd025b2b",
+      "sourceId": "actor-player1",
+      "targetId": "bag-player1",
+      "relationType": "owns-container",
+      "revision": 1,
+      "tags": [],
+      "metadata": {}
+    },
+    "cf65b270c50a42d4a604eaaaea31c60e": {
+      "relationId": "cf65b270c50a42d4a604eaaaea31c60e",
+      "sourceId": "actor-player1",
+      "targetId": "skill-player1",
+      "relationType": "owns-skill",
+      "revision": 1,
+      "tags": [],
+      "metadata": {}
+    },
+    "06cda40645204246be5db8eba815b19c": {
+      "relationId": "06cda40645204246be5db8eba815b19c",
+      "sourceId": "bag-player1",
+      "targetId": "item-player1",
+      "relationType": "contains",
+      "revision": 1,
+      "tags": [],
+      "metadata": {}
+    },
+    "2986f1edbfdc4afa83a3dcaa861c1ea4": {
+      "relationId": "2986f1edbfdc4afa83a3dcaa861c1ea4",
+      "sourceId": "actor-player2",
+      "targetId": "bag-player2",
+      "relationType": "owns-container",
+      "revision": 1,
+      "tags": [],
+      "metadata": {}
+    },
+    "85f597e5410c4cdeb65365b158021a29": {
+      "relationId": "85f597e5410c4cdeb65365b158021a29",
+      "sourceId": "actor-player2",
+      "targetId": "skill-player2",
+      "relationType": "owns-skill",
+      "revision": 1,
+      "tags": [],
+      "metadata": {}
+    },
+    "a1bb6d7b021c4112ae5665bc98834738": {
+      "relationId": "a1bb6d7b021c4112ae5665bc98834738",
+      "sourceId": "bag-player2",
+      "targetId": "item-player2",
+      "relationType": "contains",
+      "revision": 1,
+      "tags": [],
+      "metadata": {}
+    }
+  },
+  "members": {
+    "kp": {
+      "memberId": "member-kp",
+      "accountId": "kp",
+      "role": "kp",
+      "active": true,
+      "authorizationEpoch": 1,
+      "metadata": {}
+    },
+    "player1": {
+      "memberId": "member-player1",
+      "accountId": "player1",
+      "role": "player",
+      "active": true,
+      "authorizationEpoch": 1,
+      "metadata": {}
+    },
+    "player2": {
+      "memberId": "member-player2",
+      "accountId": "player2",
+      "role": "player",
+      "active": true,
+      "authorizationEpoch": 1,
+      "metadata": {}
+    }
+  },
+  "progress": {},
+  "configurations": {
+    "demo.bag": {
+      "configurationId": "demo.bag",
+      "revision": "1",
+      "typeRef": "bag",
+      "defaults": {
+        "capacity": 2000
+      },
+      "behaviors": {}
+    },
+    "demo.weapon": {
+      "configurationId": "demo.weapon",
+      "revision": "1",
+      "typeRef": "weapon",
+      "defaults": {
+        "quantity": 1,
+        "unitMass": 0
+      },
+      "behaviors": {}
+    },
+    "demo.actor": {
+      "configurationId": "demo.actor",
+      "revision": "1",
+      "typeRef": "actor",
+      "defaults": {
+        "hp": 10,
+        "maxHp": 10,
+        "armor": 0,
+        "attack": 0
+      },
+      "behaviors": {}
+    },
+    "demo.status": {
+      "configurationId": "demo.status",
+      "revision": "1",
+      "typeRef": "status",
+      "defaults": {},
+      "behaviors": {}
+    },
+    "demo.item": {
+      "configurationId": "demo.item",
+      "revision": "1",
+      "typeRef": "item",
+      "defaults": {
+        "quantity": 1,
+        "unitMass": 0
+      },
+      "behaviors": {}
+    },
+    "demo.skill": {
+      "configurationId": "demo.skill",
+      "revision": "1",
+      "typeRef": "skill",
+      "defaults": {
+        "value": 0
+      },
+      "behaviors": {}
+    }
+  },
+  "commands": {},
+  "flows": {},
+  "waits": {},
+  "artifacts": {},
+  "activeRuleset": null,
+  "assets": {},
+  "audit": [],
+  "outbox": [],
+  "collectionRevision": 1,
+  "chat": {
+    "schemaVersion": 1,
+    "channels": {
+      "general": {
+        "channelId": "general",
+        "kind": "room",
+        "name": "公共频道",
+        "participants": [],
+        "posting": "all",
+        "muted": [],
+        "archived": false,
+        "revision": 1,
+        "lastSequence": 0
+      }
+    },
+    "messages": {
+      "general": []
+    },
+    "readPositions": {}
+  }
+}

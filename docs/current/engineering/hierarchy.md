@@ -10,7 +10,7 @@
 
 ## 工程实际目录
 
-以下清单只记录实际存在的项目文件。`engineering/` 已包含 Lua 简化编写的同步内存实验宿主、三份规则样例与测试；完整产品后端和联机尚未实现。新增、移动、重命名、删除文件时，必须在同一施工任务内同步本清单。
+以下清单只记录实际存在的项目文件。`engineering/` 已包含本机首测后端、独立文件数据管理、Lua/流程执行器、SDK、操作台、规则包及验收驱动；原同步内存实验保留。新增、移动、重命名、删除文件时，必须在同一施工任务内同步本清单。
 
 路径均相对项目根目录。清单覆盖项目维护的文件（含文档与配置）；版本控制内部数据（如 `.git/`）、依赖安装目录、缓存及生成产物不逐文件登记，出现这些目录时应补充目录用途与施工影响范围，不能因此忽略写入冲突。
 
@@ -38,8 +38,17 @@
 | `docs/history/README.md` | 历史文档索引与归档说明 |
 | `docs/history/2026-10-29-lua-script-reference.md` | 首轮 Lua 编写协议正文及验证背景归档 |
 | `docs/plans/README.md` | 计划文档索引 |
-| `docs/plans/project planning/first-test-engineering-design.md` | 首测工程设计：候选技术栈、模块/数据/事务与本机联机基线，待施工 |
-| `docs/plans/project planning/first-test-construction-plan.md` | 首测施工计划：E0—E6 工作包、依赖与故障验收矩阵，待施工 |
+| `docs/plans/games/README.md` | 轻量跑团资料与适配计划索引 |
+| `docs/plans/games/lasers-and-feelings/frontend-design.md` | 角色、协助检定、叙事和主持工作台前端方案 |
+| `docs/plans/games/lasers-and-feelings/package-preparation.md` | 规则包准备、对象映射与实际后端能力边界 |
+| `docs/plans/games/lasers-and-feelings/README.md` | 轻量科幻跑团规则资料与前端方案入口 |
+| `docs/plans/games/lasers-and-feelings/rules.md` | 完整规则中文整理、选项表与待裁定事项 |
+| `docs/plans/games/lasers-and-feelings/sources/lasers-and-feelings-original.pdf` | 官方 Lasers & Feelings v1.4 完整一页规则书 |
+| `docs/plans/games/lasers-and-feelings/sources/lasers-and-feelings-original.txt` | 官方规则书全页提取正文 |
+| `docs/plans/games/lasers-and-feelings/sources/README.md` | 官方规则来源、版本、许可与完整性核验 |
+| `docs/plans/games/lasers-and-feelings/sources/source-checksums.txt` | 原始 PDF 与提取正文的 SHA-256 摘要 |
+| `docs/plans/project planning/first-test-engineering-design.md` | 首测工程设计与实施对照，保留设计基线 |
+| `docs/plans/project planning/first-test-construction-plan.md` | 首测 E0—E6 任务与验收基线，独立作者试写待验收 |
 | `docs/plans/project planning/Issue/README.md` | 工程规划待解决问题索引 |
 | `docs/plans/project planning/Issue/lua-authoring-simplification.md` | ISSUE-001：Lua 规则与流程编写体验简化议题 |
 | `docs/plans/project planning/lua-authoring-facade.md` | Lua 简化编写接口与可恢复流程候选方案 |
@@ -61,6 +70,90 @@
 | `docs/plans/coc-online-trpg-research.md` | COC 与线上跑团的图谱、规则构成及内容类型调研 |
 | `docs/standards/README.md` | 通用标准索引 |
 | `docs/standards/document-maintenance.md` | 文档维护及施工协调标准 |
+| `.gitignore` | 首测实现 / 测试 / 配置 |
+| `docs/current/engineering/first-test.md` | 工程运行与验收文档 |
+| `docs/current/engineering/lua-authoring.md` | 工程运行与验收文档 |
+| `engineering/acceptance/crash_worker.py` | 首测实现 / 测试 / 配置 |
+| `engineering/acceptance/README.md` | 工程运行与验收文档 |
+| `engineering/acceptance/server_probe.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/pyproject.toml` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/scripts/run.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/__init__.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/assets.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/cli.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/contracts.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/errors.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/execution.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/gateway.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/host.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/identity.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/lua_runtime.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/model.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/registry.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/src/onlinecoc/server.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/tests/conftest.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/tests/test_adapters.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/tests/test_faults.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/tests/test_foundation.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/tests/test_host.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/tests/test_model_contracts.py` | 首测实现 / 测试 / 配置 |
+| `engineering/backend/tests/test_network.py` | 首测实现 / 测试 / 配置 |
+| `engineering/client-sdk/client.js` | 首测实现 / 测试 / 配置 |
+| `engineering/contracts/fixtures/entity-invalid-number.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/contracts/fixtures/entity-valid.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/contracts/fixtures/room-initial.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/contracts/messages.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/contracts/models.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/contracts/operations.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/contracts/README.md` | 工程运行与验收文档 |
+| `engineering/data-management/onlinecoc_data/__init__.py` | 首测实现 / 测试 / 配置 |
+| `engineering/data-management/onlinecoc_data/ports.py` | 首测实现 / 测试 / 配置 |
+| `engineering/data-management/onlinecoc_data/store.py` | 首测实现 / 测试 / 配置 |
+| `engineering/data-management/pyproject.toml` | 首测实现 / 测试 / 配置 |
+| `engineering/dependency-manifest.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/requirements-dev.lock` | 依赖精确版本及安装包摘要 |
+| `engineering/requirements-runtime.lock` | 依赖精确版本及安装包摘要 |
+| `engineering/rulepacks/demo/attack.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/check-library.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/damage-library.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/damage.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/environment.json` | 机器契约 / 样例 / 依赖证据 |
+| `engineering/rulepacks/demo/environment.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/README.md` | 工程运行与验收文档 |
+| `engineering/rulepacks/demo/rules.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/ruling.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/timed.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/transfer-library.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/rulepacks/demo/transfer.lua` | 首测实现 / 测试 / 配置 |
+| `engineering/test-console/app.js` | 首测实现 / 测试 / 配置 |
+| `engineering/test-console/index.html` | 首测实现 / 测试 / 配置 |
+| `engineering/test-console/style.css` | 首测实现 / 测试 / 配置 |
+| `docs/current/engineering/first-test-acceptance.md` | 首测验收文档 / 证据 / 驱动 |
+| `engineering/acceptance/offline_server.py` | 首测验收文档 / 证据 / 驱动 |
+| `engineering/acceptance/results-2026-10-30.json` | 首测验收文档 / 证据 / 驱动 |
+| `docs/current/engineering/desktop-tools.md` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `docs/plans/Issues/issue-template.md` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `docs/plans/Issues/README.md` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `engineering/desktop/build-info.json` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `engineering/desktop/build.ps1` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `engineering/desktop/desktop_host.py` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `engineering/desktop/DesktopTools.cs` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `engineering/desktop/README.md` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `engineering/desktop/tests/test_desktop.py` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `engineering/desktop/verify_environment.py` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `launcher-config.json` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `启动OnlineCOC.exe` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `安装依赖.exe` | Windows 安装/启动工具、配置、测试或更新问题文档 |
+| `docs/plans/Issues/issue-002-desktop-interaction-validation.md` | 桌面工具验收记录或后续问题 |
+| `engineering/desktop/acceptance-results.json` | 桌面工具验收记录或后续问题 |
+
+| `engineering/backend/src/onlinecoc/chat.py` | 聊天室领域模型、权限、分页及操作 |
+| `engineering/backend/tests/test_chat.py` | 聊天室数据/权限/恢复/故障测试 |
+| `engineering/backend/tests/test_chat_network.py` | 聊天室 SDK 与真实浏览器联机验收 |
+| `docs/current/engineering/chat-backend.md` | 当前聊天室后端、模型、接口及约束 |
+| `engineering/acceptance/chat-results-2026-10-30.json` | 聊天室追加与完整回归的机器验收摘要 |
+
+生成目录：`engineering/.venv/` 是依赖环境；`engineering/.runtime/` 存放游玩数据、桌面工具的独立 Python/环境、缓存及日志；`engineering/.test-output/` 存放隔离测试、离线 wheel、截图与报告；Python/pytest 缓存不登记逐文件清单。生成目录仍受其父目录施工占用约束。
 
 ## 施工登记
 

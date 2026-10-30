@@ -1,0 +1,764 @@
+{
+  "entity.patch": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "id",
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "entity.create": {
+    "type": "object",
+    "properties": {
+      "configurationId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "numbers": {
+        "type": "object",
+        "maxProperties": 128,
+        "additionalProperties": {
+          "type": "number",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "owner": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "visibility": {
+        "enum": [
+          "public",
+          "owner",
+          "kp"
+        ]
+      }
+    },
+    "required": [
+      "configurationId"
+    ],
+    "additionalProperties": false
+  },
+  "entity.archive": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "additionalProperties": false
+  },
+  "entity.update": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "numbers": {
+        "type": "object",
+        "maxProperties": 128,
+        "additionalProperties": {
+          "type": "number",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "maxItems": 64,
+        "uniqueItems": true
+      },
+      "owner": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "visibility": {
+        "enum": [
+          "public",
+          "owner",
+          "kp"
+        ]
+      },
+      "rules": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "ruleId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "ruleId"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "additionalProperties": false
+  },
+  "relation.set": {
+    "type": "object",
+    "properties": {
+      "sourceId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "targetId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "relationType": {
+        "enum": [
+          "contains",
+          "owns-container",
+          "equipped",
+          "owns-skill",
+          "affects",
+          "source",
+          "references"
+        ]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "maxItems": 64,
+        "uniqueItems": true
+      },
+      "metadata": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "sourceId",
+      "targetId",
+      "relationType"
+    ],
+    "additionalProperties": false
+  },
+  "relation.remove": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "additionalProperties": false
+  },
+  "configuration.put": {
+    "type": "object",
+    "properties": {
+      "configurationId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "revision": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "typeRef": {
+        "enum": [
+          "actor",
+          "bag",
+          "item",
+          "weapon",
+          "skill",
+          "status"
+        ]
+      },
+      "defaults": {
+        "type": "object",
+        "maxProperties": 128,
+        "additionalProperties": {
+          "type": "number",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "behaviors": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "ruleId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "ruleId"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "configurationId",
+      "revision",
+      "typeRef",
+      "defaults"
+    ],
+    "additionalProperties": false
+  },
+  "configuration.remove": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "additionalProperties": false
+  },
+  "progress.set": {
+    "type": "object",
+    "properties": {
+      "ownerKind": {
+        "enum": [
+          "member",
+          "entity"
+        ]
+      },
+      "ownerId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "eventKey": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "value": {}
+    },
+    "required": [
+      "ownerKind",
+      "ownerId",
+      "eventKey",
+      "value"
+    ],
+    "additionalProperties": false
+  },
+  "room.status": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "enum": [
+          "active",
+          "paused",
+          "archived"
+        ]
+      }
+    },
+    "required": [
+      "status"
+    ],
+    "additionalProperties": false
+  },
+  "member.update": {
+    "type": "object",
+    "properties": {
+      "accountId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "active": {
+        "type": "boolean"
+      },
+      "role": {
+        "enum": [
+          "kp",
+          "player"
+        ]
+      }
+    },
+    "required": [
+      "accountId"
+    ],
+    "additionalProperties": false
+  },
+  "member.add": {
+    "type": "object",
+    "properties": {
+      "accountId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "role": {
+        "enum": [
+          "kp",
+          "player"
+        ]
+      }
+    },
+    "required": [
+      "accountId",
+      "role"
+    ],
+    "additionalProperties": false
+  },
+  "rule.stage": {
+    "type": "object",
+    "properties": {
+      "sources": {
+        "type": "object",
+        "maxProperties": 64,
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "data": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "sources"
+    ],
+    "additionalProperties": false
+  },
+  "rule.activate": {
+    "type": "object",
+    "properties": {
+      "revision": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "revision"
+    ],
+    "additionalProperties": false
+  },
+  "flow.respond": {
+    "type": "object",
+    "properties": {
+      "waitId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "answer": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "waitId",
+      "revision",
+      "answer"
+    ],
+    "additionalProperties": false
+  },
+  "flow.cancel": {
+    "type": "object",
+    "properties": {
+      "flowId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "flowId"
+    ],
+    "additionalProperties": false
+  },
+  "flow.retry": {
+    "type": "object",
+    "properties": {
+      "flowId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "flowId"
+    ],
+    "additionalProperties": false
+  },
+  "asset.attach": {
+    "type": "object",
+    "properties": {
+      "entityId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "assetId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "entityId",
+      "assetId"
+    ],
+    "additionalProperties": false
+  },
+  "asset.remove": {
+    "type": "object",
+    "properties": {
+      "assetId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "assetId"
+    ],
+    "additionalProperties": false
+  },
+  "action.invoke": {
+    "type": "object",
+    "properties": {
+      "actionId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "input": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "actionId",
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "behavior.invoke": {
+    "type": "object",
+    "properties": {
+      "entityId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "event": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "input": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "entityId",
+      "event",
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "chat.direct.open": {
+    "type": "object",
+    "properties": {
+      "accountId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "accountId"
+    ],
+    "additionalProperties": false
+  },
+  "chat.channel.create": {
+    "type": "object",
+    "properties": {
+      "kind": {
+        "enum": [
+          "room",
+          "group"
+        ]
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "participants": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "uniqueItems": true,
+        "maxItems": 64
+      },
+      "posting": {
+        "enum": [
+          "all",
+          "kp"
+        ]
+      }
+    },
+    "required": [
+      "kind",
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "chat.channel.update": {
+    "type": "object",
+    "properties": {
+      "channelId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "participants": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "uniqueItems": true,
+        "maxItems": 64
+      },
+      "posting": {
+        "enum": [
+          "all",
+          "kp"
+        ]
+      },
+      "muted": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "uniqueItems": true,
+        "maxItems": 64
+      },
+      "archived": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "channelId",
+      "revision"
+    ],
+    "additionalProperties": false
+  },
+  "chat.message.send": {
+    "type": "object",
+    "properties": {
+      "channelId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "text": {
+        "type": "string",
+        "maxLength": 4000
+      },
+      "replyTo": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "assetIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "uniqueItems": true,
+        "maxItems": 4
+      },
+      "speakerId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "channelId",
+      "text"
+    ],
+    "additionalProperties": false
+  },
+  "chat.message.share": {
+    "type": "object",
+    "properties": {
+      "channelId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "commandId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "replyTo": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "required": [
+      "channelId",
+      "commandId"
+    ],
+    "additionalProperties": false
+  },
+  "chat.message.edit": {
+    "type": "object",
+    "properties": {
+      "channelId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "messageId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "text": {
+        "type": "string",
+        "maxLength": 4000
+      }
+    },
+    "required": [
+      "channelId",
+      "messageId",
+      "revision",
+      "text"
+    ],
+    "additionalProperties": false
+  },
+  "chat.message.retract": {
+    "type": "object",
+    "properties": {
+      "channelId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "messageId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "channelId",
+      "messageId",
+      "revision"
+    ],
+    "additionalProperties": false
+  },
+  "chat.read": {
+    "type": "object",
+    "properties": {
+      "channelId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "sequence": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "channelId",
+      "sequence"
+    ],
+    "additionalProperties": false
+  }
+}

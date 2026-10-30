@@ -2,10 +2,15 @@
 
 工程文档必须与当前代码、配置及实际文件结构一致，描述已经存在的实现、接口、运行与验证方式。尚未实现的内容放入 [计划目录](../../plans/README.md)。
 
-工程代码目录为 [`engineering/`](../../../engineering/README.md)。已包含 Lua 简化编写的同步内存实验宿主、样例和测试，运行与边界见下表；完整产品后端及联机服务尚未实现。
+工程代码目录为 [`engineering/`](../../../engineering/README.md)。已包含本机首测后端、独立文件数据管理、Lua 执行器、HTTP/WebSocket、SDK、测试操作台及验收驱动；完整产品功能仍在后续范围。原同步内存实验保留。
 
 | 文档 | 说明 |
 | --- | --- |
+| [Windows 安装与启动工具](desktop-tools.md) | 两个 exe、共享配置、独立运行时、更新与启停 |
+| [首测工程与运行](first-test.md) | 模块、实际接口、部署、文件存档、备份恢复与限额 |
+| [聊天室后端](chat-backend.md) | 频道/消息/权限、分页、结果卡片、存档与 SDK 接入 |
+| [Lua 规则与流程编写](lua-authoring.md) | 当前可执行语法、短指令、阶段等待和版本导入 |
+| [首测验收报告](first-test-acceptance.md) | 自动测试证据、实测性能、未验收边界与作者体验待办 |
 | [Lua 简化编写实验原型](lua-authoring-prototype.md) | 实际实现、运行方式、56 项断言及尚未具备的能力 |
 | [hierarchy：工程目录与施工登记](hierarchy.md) | 实际文件清单、Agent 与人员的使用/改动占用记录 |
 

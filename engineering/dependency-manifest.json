@@ -1,0 +1,330 @@
+{
+  "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows x64",
+  "lua": "5.4 via lupa.lua54",
+  "fileFormat": 1,
+  "packages": [
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "wheel": "pygments-2.21.0-py3-none-any.whl",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+      "license": "BSD-2-Clause",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "wheel": "annotated_doc-0.0.5-py3-none-any.whl",
+      "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+      "sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0",
+      "license": "MIT",
+      "licenseClassifiers": [
+        "License :: OSI Approved :: MIT License"
+      ]
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "wheel": "anyio-4.15.1-py3-none-any.whl",
+      "sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "argon2-cffi",
+      "version": "25.1.0",
+      "wheel": "argon2_cffi-25.1.0-py3-none-any.whl",
+      "sha256": "fdc8b074db390fccb6eb4a3604ae7231f219aa669a2652e0f20e16ba513d5741",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "argon2-cffi-bindings",
+      "version": "26.1.0",
+      "wheel": "argon2_cffi_bindings-26.1.0-cp310-abi3-win_amd64.whl",
+      "sha256": "2c36ff87b5dfaa477d0bd51e9d7f6abdae7c8955d2983c97419085d842154b3e",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "wheel": "attrs-26.1.0-py3-none-any.whl",
+      "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "wheel": "certifi-2026.10.23-py3-none-any.whl",
+      "sha256": "e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1",
+      "license": "MPL-2.0",
+      "licenseClassifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ]
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "wheel": "cffi-2.1.1-cp314-cp314-win_amd64.whl",
+      "sha256": "3222ba5d678f80a030e6afbcc33dc1ae5cb45facabb61cee2c7016b8432fde48",
+      "license": "MIT-0",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "wheel": "click-8.5.0-py3-none-any.whl",
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "wheel": "colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+      "license": null,
+      "licenseClassifiers": [
+        "License :: OSI Approved :: BSD License"
+      ]
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.0",
+      "wheel": "fastapi-0.162.0-py3-none-any.whl",
+      "sha256": "3785963de305dd09912426cb81f2d230fce98ab3521cdfe97265c8d14983128c",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "greenlet",
+      "version": "3.5.6",
+      "wheel": "greenlet-3.5.6-cp314-cp314-win_amd64.whl",
+      "sha256": "f8f0bd690e1a41294ac87905e8121c81a3761ec2583c768f13467428606c8c7a",
+      "license": "MIT AND PSF-2.0",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "wheel": "h11-0.16.0-py3-none-any.whl",
+      "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+      "license": "MIT",
+      "licenseClassifiers": [
+        "License :: OSI Approved :: MIT License"
+      ]
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "wheel": "httpcore-1.0.9-py3-none-any.whl",
+      "sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": [
+        "License :: OSI Approved :: BSD License"
+      ]
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "wheel": "httpx-0.28.1-py3-none-any.whl",
+      "sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": [
+        "License :: OSI Approved :: BSD License"
+      ]
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "wheel": "idna-3.20-py3-none-any.whl",
+      "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1",
+      "wheel": "iniconfig-2.3.1-py3-none-any.whl",
+      "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+      "sha256": "d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+      "sha256": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "lupa",
+      "version": "2.8",
+      "wheel": "lupa-2.8-cp314-cp314-win_amd64.whl",
+      "sha256": "3903c9cf628dae2f56405503247b77a61a3a61bd2dda470e336950c74776d55d",
+      "license": "MIT style",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.2",
+      "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+      "sha256": "2cbd737377e710ee740d261c94e93fa0f08e6d037c18f17513cc0a2d94479a34",
+      "license": "Apache-2.0",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "wheel": "packaging-26.3-py3-none-any.whl",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "playwright",
+      "version": "1.64.1",
+      "wheel": "playwright-1.64.1-py3-none-win_amd64.whl",
+      "sha256": "5e240a79464434c9260957b9ef59a5808e02e96e3fcabdc717fd7485260b9730",
+      "license": "Apache-2.0",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0",
+      "wheel": "pluggy-1.7.0-py3-none-any.whl",
+      "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec",
+      "license": "MIT",
+      "licenseClassifiers": [
+        "License :: OSI Approved :: MIT License"
+      ]
+    },
+    {
+      "name": "pwdlib",
+      "version": "0.3.1",
+      "wheel": "pwdlib-0.3.1-py3-none-any.whl",
+      "sha256": "944fa439198bed8ac3ea63dac76ea4ae43e2a35f4f21e9e725e82d3c2b97d6a5",
+      "license": null,
+      "licenseClassifiers": [
+        "License :: OSI Approved :: MIT License"
+      ]
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "wheel": "pycparser-3.12-py3-none-any.whl",
+      "sha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.2",
+      "wheel": "pydantic-2.14.2-py3-none-any.whl",
+      "sha256": "7efbf7507b937931cd32a5755acb00ea1cf5ccb1d4e8067a5850d5069e382118",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.2",
+      "wheel": "pydantic_core-2.50.2-cp314-cp314-win_amd64.whl",
+      "sha256": "b62c89545d21d930c333208fd548e7b4f262228ba3a322fd75c987a75ab11f31",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "pyee",
+      "version": "14.0.0",
+      "wheel": "pyee-14.0.0-py3-none-any.whl",
+      "sha256": "3ac2d3229a9677f7de2c33d7f52fe25b638a46b19c413fea2edc8c6d0a644e4d",
+      "license": "MIT",
+      "licenseClassifiers": [
+        "License :: OSI Approved :: MIT License"
+      ]
+    },
+    {
+      "name": "pytest",
+      "version": "9.2.0",
+      "wheel": "pytest-9.2.0-py3-none-any.whl",
+      "sha256": "07acdcf88ec174f907dc01af70bf52d49b014bbab03faeeade31c96b18c2e588",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "wheel": "referencing-0.37.0-py3-none-any.whl",
+      "sha256": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1",
+      "wheel": "rpds_py-2026.9.1-cp314-cp314-win_amd64.whl",
+      "sha256": "837c6b305e26fe0f75b15c92cf3b2ba29e0ae19dc40b1c557b026cb426347d0c",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0",
+      "wheel": "starlette-1.10.0-py3-none-any.whl",
+      "sha256": "478c0ab3b4ced6e82719849c118fa406f0278a3499c1a898cd15cd31bdc38ce4",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "wheel": "typing_inspection-0.4.4-py3-none-any.whl",
+      "sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147",
+      "license": "MIT",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "license": "PSF-2.0",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+      "sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": []
+    },
+    {
+      "name": "websockets",
+      "version": "17.3",
+      "wheel": "websockets-17.3-cp314-cp314-win_amd64.whl",
+      "sha256": "2b06213c8e1ce93b18d0476d7a5e647436c8f23d099888c9065e930e80f4bed5",
+      "license": "BSD-3-Clause",
+      "licenseClassifiers": []
+    }
+  ]
+}

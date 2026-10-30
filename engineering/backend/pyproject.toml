@@ -1,0 +1,5 @@
+[project]
+name = "onlinecoc-first-test"
+version = "0.1.0"
+requires-python = ">=3.14,<3.15"
+dependencies = ["fastapi", "uvicorn", "websockets", "jsonschema", "pwdlib[argon2]", "lupa==2.8"]

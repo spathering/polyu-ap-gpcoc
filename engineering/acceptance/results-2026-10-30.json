@@ -1,0 +1,468 @@
+{
+  "date": "2026-10-30",
+  "python": "3.14.2",
+  "os": "Windows-10-10.0.19045-SP0",
+  "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+  "logicalCPUs": 16,
+  "distinctPassed": 47,
+  "runs": [
+    {
+      "tests": "46",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "58.246",
+      "timestamp": "2026-10-30T15:25:16.226707+08:00",
+      "source": "acceptance.xml",
+      "cases": [
+        {
+          "class": "tests.test_adapters",
+          "name": "test_http_inprocess_equivalent",
+          "seconds": 3.871
+        },
+        {
+          "class": "tests.test_adapters",
+          "name": "test_slow_sender_is_closed",
+          "seconds": 2.646
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_host_crash[before_t1]",
+          "seconds": 1.433
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_host_crash[after_t1]",
+          "seconds": 1.834
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_host_crash[after_random]",
+          "seconds": 2.289
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_host_crash[before_t2]",
+          "seconds": 2.265
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_host_crash[after_t2]",
+          "seconds": 1.89
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_file_crash[half_write]",
+          "seconds": 0.393
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_file_crash[before_sync]",
+          "seconds": 0.385
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_file_crash[before_publish]",
+          "seconds": 0.389
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_real_file_crash[after_publish]",
+          "seconds": 0.389
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_backup_restore_assets_identity",
+          "seconds": 0.68
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_wait_timeout_and_permission_recheck",
+          "seconds": 0.998
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) r.roll(100) end,{mode='calculation'})]",
+          "seconds": 0.9
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) local a={};a.x=a;return a end)]",
+          "seconds": 0.894
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) return 0/0 end)]",
+          "seconds": 0.893
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) return r.read.__globals__ end)]",
+          "seconds": 0.891
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) local x={}; while true do x[#x+1]=string.format('%01000d',1) end end)]",
+          "seconds": 0.901
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_poison_cannot_be_caught",
+          "seconds": 0.911
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_invalid_dependency_and_wait",
+          "seconds": 0.72
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_quota_and_sync_failure",
+          "seconds": 0.008
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_flow_stage_crash_preserves_wait_and_random[before_t2]",
+          "seconds": 1.87
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_flow_stage_crash_preserves_wait_and_random[after_t2]",
+          "seconds": 1.521
+        },
+        {
+          "class": "tests.test_faults",
+          "name": "test_old_data_snapshot_survives_hot_reload",
+          "seconds": 1.807
+        },
+        {
+          "class": "tests.test_foundation",
+          "name": "test_store_contract[FileDataStore]",
+          "seconds": 0.013
+        },
+        {
+          "class": "tests.test_foundation",
+          "name": "test_store_contract[MemoryDataStore]",
+          "seconds": 0.003
+        },
+        {
+          "class": "tests.test_foundation",
+          "name": "test_failed_publish",
+          "seconds": 0.026
+        },
+        {
+          "class": "tests.test_foundation",
+          "name": "test_corruption_and_export",
+          "seconds": 0.028
+        },
+        {
+          "class": "tests.test_foundation",
+          "name": "test_lua_real_execution",
+          "seconds": 1.064
+        },
+        {
+          "class": "tests.test_foundation",
+          "name": "test_lua_timeout_and_restricted_globals",
+          "seconds": 1.401
+        },
+        {
+          "class": "tests.test_host",
+          "name": "test_transfer_dedupe_restart",
+          "seconds": 0.968
+        },
+        {
+          "class": "tests.test_host",
+          "name": "test_readonly_and_permissions",
+          "seconds": 1.277
+        },
+        {
+          "class": "tests.test_host",
+          "name": "test_old_flow_lock_and_restart",
+          "seconds": 1.791
+        },
+        {
+          "class": "tests.test_host",
+          "name": "test_failure_rolls_back",
+          "seconds": 1.29
+        },
+        {
+          "class": "tests.test_host",
+          "name": "test_personal_progress_and_revocation",
+          "seconds": 0.557
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_same_configuration_distinct_instances",
+          "seconds": 0.572
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_relation_invariants",
+          "seconds": 0.569
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_concurrent_quantity_and_view_precondition",
+          "seconds": 1.301
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_behavior_entry_and_retry",
+          "seconds": 0.915
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_queue_and_internal_transport",
+          "seconds": 0.544
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_storage_query_receipt_contract[MemoryDataStore]",
+          "seconds": 0.003
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_storage_query_receipt_contract[FileDataStore]",
+          "seconds": 0.009
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_machine_fixtures",
+          "seconds": 0.534
+        },
+        {
+          "class": "tests.test_model_contracts",
+          "name": "test_host_storage_injection_and_author_helpers",
+          "seconds": 1.242
+        },
+        {
+          "class": "tests.test_network",
+          "name": "test_http_boundary",
+          "seconds": 3.123
+        },
+        {
+          "class": "tests.test_network",
+          "name": "test_three_browsers_and_eight_connections",
+          "seconds": 9.24
+        }
+      ]
+    },
+    {
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "12.926",
+      "timestamp": "2026-10-30T15:32:56.695466+08:00",
+      "source": "network-offline.xml",
+      "cases": [
+        {
+          "class": "tests.test_network",
+          "name": "test_http_boundary",
+          "seconds": 3.257
+        },
+        {
+          "class": "tests.test_network",
+          "name": "test_three_browsers_and_eight_connections",
+          "seconds": 9.253
+        }
+      ]
+    },
+    {
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.301",
+      "timestamp": "2026-10-30T15:37:45.120255+08:00",
+      "source": "double-host.xml",
+      "cases": [
+        {
+          "class": "tests.test_faults",
+          "name": "test_second_host_process_is_rejected",
+          "seconds": 1.085
+        }
+      ]
+    }
+  ],
+  "network": {
+    "browser": "156.0.4314.50",
+    "serverPid": 15556,
+    "measurements": [
+      {
+        "connections": 3,
+        "rounds": 5,
+        "endToEndMsP50": 261.8802999968466,
+        "endToEndMsP95": 269.2431999967084,
+        "snapshotBytes": [
+          8238,
+          7880,
+          7880
+        ],
+        "serverTimings": {
+          "commands": [
+            {
+              "queueMs": 0.000700001692166552,
+              "totalMs": 416.9411000002583
+            },
+            {
+              "queueMs": 0.0010000003385357559,
+              "totalMs": 1.3711999999941327
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 367.60320000030333
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 12.209000000439119
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 12.957899998582434
+            },
+            {
+              "queueMs": 0.0006000009307172149,
+              "totalMs": 12.775499999406748
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 13.119999999616994
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 13.005599997995887
+            },
+            {
+              "queueMs": 0.000400003045797348,
+              "totalMs": 13.354500002606073
+            }
+          ],
+          "commits": [
+            7.094500000675907,
+            6.891699998959666,
+            7.05779999771039,
+            7.077700000081677,
+            7.35759999952279,
+            7.476800001313677,
+            7.690700000239303,
+            7.692200000747107,
+            8.0932999990182
+          ],
+          "workers": [
+            396.6703999976744
+          ]
+        },
+        "serverMemory": {
+          "pid": 18760,
+          "workingSetBytes": 65298432,
+          "peakWorkingSetBytes": 131182592
+        }
+      },
+      {
+        "connections": 8,
+        "rounds": 5,
+        "endToEndMsP50": 277.5099999998929,
+        "endToEndMsP95": 283.5688000013761,
+        "snapshotBytes": [
+          8239,
+          7881,
+          7881,
+          7881,
+          7881,
+          7881,
+          7881,
+          7881
+        ],
+        "serverTimings": {
+          "commands": [
+            {
+              "queueMs": 0.000700001692166552,
+              "totalMs": 416.9411000002583
+            },
+            {
+              "queueMs": 0.0010000003385357559,
+              "totalMs": 1.3711999999941327
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 367.60320000030333
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 12.209000000439119
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 12.957899998582434
+            },
+            {
+              "queueMs": 0.0006000009307172149,
+              "totalMs": 12.775499999406748
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 13.119999999616994
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 13.005599997995887
+            },
+            {
+              "queueMs": 0.000400003045797348,
+              "totalMs": 13.354500002606073
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 15.081199999258388
+            },
+            {
+              "queueMs": 0.0005999972927384079,
+              "totalMs": 17.28259999799775
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 14.25540000127512
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 14.33040000119945
+            },
+            {
+              "queueMs": 0.0005000001692678779,
+              "totalMs": 14.037499997357372
+            }
+          ],
+          "commits": [
+            7.094500000675907,
+            6.891699998959666,
+            7.05779999771039,
+            7.077700000081677,
+            7.35759999952279,
+            7.476800001313677,
+            7.690700000239303,
+            7.692200000747107,
+            8.0932999990182,
+            8.725300001970027,
+            10.076400001707952,
+            8.68609999815817,
+            8.877399999619229,
+            8.564299998397473
+          ],
+          "workers": [
+            396.6703999976744
+          ]
+        },
+        "serverMemory": {
+          "pid": 18760,
+          "workingSetBytes": 68083712,
+          "peakWorkingSetBytes": 134770688
+        }
+      }
+    ],
+    "pageErrors": []
+  },
+  "independentAuthorTrial": "not performed; awaiting independent participant",
+  "offlineInstallation": "fresh venv + --no-index --find-links local wheels --require-hashes",
+  "offlineHost": "Python audit guard denies non-loopback connect/sendto/getaddrinfo; browser uses local HTTP/WS"
+}

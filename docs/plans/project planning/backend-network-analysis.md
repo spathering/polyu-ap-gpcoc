@@ -6,6 +6,12 @@
 - 最后更新：2026-10-30
 - 关联文档：[计划索引](../README.md)、[跑团工程构成调研](../coc-online-trpg-research.md)、[项目概况](../../current/design/project-overview.md)、[目录与施工登记](../../current/engineering/hierarchy.md)、[模块职责](module-responsibilities.md)、[数据与容器](data-container-model.md)、[前后端对接](frontend-backend-contract.md)、[首测工程设计](first-test-engineering-design.md)、[首测施工计划](first-test-construction-plan.md)
 
+2026-10-30 范围更新：聊天室后端已作为追加任务实现，实际数据结构、权限和命令以 [聊天室后端](../../current/engineering/chat-backend.md) 为准；聊天页面仍待制作。完整 COC 等规则归配置包实现，地图/逻辑图/2D/3D 空间及地图战斗暂不作为必要实现。本文保留相关候选设计作为按游戏需要扩展的参考，不列为本次必交能力。
+
+## 首测实现对照（2026-10-30）
+
+本主题已有本机首测实现子集，实际接口和限制见 [当前工程](../../current/engineering/first-test.md) 与 [Lua 编写](../../current/engineering/lua-authoring.md)。本文仍保存通用设计和后续扩展讨论，不将所有候选字段、接口或运行方式视为已实现。验收状态统一见 [首测报告](../../current/engineering/first-test-acceptance.md)。
+
 ## 1. 目标、范围与结论边界
 
 本工程目标是提供一套线上多人跑团工具，并让制作者与 Agent 能以较低成本自定义数据、规则和编排流程。工程上要求前端、后端、文件资源管理解耦；联机服务与后端保留替换边界，允许用户选用或桥接其他联机方案。

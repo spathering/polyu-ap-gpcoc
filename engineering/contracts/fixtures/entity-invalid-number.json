@@ -1,0 +1,23 @@
+{
+  "instanceId": "actor-player1",
+  "roomId": "demo",
+  "configurationId": "demo.actor",
+  "configurationRevision": "1",
+  "typeRef": "actor",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lifecycle": "active",
+  "name": "调查员 1",
+  "owner": "player1",
+  "visibility": "public",
+  "metadata": {},
+  "tags": [],
+  "numbers": {
+    "hp": "10",
+    "maxHp": 10,
+    "armor": 2,
+    "attack": 5
+  },
+  "components": {},
+  "rules": {}
+}

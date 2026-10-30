@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-30",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "build": {
+    "builtAt": "2026-10-30T17:21:28.4623299+08:00",
+    "compiler": "4.8.9232.0 built by: NET481REL1LAST_C",
+    "sourceSha256": "c2cf07df1651b2e6707e1288307f2ab649f8ad4945e7da73996efc1bbf3897ea",
+    "artifacts": [
+      {
+        "file": "安装依赖.exe",
+        "sha256": "a9b6a8bc0654e15796337295173307967db35292dd275480056eeaa322b2b9a2"
+      },
+      {
+        "file": "启动OnlineCOC.exe",
+        "sha256": "9d8f88531204b7f4227c4a85e60e8584c8767e9093c08b5757c75cc2b364bc34"
+      }
+    ]
+  },
+  "automated": {
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "115.290",
+    "timestamp": "2026-10-30T17:28:09.575892+08:00"
+  },
+  "cases": [
+    {
+      "name": "test_fresh_install_and_idempotent_check",
+      "seconds": 34.563
+    },
+    {
+      "name": "test_dependency_lock_update_creates_new_environment",
+      "seconds": 20.311
+    },
+    {
+      "name": "test_corrupt_package_is_repaired",
+      "seconds": 20.992
+    },
+    {
+      "name": "test_server_launch_action_shutdown_and_reopen",
+      "seconds": 36.528
+    },
+    {
+      "name": "test_invalid_configuration_and_archive[path]",
+      "seconds": 0.125
+    },
+    {
+      "name": "test_invalid_configuration_and_archive[hash]",
+      "seconds": 0.141
+    },
+    {
+      "name": "test_invalid_configuration_and_archive[offline-cache]",
+      "seconds": 0.139
+    },
+    {
+      "name": "test_occupied_port_fails_without_stopping_other_service",
+      "seconds": 2.314
+    }
+  ],
+  "visualValidation": "Not performed: Windows automation kernel initialization failed twice (missing kernel asset path, os error 3). See ISSUE-002.",
+  "defaultOnlineInstall": {
+    "exitCode": 0,
+    "configuration": "launcher-config.json",
+    "result": "Python archive downloaded and SHA-256 verified; private environment installed; 26 pins and pip check passed"
+  }
+}

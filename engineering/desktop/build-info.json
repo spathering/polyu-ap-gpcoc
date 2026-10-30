@@ -1,0 +1,15 @@
+{
+    "builtAt":  "2026-10-30T17:21:28.4623299+08:00",
+    "compiler":  "4.8.9232.0 built by: NET481REL1LAST_C",
+    "sourceSha256":  "c2cf07df1651b2e6707e1288307f2ab649f8ad4945e7da73996efc1bbf3897ea",
+    "artifacts":  [
+                      {
+                          "file":  "安装依赖.exe",
+                          "sha256":  "a9b6a8bc0654e15796337295173307967db35292dd275480056eeaa322b2b9a2"
+                      },
+                      {
+                          "file":  "启动OnlineCOC.exe",
+                          "sha256":  "9d8f88531204b7f4227c4a85e60e8584c8767e9093c08b5757c75cc2b364bc34"
+                      }
+                  ]
+}

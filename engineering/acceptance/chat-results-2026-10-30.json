@@ -1,0 +1,431 @@
+{
+  "recordedAt": "2026-10-30T18:52:40.912248+08:00",
+  "scope": "聊天室后端追加实施及完整后端回归",
+  "command": "engineering/.venv/Scripts/python -m pytest engineering/backend/tests -q -p no:cacheprovider --basetemp=engineering/.test-output/chat-backend/regression-2 --junitxml=engineering/.test-output/chat-backend/regression-final.xml",
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.14.2",
+    "browser": "Installed Microsoft Edge via Playwright isolated contexts",
+    "storage": "FileDataStore; no database"
+  },
+  "result": {
+    "tests": 74,
+    "passed": 74,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 86.138,
+    "chatTests": 27
+  },
+  "validation": [
+    "公共/分组/双人私聊权限与无关投影隔离",
+    "命令幂等、编辑/撤回 CAS、分页/已读、引用与限额",
+    "结果卡片取自主机回执，拒绝客户端字段伪造",
+    "旧房间升级、重启与备份恢复",
+    "真实进程在聊天提交前/后 os._exit 故障",
+    "真实三浏览器 SDK、HTTP/WS、重连与撤权",
+    "既有规则执行、流程、数据管理与网络回归"
+  ],
+  "observations": [
+    {
+      "run": "first full regression",
+      "result": "71 passed, 1 failed",
+      "detail": "Existing test_backup_restore_assets_identity encountered Windows os.rename PermissionError (WinError 5) while publishing restored directory. Isolated rerun passed; final full rerun including two added boundary tests passed. Restore code was not changed; transient cause not established."
+    },
+    {
+      "run": "final regression",
+      "detail": "One existing Starlette/httpx deprecation warning; no dependency change."
+    }
+  ],
+  "limitations": [
+    "Backend and SDK delivered; chat frontend is not implemented.",
+    "Host operator can access local private-message files and backups; no end-to-end encryption.",
+    "Whole-state file generations retain historical content; retraction is not secure erasure.",
+    "No high-volume chat or physical power-loss acceptance."
+  ],
+  "sha256": {
+    "engineering/backend/src/onlinecoc/chat.py": "517355bad8942507bd3e166b80e50d9f871a5f81297c3187ba0d9fa7fe37431f",
+    "engineering/backend/src/onlinecoc/host.py": "d6034b820298246163ee81f9d702613dc69e0ffb625ea6306457c17db4cffbce",
+    "engineering/backend/src/onlinecoc/model.py": "e82eb5d3de5a22dfbd552c50f0a9f74dd8ca2aa63e48a3d7bb4c776f8cad6106",
+    "engineering/backend/src/onlinecoc/server.py": "b9dd799e0eb445a9515de9d7198bbb82b105942509787a22699fe05d264c94f4",
+    "engineering/backend/src/onlinecoc/gateway.py": "b5a4593b668f5a6e684124b7582d466c201fa5f6262221330a6ca217d599ba62",
+    "engineering/contracts/models.json": "ddb94863ef7e429651f9457eec09e0974420930a2d963240eefecea8c1378ca2",
+    "engineering/contracts/messages.json": "44d162a3951fe6ad6411d2a1ac5a94f06dd8d3bc8a297a4631158ca79c271b3e",
+    "engineering/contracts/operations.json": "6a9186b2f44adce9c51d87a7854989c8d16ac678772dd4e10353f013f1e90a68",
+    "engineering/client-sdk/client.js": "d4a00bd6ab33971ee8007eb1b4cee21ff8b026b68f34f692c58892ba316706ee",
+    "engineering/backend/tests/test_chat.py": "85c44ea43062da9d471b206f48e69aeef0c65b8113d589cff6a39b20c06df4d8",
+    "engineering/backend/tests/test_chat_network.py": "086ab7efb22a302089338d0700e20a60ec9969901dd26bfb70c86914c44db279"
+  },
+  "cases": [
+    {
+      "suite": "tests.test_adapters",
+      "name": "test_http_inprocess_equivalent",
+      "seconds": 3.87
+    },
+    {
+      "suite": "tests.test_adapters",
+      "name": "test_slow_sender_is_closed",
+      "seconds": 2.607
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_public_send_restart_idempotency_and_projection",
+      "seconds": 0.603
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_private_channels_revoke_and_no_projection_side_channel",
+      "seconds": 0.608
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_direct_pair_dedup_and_kp_not_implicit_recipient",
+      "seconds": 0.6
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_pagination_read_positions_and_old_message_edits",
+      "seconds": 0.825
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_edit_retract_moderation_and_channel_policy",
+      "seconds": 0.732
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_paused_room_can_chat_archived_room_read_only",
+      "seconds": 0.603
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_message_schema_rejects_forgery_and_limits[extra0]",
+      "seconds": 0.554
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_message_schema_rejects_forgery_and_limits[extra1]",
+      "seconds": 0.552
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_message_schema_rejects_forgery_and_limits[extra2]",
+      "seconds": 0.549
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_message_schema_rejects_forgery_and_limits[extra3]",
+      "seconds": 0.561
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_message_schema_rejects_forgery_and_limits[extra4]",
+      "seconds": 0.557
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_message_schema_rejects_forgery_and_limits[extra5]",
+      "seconds": 0.554
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_speaker_attachment_reference_and_private_asset_boundary",
+      "seconds": 0.63
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_verified_action_card_uses_host_receipt_and_is_immutable",
+      "seconds": 1.002
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_legacy_room_upgrade_is_once_and_backup_restores_chat",
+      "seconds": 0.725
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_model_rejects_corrupt_chat_references[sequence]",
+      "seconds": 0.57
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_model_rejects_corrupt_chat_references[reply]",
+      "seconds": 0.567
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_model_rejects_corrupt_chat_references[sender]",
+      "seconds": 0.56
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_model_rejects_corrupt_chat_references[read]",
+      "seconds": 0.562
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_model_rejects_corrupt_chat_references[asset]",
+      "seconds": 0.56
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_rate_limit_and_retention_limit_roll_back",
+      "seconds": 1.182
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_real_process_crash_chat_and_receipt_are_atomic[before_chat_commit]",
+      "seconds": 1.087
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_real_process_crash_chat_and_receipt_are_atomic[after_chat_commit]",
+      "seconds": 1.081
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_http_history_auth_csrf_and_inprocess_equivalence",
+      "seconds": 0.694
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_channel_management_permissions_stale_versions_and_atomic_rejection",
+      "seconds": 0.629
+    },
+    {
+      "suite": "tests.test_chat",
+      "name": "test_empty_message_and_retracted_reply_are_consistent",
+      "seconds": 0.598
+    },
+    {
+      "suite": "tests.test_chat_network",
+      "name": "test_chat_sdk_real_browsers_sync_privacy_reconnect_and_revocation",
+      "seconds": 7.45
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_host_crash[before_t1]",
+      "seconds": 1.495
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_host_crash[after_t1]",
+      "seconds": 1.909
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_host_crash[after_random]",
+      "seconds": 2.36
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_host_crash[before_t2]",
+      "seconds": 2.35
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_host_crash[after_t2]",
+      "seconds": 1.98
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_file_crash[half_write]",
+      "seconds": 0.404
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_file_crash[before_sync]",
+      "seconds": 0.405
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_file_crash[before_publish]",
+      "seconds": 0.407
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_real_file_crash[after_publish]",
+      "seconds": 0.407
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_backup_restore_assets_identity",
+      "seconds": 0.695
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_wait_timeout_and_permission_recheck",
+      "seconds": 1.019
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) r.roll(100) end,{mode='calculation'})]",
+      "seconds": 0.937
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) local a={};a.x=a;return a end)]",
+      "seconds": 0.927
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) return 0/0 end)]",
+      "seconds": 0.937
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) return r.read.__globals__ end)]",
+      "seconds": 0.93
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_lua_invalid_boundaries[return rule('x',{},function(r) local x={}; while true do x[#x+1]=string.format('%01000d',1) end end)]",
+      "seconds": 0.943
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_poison_cannot_be_caught",
+      "seconds": 0.934
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_invalid_dependency_and_wait",
+      "seconds": 0.76
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_quota_and_sync_failure",
+      "seconds": 0.007
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_flow_stage_crash_preserves_wait_and_random[before_t2]",
+      "seconds": 1.937
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_flow_stage_crash_preserves_wait_and_random[after_t2]",
+      "seconds": 1.583
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_old_data_snapshot_survives_hot_reload",
+      "seconds": 1.884
+    },
+    {
+      "suite": "tests.test_faults",
+      "name": "test_second_host_process_is_rejected",
+      "seconds": 0.993
+    },
+    {
+      "suite": "tests.test_foundation",
+      "name": "test_store_contract[FileDataStore]",
+      "seconds": 0.012
+    },
+    {
+      "suite": "tests.test_foundation",
+      "name": "test_store_contract[MemoryDataStore]",
+      "seconds": 0.003
+    },
+    {
+      "suite": "tests.test_foundation",
+      "name": "test_failed_publish",
+      "seconds": 0.015
+    },
+    {
+      "suite": "tests.test_foundation",
+      "name": "test_corruption_and_export",
+      "seconds": 0.027
+    },
+    {
+      "suite": "tests.test_foundation",
+      "name": "test_lua_real_execution",
+      "seconds": 1.127
+    },
+    {
+      "suite": "tests.test_foundation",
+      "name": "test_lua_timeout_and_restricted_globals",
+      "seconds": 1.419
+    },
+    {
+      "suite": "tests.test_host",
+      "name": "test_transfer_dedupe_restart",
+      "seconds": 1.002
+    },
+    {
+      "suite": "tests.test_host",
+      "name": "test_readonly_and_permissions",
+      "seconds": 1.326
+    },
+    {
+      "suite": "tests.test_host",
+      "name": "test_old_flow_lock_and_restart",
+      "seconds": 1.911
+    },
+    {
+      "suite": "tests.test_host",
+      "name": "test_failure_rolls_back",
+      "seconds": 1.37
+    },
+    {
+      "suite": "tests.test_host",
+      "name": "test_personal_progress_and_revocation",
+      "seconds": 0.591
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_same_configuration_distinct_instances",
+      "seconds": 0.593
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_relation_invariants",
+      "seconds": 0.588
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_concurrent_quantity_and_view_precondition",
+      "seconds": 1.363
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_behavior_entry_and_retry",
+      "seconds": 0.967
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_queue_and_internal_transport",
+      "seconds": 0.558
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_storage_query_receipt_contract[MemoryDataStore]",
+      "seconds": 0.002
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_storage_query_receipt_contract[FileDataStore]",
+      "seconds": 0.008
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_machine_fixtures",
+      "seconds": 0.55
+    },
+    {
+      "suite": "tests.test_model_contracts",
+      "name": "test_host_storage_injection_and_author_helpers",
+      "seconds": 1.318
+    },
+    {
+      "suite": "tests.test_network",
+      "name": "test_http_boundary",
+      "seconds": 3.125
+    },
+    {
+      "suite": "tests.test_network",
+      "name": "test_three_browsers_and_eight_connections",
+      "seconds": 9.422
+    }
+  ]
+}

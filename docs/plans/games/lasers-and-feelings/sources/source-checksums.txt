@@ -1,0 +1,3 @@
+SHA-256; official PDF and full-page extracted UTF-8 text; retrieved 2026-10-30
+8176c126615f817cf77e2b025e180781645cbbdccd9ba1036eafbacc30a6565c  lasers-and-feelings-original.pdf
+11bc2658115ae92724961017e4d37d6089968ff8f8cb25987f4fc155cebf2e07  lasers-and-feelings-original.txt

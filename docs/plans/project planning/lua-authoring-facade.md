@@ -6,6 +6,10 @@
 - 最后更新：2026-10-30
 - 关联文档：[ISSUE-001](Issue/lua-authoring-simplification.md)、[Issue 索引](Issue/README.md)、[计划索引](../README.md)、[首轮 Lua 参考](lua-script-reference/README.md)、[数据与容器](data-container-model.md)、[前后端契约](frontend-backend-contract.md)、[后端分析](backend-network-analysis.md)
 
+## 首测实现对照（2026-10-30）
+
+本主题已有本机首测实现子集，实际接口和限制见 [当前工程](../../current/engineering/first-test.md) 与 [Lua 编写](../../current/engineering/lua-authoring.md)。本文仍保存通用设计和后续扩展讨论，不将所有候选字段、接口或运行方式视为已实现。验收状态统一见 [首测报告](../../current/engineering/first-test-acceptance.md)。
+
 ## 1. 问题核查与方案范围
 
 本方案回应 ISSUE-001 的作者体验问题。首轮 01/02/03 样例将输入结构、注册元信息、计算逻辑、结果及效果写在同一个文件；05/07 还要求作者了解步骤结果路径、输入映射和流转目标。问题不是 Lua 无法简写，而是作者同时承担了业务、契约和执行协议三层工作。

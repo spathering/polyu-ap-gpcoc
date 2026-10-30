@@ -1,0 +1,6 @@
+engineering/.venv/
+engineering/.runtime/
+engineering/.test-output/
+**/__pycache__/
+**/.pytest_cache/
+*.pyc

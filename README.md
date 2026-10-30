@@ -2,7 +2,17 @@
 
 本项目试实现一个用于线上多人跑团的通用工具，并探索相关的技术与协作方案。
 
-目前处于原型验证阶段，已建立 [Lua 简化编写实验原型](engineering/lua-authoring-prototype/README.md)，尚未实现完整线上跑团功能。自定义规则与流程已选用 Lua，房间长期存档、主机权威与共享剧情进度等设计已确认；后端实现语言及具体架构仍待确定，见[项目概况](docs/current/design/project-overview.md)。
+目前已有可运行的本机首测版：主机权威后端、独立文件数据管理模块、HTTP/WebSocket 联机、Lua 动态规则与可恢复流程、聊天室后端，以及最小浏览器操作台。当前用自制规则验证通用能力，完整 COC 等规则由配置包实现。
+
+从 [安装与运行](docs/current/engineering/first-test.md) 开始；规则制作者阅读 [Lua 编写说明](docs/current/engineering/lua-authoring.md)，验证范围见 [首测验收报告](docs/current/engineering/first-test-acceptance.md)。原 [Lua 同步实验](engineering/lua-authoring-prototype/README.md) 作为独立历史原型保留。
+
+聊天室数据、接口和 SDK 见 [聊天室后端](docs/current/engineering/chat-backend.md)；尚无聊天页面。地图、逻辑图和 2D/3D 空间暂不作为必要实现。
+
+## Windows 快速开始
+
+在工程根目录双击 [安装依赖.exe](安装依赖.exe)，然后双击 [启动OnlineCOC.exe](启动OnlineCOC.exe)。首次启动设置房间初始密码，随后打开本机页面。共享配置为 [launcher-config.json](launcher-config.json)，更新说明见 [桌面工具文档](docs/current/engineering/desktop-tools.md)。
+
+后续更新的问题统一登记到 [Issues](docs/plans/Issues/README.md)，其中保留已有 Lua 设计议题的链接。
 
 ## 工程代码
 
