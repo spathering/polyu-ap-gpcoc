@@ -20,6 +20,10 @@
 
 独立游戏配置包放在同级的 [`rulepacks/`](rulepacks/README.md)，当前包含[《激光与情感》配置包与跑团桌面](rulepacks/lasers-and-feelings/README.md)。配置包工作只查阅工程文档并使用现有能力，工程侧问题提交 Issues，由工程责任者处理。
 
+独立桌面房间管理工具首版已位于 [`tools/room-manager/`](tools/room-manager/README.md)，通过现有接口管理已运行房间并观察数据变化。先启动宿主，再运行 [RoomManager.exe](tools/room-manager/dist/RoomManager.exe)；使用与测试见[工程文档](docs/current/engineering/room-manager.md)，完整历史与存档管理仍属后续计划。
+
+主机上的账号维护使用 [HostAccounts.exe](tools/host-accounts/HostAccounts.exe)，自动选择当前 Windows 用户启动的本机实例，支持查询账号、创建身份与重设密码。先重启至新版宿主，使用说明见[账号工具](tools/host-accounts/README.md)。
+
 ## 文档入口
 
 从 [文档索引](docs/README.md) 开始阅读。

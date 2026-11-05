@@ -1,0 +1,29 @@
+{
+  "passed": 23,
+  "checks": [
+    "native manager exists and is Windows PE",
+    "initial state is stopped",
+    "stopping absent instance is harmless",
+    "native manager starts hidden pack service",
+    "service has valid pack fingerprint",
+    "first launch preserves web setup rather than setting password",
+    "repeat start reuses supervisor",
+    "existing account entry reuses manager service",
+    "native management window loads",
+    "closing manager window leaves service running",
+    "stop endpoint rejects unauthenticated local request",
+    "stop endpoint rejects browser-origin requests",
+    "local control record contains encrypted key only",
+    "browser bootstrap still initializes five accounts",
+    "restart uses actual custom save even without repeated argument",
+    "restart creates a new supervisor",
+    "restart preserves account password and gameplay",
+    "stop returns stopped state",
+    "graceful stop removes current local control record",
+    "unrelated Python process survives pack stop",
+    "restart after stop preserves custom save",
+    "spoofed supervisor PID is refused",
+    "foreign port service is refused"
+  ],
+  "scope": "actual native manager + native account launcher + isolated room + protected local stop + GUI window smoke"
+}

@@ -25,7 +25,7 @@ def runtime_info():
     return result
 
 
-def create_app(host,port=8765):
+def create_app(host,port=8765,host_control=None):
     origins={f'http://127.0.0.1:{port}',f'http://localhost:{port}'}
     allowed_hosts={f'127.0.0.1:{port}',f'localhost:{port}'}
     assets=Assets(host);inflight=0
@@ -38,9 +38,18 @@ def create_app(host,port=8765):
                 try:await asyncio.to_thread(host.tick)
                 except Exception:logging.exception('Room scheduler failed; inspect storage and pending flows')
                 await asyncio.sleep(.2)
+        if host_control:
+            try: host_control.publish()
+            except OSError:
+                # Sandboxed/service accounts may have no usable DPAPI profile.
+                host_control.close()
+                logging.warning('Local host account control unavailable; room service continues')
         task=asyncio.create_task(ticker())
-        yield
-        task.cancel()
+        try:
+            yield
+        finally:
+            if host_control: host_control.close()
+            task.cancel()
         try:await task
         except asyncio.CancelledError:pass
     app=FastAPI(lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
@@ -56,7 +65,7 @@ def create_app(host,port=8765):
     @app.middleware('http')
     async def boundary(request,call_next):
         if request.headers.get('host') not in allowed_hosts:return JSONResponse({'code':'HOST_REJECTED'},status_code=403)
-        if request.method in ('POST','PUT','DELETE') and request.headers.get('origin') not in origins:return JSONResponse({'code':'ORIGIN_REJECTED'},status_code=403)
+        if request.method in ('POST','PUT','DELETE') and not request.url.path.startswith('/api/v1/host-control/') and request.headers.get('origin') not in origins:return JSONResponse({'code':'ORIGIN_REJECTED'},status_code=403)
         if request.url.path.startswith('/api/'):
             limit=10*1024*1024 if request.url.path=='/api/v1/assets' else 64*1024
             # Bound streamed bodies, including requests without Content-Length.
@@ -76,6 +85,31 @@ def create_app(host,port=8765):
         return session['accountId']
     async def read_object(request):
         data=await request.json();require(isinstance(data,dict));return data
+    def local_authority(request):
+        require(host_control is not None, 'PERMISSION_DENIED')
+        host_control.authorize(request)
+
+    @app.get('/api/v1/host-control/accounts')
+    def host_accounts(request:Request):
+        local_authority(request)
+        return host_control.accounts()
+
+    @app.post('/api/v1/host-control/accounts')
+    async def host_change(request:Request):
+        local_authority(request)
+        data=await read_object(request)
+        def run():
+            with host.lock:
+                local_authority(request)
+                return host.identity.host_change(data)
+        return await asyncio.to_thread(run)
+
+    @app.get('/api/v1/host-control/receipts/{request_id}')
+    def host_receipt(request_id:str,request:Request):
+        local_authority(request)
+        with host.lock:
+            return host.identity.store.snapshot()[1].get('hostAdminReceipts',{}).get(request_id, {'requestId':request_id,'status':'unknown'})
+
     @app.get('/api/v1/capabilities')
     def capabilities():return {'protocolVersion':1,'transports':['http','websocket'],'resumeWindow':0,'storage':'files','maxCommandBytes':65536,'chat':{'version':1,'maxTextLength':4000,'maxHistoryPage':100,'maxChannels':128,'maxMessages':10000,'privateAssetAttachments':False}}
     @app.post('/api/v1/login')

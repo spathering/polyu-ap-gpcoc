@@ -6,6 +6,7 @@
 
 | 文档 | 归档日期 | 原因 / 后续文档 |
 | --- | --- | --- |
+| [主机账号维护 ISSUE-005](2026-11-05-issue-005-online-account-management.md) | 2026-11-05 | 已实现，[本机主机账号维护](../current/engineering/host-accounts.md)为现行说明 |
 | [首轮 Lua 编写协议参考](2026-10-29-lua-script-reference.md) | 2026-10-29 | 原作者协议由[宿主 API 与简化方案](<../plans/project planning/lua-authoring-facade.md>)替代；旧样例仍供对照 |
 
 归档文件使用 `YYYY-MM-DD-原文件名.md` 命名，日期为归档日期。文档顶部必须注明原路径、原状态、归档日期、归档原因和替代文档；没有替代文档时明确写“无”。如当天同名冲突，追加 `-02` 等序号。

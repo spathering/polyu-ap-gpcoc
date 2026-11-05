@@ -1,0 +1,6 @@
+{
+  "defaultEndpoint": "http://127.0.0.1:8765",
+  "observationLimit": 2000,
+  "watchLimit": 100,
+  "adminPollMilliseconds": 2000
+}

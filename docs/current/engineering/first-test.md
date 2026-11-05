@@ -4,7 +4,7 @@
 - 文档子类：工程
 - 状态：有效
 - 创建日期：2026-10-30
-- 最后更新：2026-10-30
+- 最后更新：2026-11-05
 - 关联文档：[工程索引](README.md)、[编写 Lua](lua-authoring.md)、[验收报告](first-test-acceptance.md)、[施工计划](<../../plans/project planning/first-test-construction-plan.md>)
 
 ## 1. 实现范围
@@ -76,7 +76,7 @@ Windows 已验证进程强制退出下的发布恢复。文件 fsync 不等于�
 
 配置的 `behaviors` 与实例的 `rules` 采用 `{event: {ruleId: "..."}}`，通过 `behavior.invoke` 解析入口；公开动作目录仍控制可调用范围。属性/关系属于实例数据，不附在规则引用里。旧流程已经固定规则 ID、修订及输入，不随配置入口改写。
 
-离线管理应先停止持有该目录的服务，否则排他锁拒绝第二主机：
+Windows 主机可用[本机账号工具](host-accounts.md)在线查询完整账号、创建身份或重设密码；权限绑定启动实例的 Windows 用户，与 KP 房间权限分离。以下离线 CLI 仍需先停止持有该目录的服务，否则排他锁拒绝第二主机：
 
 ```powershell
 engineering/.venv/Scripts/python engineering/backend/scripts/run.py --data-dir engineering/.runtime/demo account-create alice --role player

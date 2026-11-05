@@ -1,5 +1,6 @@
 """Independent local frontend and same-origin adapter for the existing host."""
 import argparse
+import base64
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from http.cookies import SimpleCookie
@@ -12,6 +13,7 @@ import sys
 import time
 import threading
 import signal
+import secrets
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -20,13 +22,13 @@ import webbrowser
 sys.dont_write_bytecode = True
 from package import PACK, bundle, prepare_presets
 from client import Client
-from automation import Automation, ActionError
+from automation import Automation, ActionError, protect
 
 ROOT = PACK.parents[1]
 SLOTS = ('kp', 'player1', 'player2', 'player3', 'player4')
 
 
-def handler(backend, origin, setup=None, shutdown=None, automation=None):
+def handler(backend, origin, setup=None, shutdown=None, automation=None, control_key=None, data_dir=None):
     preset_lock=threading.Lock()
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *args):
@@ -60,7 +62,24 @@ def handler(backend, origin, setup=None, shutdown=None, automation=None):
             path = urllib.parse.urlsplit(self.path).path
             if path == '/launcher/info' and self.command == 'GET':
                 workspace=hashlib.sha256(str(PACK.resolve()).casefold().encode('utf-8')).hexdigest()
-                return self.respond(200,json.dumps({'packId':'mini-detective-pack','workspace':workspace,'supervisorPid':int(os.environ.get('MD_LAUNCHER_PID','0')),'pid':os.getpid()}).encode())
+                return self.respond(200,json.dumps({'packId':'mini-detective-pack','workspace':workspace,'supervisorPid':int(os.environ.get('MD_LAUNCHER_PID','0')),'pid':os.getpid(),'dataDirectory':str(data_dir) if data_dir else None,'localStop':bool(control_key)}).encode())
+            if path == '/launcher/stop':
+                if self.command != 'POST' or incoming or self.headers.get('Referer') or self.client_address[0] != '127.0.0.1':
+                    return self.respond(403,b'{"code":"LOCAL_CONTROL_REQUIRED"}')
+                supplied=self.headers.get('X-Mini-Pack-Control','')
+                if not control_key or not secrets.compare_digest(supplied,control_key) or not shutdown:
+                    return self.respond(403,b'{"code":"LOCAL_CONTROL_REQUIRED"}')
+                try:
+                    size=int(self.headers.get('Content-Length','0'))
+                    if size<0 or size>512 or self.headers.get('Transfer-Encoding'):raise ValueError()
+                    self.rfile.read(size)
+                except ValueError:return self.respond(400,b'{}')
+                # Wait for an executing pack workflow before shutting down its host.
+                if automation:
+                    with automation.lock:pass
+                self.respond(200,b'{"stopping":true}')
+                threading.Thread(target=shutdown,daemon=True).start()
+                return
             if path == '/setup/status' and self.command == 'GET':
                 ready=False
                 try:
@@ -264,6 +283,11 @@ def free_port():
         return sock.getsockname()[1]
 
 
+def needs_setup(data):
+    """An empty folder is not an initialized host. Preserve nonempty saves."""
+    return not data.exists() or (data.is_dir() and not any(data.iterdir()))
+
+
 def main():
     parser = argparse.ArgumentParser(description='启动《铃蔓回转录》独立桌面')
     parser.add_argument('--data-dir', type=Path, default=PACK / 'runtime/room')
@@ -281,6 +305,7 @@ def main():
     backend = args.backend
     process = None
     server = None
+    control_file = None
     env = os.environ.copy()
     env['PYTHONDONTWRITEBYTECODE'] = '1'
     try:
@@ -292,7 +317,7 @@ def main():
         else:
             command = [sys.executable, '-B', str(ROOT / 'engineering/backend/scripts/run.py'), '--data-dir', str(data)]
             backend = f'http://127.0.0.1:{args.backend_port or free_port()}'
-            if data.exists():
+            if not needs_setup(data):
                 process = subprocess.Popen(command + ['serve', '--port', str(urllib.parse.urlsplit(backend).port)], env=env)
         for _ in range(100 if (process or args.backend) else 0):
             try:
@@ -309,7 +334,10 @@ def main():
         def setup(password):
             nonlocal process
             with setup_lock:
-                if data.exists(): raise ValueError('ALREADY_INITIALIZED')
+                if not needs_setup(data): raise ValueError('ALREADY_INITIALIZED')
+                # The public init command expects a new path. rmdir only removes
+                # an empty directory and fails safely if content appeared.
+                if data.exists(): data.rmdir()
                 init_env=env.copy(); init_env['ONLINECOC_BOOTSTRAP_PASSWORD']=password
                 result=subprocess.run(command+['init'],env=init_env,capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=30,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
                 if result.returncode: raise RuntimeError('INITIALIZATION_FAILED')
@@ -328,7 +356,18 @@ def main():
                             return
                     except OSError: time.sleep(.1)
                 raise RuntimeError('HOST_START_FAILED')
-        server = ThreadingHTTPServer(('127.0.0.1', args.port), handler(backend, origin,setup if not data.exists() and not args.backend else None,lambda: server.shutdown(),automation))
+        control_key = secrets.token_urlsafe(32) if os.name == 'nt' else None
+        server = ThreadingHTTPServer(('127.0.0.1', args.port), handler(backend, origin,setup if needs_setup(data) and not args.backend else None,lambda: server.shutdown(),automation,control_key,data))
+        if control_key:
+            try:
+                record={'pid':os.getpid(),'workspace':hashlib.sha256(str(PACK.resolve()).casefold().encode('utf-8')).hexdigest(),'protectedKey':base64.b64encode(protect(control_key.encode())).decode()}
+                control_file=PACK/'runtime'/('service-control-'+str(args.port)+'.json')
+                control_file.parent.mkdir(parents=True,exist_ok=True)
+                temporary=control_file.with_suffix('.tmp')
+                temporary.write_text(json.dumps(record),encoding='utf-8')
+                temporary.replace(control_file)
+            except OSError:
+                control_file=None
         server.daemon_threads = True
         print('跑团桌面：' + origin + '（Ctrl+C 停止；数据保留）', flush=True)
         if not args.no_browser:
@@ -342,6 +381,10 @@ def main():
         if process and process.poll() is None:
             process.terminate()
             process.wait(timeout=10)
+        if control_file:
+            try:
+                if json.loads(control_file.read_text(encoding='utf-8'))['pid']==os.getpid():control_file.unlink()
+            except (OSError,ValueError,KeyError):pass
 
 
 if __name__ == '__main__':

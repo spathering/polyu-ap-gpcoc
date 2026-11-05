@@ -3,6 +3,8 @@
 所有输出位于本包`tests/output/`，已忽略；不使用工程默认游玩存档，不运行工程回归测试。
 
 ```powershell
+& '.\engineering\.venv\Scripts\python.exe' -B '.\rulepacks\mini-detective-pack\tests\verify_service_manager.py'
+& '.\engineering\.venv\Scripts\python.exe' -B '.\rulepacks\mini-detective-pack\tests\verify_first_setup.py'
 & '.\engineering\.venv\Scripts\python.exe' -B '.\rulepacks\mini-detective-pack\tests\verify_automation.py'
 & '.\engineering\.venv\Scripts\python.exe' -B '.\rulepacks\mini-detective-pack\tests\verify_package.py'
 & '.\engineering\.venv\Scripts\python.exe' -B '.\rulepacks\mini-detective-pack\tests\run_ui.py'
@@ -13,9 +15,11 @@
 
 | 结果 | 入口 |
 | --- | --- |
+| 独立服务管理 exe 启停、重启保留进度及进程边界23项 | [service-manager-results.json](service-manager-results.json) |
+| 新设备首次准备、空目录和五账号及浏览器认证18项 | [first-setup-results.json](first-setup-results.json) |
 | 自动行动与场景界面109项（包含逐PL探索地图、KP手动推进、场景交互、总开关及请求恢复） | [automation-results.json](automation-results.json) |
 | 真实HTTP权限、规则、幂等、两日路线与重启保持25项 | [results.json](results.json) |
 | 三身份浏览器分页、私密地图、队列及管理表单17项 | [ui-results.json](ui-results.json) |
 | 五个真实exe、服务复用、四预设／初始道具、五账号浏览器与停止服务40项 | [launcher-results.json](launcher-results.json) |
 
-`verify_ui.py URL PASSWORD_FILE`供已有隔离服务联调使用，不是普通玩家入口。截图在忽略的output目录。合计191项检查。暂无物理断电、LAN／公网、4人完整跑团、在线恢复、NPC自主决策和多队速度调度验收。
+`verify_ui.py URL PASSWORD_FILE`供已有隔离服务联调使用，不是普通玩家入口。截图在忽略的output目录。合计232项检查。暂无物理断电、LAN／公网、4人完整跑团、在线恢复、NPC自主决策和多队速度调度验收。

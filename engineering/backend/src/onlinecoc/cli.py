@@ -7,7 +7,7 @@ def main():
     parser=argparse.ArgumentParser(description='OnlineCOC file-backed first test')
     parser.add_argument('--data-dir',required=True)
     sub=parser.add_subparsers(dest='operation',required=True)
-    sub.add_parser('init');serve=sub.add_parser('serve');serve.add_argument('--port',type=int,default=8765)
+    sub.add_parser('init');serve=sub.add_parser('serve');serve.add_argument('--port',type=int,default=8765);serve.add_argument('--host-control-dir',help='本机实例发现目录（默认当前 Windows 用户 LocalAppData）')
     backup=sub.add_parser('backup');backup.add_argument('--output',required=True);backup.add_argument('--include-identity',action='store_true')
     restore=sub.add_parser('restore');restore.add_argument('--bundle',required=True);restore.add_argument('--identity-dir')
     create=sub.add_parser('account-create');create.add_argument('account');create.add_argument('--role',choices=['kp','player'],default='player')
@@ -29,5 +29,7 @@ def main():
         else:
             import uvicorn
             from .server import create_app
-            uvicorn.run(create_app(host,args.port),host='127.0.0.1',port=args.port,log_level='warning',ws_max_size=65536)
+            from .host_control import HostControl
+            control=HostControl(host,args.port,args.host_control_dir) if os.name=='nt' else None
+            uvicorn.run(create_app(host,args.port,control),host='127.0.0.1',port=args.port,log_level='warning',ws_max_size=65536)
     finally:host.close()

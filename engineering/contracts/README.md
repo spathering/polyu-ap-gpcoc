@@ -8,3 +8,5 @@
 文件顶层是 schema 名称到 JSON Schema Draft 2020-12 的映射。宿主同时检查语义不变量（权限、引用、循环、数量等），通过形状校验不等于可提交。Lua 短输入声明生成动态动作 schema，客户端表单直接消费该目录。
 
 完整接口与字段生命周期见 [首测工程](../../docs/current/engineering/first-test.md)。版本 1 不支持静默兼容未知字段或未知存档版本。
+
+本机身份管理使用独立的 [host-control.json](host-control.json)，授权绑定启动实例的 Windows 用户，不属于普通房间命令或 KP 权限。操作说明见[主机账号维护](../../docs/current/engineering/host-accounts.md)。

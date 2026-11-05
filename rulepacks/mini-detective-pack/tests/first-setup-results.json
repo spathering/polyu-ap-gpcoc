@@ -1,0 +1,24 @@
+{
+  "passed": 18,
+  "checks": [
+    "new clone offers first setup rather than unusable login",
+    "new clone accepts valid eight-character first password",
+    "new clone authenticates kp",
+    "new clone authenticates player1",
+    "new clone authenticates player2",
+    "new clone authenticates player3",
+    "new clone authenticates player4",
+    "new clone wrong password is rejected",
+    "browser explains AUTH_FAILED without a default password claim",
+    "browser enters KP with password explicitly set during first setup",
+    "empty directory offers first setup rather than unusable login",
+    "empty directory accepts valid eight-character first password",
+    "empty directory authenticates kp",
+    "empty directory authenticates player1",
+    "empty directory authenticates player2",
+    "empty directory authenticates player3",
+    "empty directory authenticates player4",
+    "empty directory wrong password is rejected"
+  ],
+  "mode": "fresh local launcher + public host authentication"
+}

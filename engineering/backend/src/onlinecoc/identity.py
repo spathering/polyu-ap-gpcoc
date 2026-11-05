@@ -32,4 +32,36 @@ class Identity:
         require(len(password)>=8);g,s=self.store.snapshot();require(account in s["accounts"])
         s["accounts"][account]["passwordHash"]=self.hasher.hash(password)
         s["sessions"]={k:v for k,v in s["sessions"].items() if v["accountId"]!=account};self.store.commit(g,s)
+    def host_change(self, data):
+        """One identity commit, sanitized receipt, and target session revocation."""
+        from uuid import UUID
+        require(set(data) == {'requestId','operation','accountId','password'})
+        try: UUID(data['requestId'])
+        except (ValueError, TypeError, AttributeError): raise DomainError('INPUT_INVALID')
+        op, account, password = data['operation'], data['accountId'], data['password']
+        require(op in ('create', 'password') and isinstance(account,str) and 1 <= len(account) <= 80)
+        require(account == account.strip() and not any(ord(c)<32 for c in account))
+        require(isinstance(password,str) and 8 <= len(password) <= 1024)
+        g,s = self.store.snapshot()
+        receipts = s.setdefault('hostAdminReceipts', {})
+        previous = receipts.get(data['requestId'])
+        if previous:
+            require(previous['operation']==op and previous['accountId']==account, 'COMMAND_ID_CONFLICT')
+            return previous
+        # Never evict receipts silently: a retry must never become a new reset.
+        require(len(receipts) < 10000, 'LIMIT_EXCEEDED')
+        if op == 'create':
+            require(account not in s['accounts'], 'ACCOUNT_EXISTS')
+            s['accounts'][account] = {'accountId':account, 'loginName':account, 'nickname':account,
+                                      'passwordHash':self.hasher.hash(password), 'disabled':False}
+        else:
+            require(account in s['accounts'], 'NOT_VISIBLE')
+            s['accounts'][account]['passwordHash'] = self.hasher.hash(password)
+            s['sessions'] = {k:v for k,v in s['sessions'].items() if v['accountId'] != account}
+        result = {'requestId':data['requestId'], 'operation':op, 'accountId':account,
+                  'status':'committed', 'actor':'local-host-user', 'time':time.time()}
+        receipts[data['requestId']] = result
+        self.store.commit(g,s)
+        return result
+
     def close(self):self.store.close()

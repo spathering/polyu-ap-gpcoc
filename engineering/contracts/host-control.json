@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "scope": "Windows current-user local host control; separate from room protocol",
+  "discovery": {
+    "directory": "%LOCALAPPDATA%/OnlineCOC/HostControl",
+    "recordFields": [
+      "version",
+      "instanceId",
+      "pid",
+      "url",
+      "dataDirectory",
+      "protectedKey"
+    ],
+    "protectedKey": "base64 Windows DPAPI CurrentUser protected UTF-8 key"
+  },
+  "authorization": {
+    "headers": [
+      "X-OnlineCOC-Instance",
+      "X-OnlineCOC-Host-Key"
+    ],
+    "requireLoopback": true,
+    "rejectHeaders": [
+      "Origin",
+      "Referer"
+    ],
+    "roomCookiesGrantAccess": false
+  },
+  "routes": {
+    "GET /api/v1/host-control/accounts": {
+      "returns": [
+        "instanceId",
+        "pid",
+        "dataDirectory",
+        "items: accountId/loginName/nickname/disabled/roomRole"
+      ]
+    },
+    "POST /api/v1/host-control/accounts": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "operation": {
+            "enum": [
+              "create",
+              "password"
+            ]
+          },
+          "accountId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 1024
+          }
+        },
+        "required": [
+          "requestId",
+          "operation",
+          "accountId",
+          "password"
+        ],
+        "additionalProperties": false
+      },
+      "returns": [
+        "requestId",
+        "operation",
+        "accountId",
+        "status",
+        "actor",
+        "time"
+      ]
+    },
+    "GET /api/v1/host-control/receipts/{requestId}": {
+      "returns": "sanitized committed receipt or unknown; current local authority required"
+    }
+  },
+  "semantics": {
+    "sameRequestId": "returns first committed result; changed password is not applied; changed operation or account conflicts",
+    "maxReceipts": 10000,
+    "receiptEviction": false,
+    "passwordReset": "atomic password hash replacement and target session revocation, including target KP sessions",
+    "creation": "identity only; bind room membership separately",
+    "passwordPlaintextPersisted": false,
+    "loginIdRename": false
+  }
+}

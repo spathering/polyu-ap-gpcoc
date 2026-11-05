@@ -1,0 +1,77 @@
+{
+  "version": "0.1.0",
+  "date": "2026-11-05",
+  "passed": 107,
+  "failed": 0,
+  "release": {
+    "version": "0.1.0",
+    "protocolVersion": 1,
+    "framework": ".NET Framework 4.8",
+    "platform": "Windows x64",
+    "sha256": "d6cbe2c6b8b6dddead28516600150a851b38795e54c3c20d100963d3d69bab62",
+    "builtAt": "2026-11-05T11:16:07.7821481+08:00"
+  },
+  "fullRun": ".test-output/20261105-110336",
+  "uiPollRetest": ".test-output/20261105-110646",
+  "suites": {
+    "integration": {
+      "passed": 70,
+      "failed": 0,
+      "at": "2026-11-05T11:03:56.7703355+08:00"
+    },
+    "protocolEdges": {
+      "passed": 6,
+      "failed": 0
+    },
+    "gui": {
+      "passed": 25,
+      "failed": 0,
+      "windowShown": true,
+      "dpi": 96,
+      "scaledLayout": 1.25,
+      "screenshots": [
+        "gui-disconnected.png",
+        "gui-conflict.png",
+        "gui-observation.png",
+        "gui-scale125.png"
+      ]
+    },
+    "reconnect": {
+      "passed": 3,
+      "failed": 0,
+      "gapClearedView": true,
+      "newSegment": true,
+      "newAuthority": true
+    },
+    "portable": {
+      "passed": 3,
+      "failed": 0,
+      "standaloneDirectory": true,
+      "visibleWindow": true,
+      "cleanExit": true
+    }
+  },
+  "snapshotPerformance": {
+    "snapshotBytes": 2000014,
+    "assembleAndObserveMs": 154,
+    "managedBytesAfterGc": 306600,
+    "peakWorkingSetBytes": 82927616,
+    "observationLimit": 2000,
+    "watchLimit": 100
+  },
+  "guiPerformance": {
+    "objects": 3000,
+    "utf8Bytes": 1830781,
+    "renderMs": 146
+  },
+  "runtime": {
+    "release": 533325,
+    "version": "4.8.09037",
+    "windowDpi": 96
+  },
+  "limits": [
+    "125% is a WinForms layout scaling test, not mixed-monitor DPI certification",
+    "No long-running soak test or exhaustive network fault certification"
+  ],
+  "finalGuiRun": ".test-output/20261105-111607"
+}

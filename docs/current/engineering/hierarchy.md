@@ -4,8 +4,8 @@
 - 文档子类：工程
 - 状态：有效
 - 创建日期：2026-10-29
-- 最后更新：2026-11-02
-- 最近目录核对：2026-11-02（本次核对 mini-detective-pack 含自动行动服务、分区界面、五个账号入口及验收；全工程核对仍为 2026-11-01）
+- 最后更新：2026-11-05
+- 最近目录核对：2026-11-05（本次核对独立桌面管理工具源码、发布、测试和文档；mini-detective-pack 核对仍为 2026-11-02，全工程核对仍为 2026-11-01）
 - 关联文档：[工程文档索引](README.md)、[文档维护标准](../../standards/document-maintenance.md)
 
 ## 工程实际目录
@@ -316,6 +316,89 @@
 | `rulepacks/mini-detective-pack/docs/automation-and-ui.md` | 当前自动化、导航、Mermaid、权限及升级说明 |
 | `rulepacks/mini-detective-pack/tests/verify_automation.py` | 真实宿主与桌面浏览器自动化专项 |
 | `rulepacks/mini-detective-pack/tests/automation-results.json` | 自动化专项机器结果 |
+
+## 独立桌面房间管理工具
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `docs/plans/room-manager-design.md` | 使用、工程、验收或后续计划说明 |
+| `docs/plans/room-manager-construction-plan.md` | 使用、工程、验收或后续计划说明 |
+| `docs/current/engineering/room-manager.md` | 使用、工程、验收或后续计划说明 |
+| `tools/room-manager/.gitignore` | 构建、运行依赖或本地配置 |
+| `tools/room-manager/app.manifest` | 构建、运行依赖或本地配置 |
+| `tools/room-manager/build.ps1` | 构建、运行依赖或本地配置 |
+| `tools/room-manager/dependency-manifest.json` | 构建、运行依赖或本地配置 |
+| `tools/room-manager/dist/contract-baseline.json` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/dist/dependency-manifest.json` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/dist/README.txt` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/dist/release.json` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/dist/RoomManager.exe` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/dist/RoomManager.exe.config` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/dist/source-sha256.txt` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/dist/tool-config.json` | 可独立复制的发布程序、配置或摘要 |
+| `tools/room-manager/docs/acceptance.md` | 使用、工程、验收或后续计划说明 |
+| `tools/room-manager/docs/development.md` | 使用、工程、验收或后续计划说明 |
+| `tools/room-manager/docs/screenshots/editing.png` | 真实原生窗口验收截图 |
+| `tools/room-manager/docs/screenshots/large-list.png` | 真实原生窗口验收截图 |
+| `tools/room-manager/docs/screenshots/observation.png` | 真实原生窗口验收截图 |
+| `tools/room-manager/docs/usage.md` | 使用、工程、验收或后续计划说明 |
+| `tools/room-manager/README.md` | 使用、工程、验收或后续计划说明 |
+| `tools/room-manager/src/LocalSettings/Options.cs` | 原生管理器源码 |
+| `tools/room-manager/src/LocalSettings/Settings.cs` | 原生管理器源码 |
+| `tools/room-manager/src/Observation/Observer.cs` | 原生管理器源码 |
+| `tools/room-manager/src/Program.cs` | 原生管理器源码 |
+| `tools/room-manager/src/Protocol/ApiClient.cs` | 原生管理器源码 |
+| `tools/room-manager/src/Protocol/Json.cs` | 原生管理器源码 |
+| `tools/room-manager/src/Protocol/Validate.cs` | 原生管理器源码 |
+| `tools/room-manager/src/UI/MainForm.cs` | 原生管理器源码 |
+| `tools/room-manager/tests/contract-baseline.json` | 单元、协议、GUI、重连测试或机器结果 |
+| `tools/room-manager/tests/GuiSmoke.cs` | 单元、协议、GUI、重连测试或机器结果 |
+| `tools/room-manager/tests/Integration.cs` | 单元、协议、GUI、重连测试或机器结果 |
+| `tools/room-manager/tests/ProtocolEdges.cs` | 单元、协议、GUI、重连测试或机器结果 |
+| `tools/room-manager/tests/Reconnect.cs` | 单元、协议、GUI、重连测试或机器结果 |
+| `tools/room-manager/tests/results.json` | 单元、协议、GUI、重连测试或机器结果 |
+| `tools/room-manager/tests/run.py` | 单元、协议、GUI、重连测试或机器结果 |
+| `tools/room-manager/tool-config.json` | 构建、运行依赖或本地配置 |
+
+`tools/room-manager/.test-output/` 存放隔离宿主、测试程序、日志与截图，已忽略且不逐文件登记；不属于发布内容，仍受工具目录占用范围约束。工具使用者的设置位于本机用户目录，测试使用 `--settings-dir` 指向本目录内的隔离路径。
+
+首次准备回归新增文件（2026-11-05）：
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `rulepacks/mini-detective-pack/tests/verify_first_setup.py` | 新设备／空目录首次准备、五账号和密码认证回归 |
+| `rulepacks/mini-detective-pack/tests/first-setup-results.json` | 首次准备及认证回归机器结果 |
+
+| `docs/history/2026-11-05-issue-005-online-account-management.md` | 已完成的主机账号维护 Issue 与决策记录 |
+
+主机账号工具新增文件（2026-11-05）：
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `engineering/backend/src/onlinecoc/host_control.py` | 本机主机授权、DPAPI 与实例发现记录 |
+| `engineering/contracts/host-control.json` | 独立主机控制接口契约 |
+| `docs/current/engineering/host-accounts.md` | 当前本机账号维护权限、接口和验证说明 |
+| `tools/host-accounts/.gitignore` | 工程外账号管理工具、源码、构建或验证证据 |
+| `tools/host-accounts/build-info.json` | 工程外账号管理工具、源码、构建或验证证据 |
+| `tools/host-accounts/build.ps1` | 工程外账号管理工具、源码、构建或验证证据 |
+| `tools/host-accounts/HostAccounts.cs` | 工程外账号管理工具、源码、构建或验证证据 |
+| `tools/host-accounts/HostAccounts.exe` | 工程外账号管理工具、源码、构建或验证证据 |
+| `tools/host-accounts/README.md` | 工程外账号管理工具、源码、构建或验证证据 |
+| `tools/host-accounts/results.json` | 工程外账号管理工具、源码、构建或验证证据 |
+| `tools/host-accounts/verify.py` | 工程外账号管理工具、源码、构建或验证证据 |
+
+`tools/host-accounts/.test-output/` 保存隔离实例、发现记录、临时账号、后端回归及日志，不入库、不属于发行内容；测试不会修改实际服务器存档。运行中的主机发现记录位于用户目录 `%LOCALAPPDATA%/OnlineCOC/HostControl/`，包含当前用户加密管理凭据，不入库、不进入配置包导出。
+
+配置包服务管理器新增文件（2026-11-05）：
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `rulepacks/mini-detective-pack/配置包服务管理.exe` | 独立本机服务启动、停止、重启与状态窗口 |
+| `rulepacks/mini-detective-pack/tools/ServiceManager.cs` | 原生服务管理器与实例／进程身份核对 |
+| `rulepacks/mini-detective-pack/tools/build-service-manager.ps1` | 服务管理器构建脚本 |
+| `rulepacks/mini-detective-pack/tools/service-manager-build.json` | 服务管理器源码、exe摘要及构建记录 |
+| `rulepacks/mini-detective-pack/tests/verify_service_manager.py` | 实际原生管理器与隔离进程生命周期验收 |
+| `rulepacks/mini-detective-pack/tests/service-manager-results.json` | 原生服务管理器验收结果 |
 
 ## 施工登记
 

@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "platform": "Windows x64",
+  "runtime": {"name": ".NET Framework", "minimumVersion": "4.8", "minimumRelease": 528040},
+  "build": {"compiler": "%WINDIR%/Microsoft.NET/Framework64/v4.0.30319/csc.exe", "languageVersion": "C# 5"},
+  "thirdPartyRuntimeDependencies": [],
+  "hostProtocolVersion": 1,
+  "hostRequiredAtRuntime": "An independently running loopback HTTP/WebSocket host",
+  "hostSourceRequiredAtRuntime": false
+}
