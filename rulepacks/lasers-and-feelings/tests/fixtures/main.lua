@@ -1,0 +1,13 @@
+return rule('lf.probe.main', {'actor'}, function(r, actor)
+  local p = r.readData('probe.json')
+  assert(actor == p.main, 'WRONG_ACTION')
+  assert(r.number(p.coordinator, 'version') == 1, 'STALE_ACTION')
+  assert(r.number(p.coordinator, 'phase') == 1, 'HELP_NOT_CLOSED')
+  assert(r.number(actor, 'consumed') == 0, 'ALREADY_CONSUMED')
+  r.set(actor, 'consumed', 1)
+  r.set(actor, 'dice', 1 + r.number(p.coordinator, 'bonus'))
+  local result = r.call('lf.probe.roll', actor)
+  r.set(actor, 'successes', result.successes)
+  r.set(actor, 'insights', result.insights)
+  return result
+end, {dependencies={'lf.probe.roll'}})

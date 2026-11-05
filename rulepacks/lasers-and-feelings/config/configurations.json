@@ -1,0 +1,92 @@
+[
+  {
+    "configurationId": "lf.character",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "number": 3,
+      "style": 1,
+      "job": 1,
+      "goal": 1
+    }
+  },
+  {
+    "configurationId": "lf.ship",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "first": 1,
+      "second": 2,
+      "problem": 1
+    }
+  },
+  {
+    "configurationId": "lf.action",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "phase": 0,
+      "version": 1,
+      "bonus": 0
+    }
+  },
+  {
+    "configurationId": "lf.participant",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "number": 3,
+      "mode": 0,
+      "prepared": 0,
+      "expert": 0,
+      "role": 2,
+      "version": 1,
+      "state": 0,
+      "dice": 0,
+      "successes": 0,
+      "insights": 0,
+      "questionState": 0,
+      "die1": 0,
+      "die2": 0,
+      "die3": 0,
+      "die4": 0,
+      "die5": 0,
+      "die6": 0,
+      "die7": 0,
+      "die8": 0,
+      "die9": 0,
+      "die10": 0,
+      "die11": 0,
+      "die12": 0,
+      "die13": 0,
+      "die14": 0,
+      "die15": 0,
+      "die16": 0,
+      "die17": 0,
+      "die18": 0,
+      "die19": 0,
+      "die20": 0,
+      "die21": 0,
+      "die22": 0,
+      "die23": 0,
+      "die24": 0,
+      "die25": 0,
+      "die26": 0,
+      "die27": 0,
+      "die28": 0,
+      "die29": 0,
+      "die30": 0,
+      "die31": 0,
+      "die32": 0
+    }
+  },
+  {
+    "configurationId": "lf.scene",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "order": 0,
+      "published": 0
+    }
+  }
+]

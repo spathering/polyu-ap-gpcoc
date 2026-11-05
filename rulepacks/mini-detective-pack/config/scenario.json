@@ -1,0 +1,1443 @@
+{
+  "id": "island-return-01",
+  "name": "铃蔓回转录·孤岛归航",
+  "version": "reconstruction-0.1",
+  "attributeKeys": [
+    "constitution",
+    "strength",
+    "speed",
+    "observation",
+    "spirit",
+    "intellect"
+  ],
+  "attributeNames": [
+    "体质",
+    "力量",
+    "速度",
+    "侦察",
+    "精神",
+    "智力"
+  ],
+  "slots": [
+    "上午1",
+    "上午2",
+    "下午1",
+    "下午2",
+    "晚上1",
+    "晚上2",
+    "凌晨1",
+    "凌晨2"
+  ],
+  "locations": [
+    {
+      "id": "loc-hall",
+      "name": "一楼走廊",
+      "description": "你来到一楼走廊。旧木地板沿走廊伸向半掩的后门，画像与柜子安静地排列在墙边。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-mudroom",
+        "loc-lounge",
+        "loc-dining",
+        "loc-kitchen",
+        "loc-living",
+        "loc-library",
+        "loc-music",
+        "loc-projector",
+        "loc-steward",
+        "loc-store",
+        "loc-bath",
+        "loc-village",
+        "loc-west",
+        "loc-east",
+        "loc-shore",
+        "loc-basement"
+      ],
+      "index": 1,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-mudroom",
+      "name": "落尘间",
+      "description": "你来到落尘间。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 2,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-lounge",
+      "name": "娱乐室",
+      "description": "你来到娱乐室。台球桌、旧棋盘和桌游散落在酒红色的房间里。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 3,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-dining",
+      "name": "餐厅",
+      "description": "你来到餐厅。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 4,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-kitchen",
+      "name": "厨房",
+      "description": "你来到厨房。整洁的台面上没有烹饪的痕迹，食材却已不多。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 5,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-living",
+      "name": "客厅",
+      "description": "你来到客厅。壁炉、座钟与蒙尘的留声机仿佛都在等待访客。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 6,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-library",
+      "name": "图书室",
+      "description": "你来到图书室。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 7,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-music",
+      "name": "音乐室",
+      "description": "你来到音乐室。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 8,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-projector",
+      "name": "映写室",
+      "description": "你来到映写室。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 9,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-steward",
+      "name": "管家房",
+      "description": "你来到管家房。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 10,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-store",
+      "name": "仓库",
+      "description": "你来到仓库。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 11,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-bath",
+      "name": "浴场",
+      "description": "你来到浴场。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall",
+        "loc-sauna"
+      ],
+      "index": 12,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-sauna",
+      "name": "桑拿房",
+      "description": "你来到桑拿房。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-bath"
+      ],
+      "index": 13,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-village",
+      "name": "村落",
+      "description": "你来到村落。荒草侵入石板路，四间尚能遮风的旧屋围着水井。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall",
+        "loc-chief",
+        "loc-rat",
+        "loc-fisher",
+        "loc-spirit-house",
+        "loc-shrine",
+        "loc-shore"
+      ],
+      "index": 14,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-chief",
+      "name": "村长家",
+      "description": "你来到村长家。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-village"
+      ],
+      "index": 15,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-rat",
+      "name": "旧鼠家",
+      "description": "你来到旧鼠家。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-village"
+      ],
+      "index": 16,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-fisher",
+      "name": "渔民家",
+      "description": "你来到渔民家。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-village"
+      ],
+      "index": 17,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-spirit-house",
+      "name": "木灵家",
+      "description": "你来到木灵家。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-village"
+      ],
+      "index": 18,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-west",
+      "name": "西南森林／墓地",
+      "description": "你来到西南森林／墓地。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall",
+        "loc-shore"
+      ],
+      "index": 19,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-east",
+      "name": "东南森林小宅",
+      "description": "你来到东南森林小宅。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall",
+        "loc-shrine"
+      ],
+      "index": 20,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-shrine",
+      "name": "神社",
+      "description": "你来到神社。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-village",
+        "loc-east"
+      ],
+      "index": 21,
+      "publicInitially": true
+    },
+    {
+      "id": "loc-basement",
+      "name": "画像后的地下室",
+      "description": "你来到画像后的地下室。这里留下了一些旧日生活的痕迹，值得仔细查看。",
+      "provenance": "R6地点；H试跑用途",
+      "adjacentIds": [
+        "loc-hall"
+      ],
+      "index": 22,
+      "publicInitially": false
+    },
+    {
+      "id": "loc-shore",
+      "name": "海岸与船",
+      "description": "你来到海岸与船。海风吹过系泊桩，一艘旧船静静停在岸边。",
+      "provenance": "H",
+      "adjacentIds": [
+        "loc-hall",
+        "loc-village",
+        "loc-west"
+      ],
+      "index": 23,
+      "publicInitially": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "loc-hall",
+      "target": "loc-mudroom",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-lounge",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-dining",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-kitchen",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-living",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-library",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-music",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-projector",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-steward",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-store",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-bath",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-village",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-west",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-east",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-shore",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-hall",
+      "target": "loc-basement",
+      "condition": "P4或C4",
+      "bidirectional": true
+    },
+    {
+      "source": "loc-bath",
+      "target": "loc-sauna",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-village",
+      "target": "loc-chief",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-village",
+      "target": "loc-rat",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-village",
+      "target": "loc-fisher",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-village",
+      "target": "loc-spirit-house",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-village",
+      "target": "loc-shrine",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-village",
+      "target": "loc-shore",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-east",
+      "target": "loc-shrine",
+      "condition": null,
+      "bidirectional": true
+    },
+    {
+      "source": "loc-west",
+      "target": "loc-shore",
+      "condition": "P3",
+      "bidirectional": true
+    }
+  ],
+  "items": [
+    {
+      "id": "item-lamp",
+      "name": "手电",
+      "index": 1,
+      "star": 0,
+      "source": "H",
+      "initialPlacement": "observer持有1",
+      "effect": "黑暗地点可正常探索，无电池细账",
+      "obtainCondition": "黑暗地点可正常探索，无电池细账",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-rod",
+      "name": "铁棍",
+      "index": 2,
+      "star": 2,
+      "source": "R6武器分类",
+      "initialPlacement": "guard持有1",
+      "effect": "武器+2",
+      "obtainCondition": "武器+2",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-notebook",
+      "name": "笔记本",
+      "index": 3,
+      "star": 0,
+      "source": "H",
+      "initialPlacement": "scholar持有1",
+      "effect": "允许随时写公开线索卡，不自动判真",
+      "obtainCondition": "允许随时写公开线索卡，不自动判真",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-medkit",
+      "name": "急救包",
+      "index": 4,
+      "star": 0,
+      "source": "R6事件J6",
+      "initialPlacement": "medic持1；hall库存2份",
+      "effect": "堆叠至3，按规则§7消耗；全场初始3份",
+      "obtainCondition": "堆叠至3，按规则§7消耗；全场初始3份",
+      "locationId": "loc-hall",
+      "quantity": 2,
+      "unique": false,
+      "stackMax": 3,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-food",
+      "name": "一餐口粮",
+      "index": 5,
+      "star": 0,
+      "source": "R6厨房",
+      "initialPlacement": "kitchen4份",
+      "effect": "堆叠至3，食用消耗，叙事用，不回血回体力",
+      "obtainCondition": "堆叠至3，食用消耗，叙事用，不回血回体力",
+      "locationId": null,
+      "quantity": 4,
+      "unique": false,
+      "stackMax": 3,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-umbrella",
+      "name": "油纸伞",
+      "index": 6,
+      "star": 1,
+      "source": "R6落尘间",
+      "initialPlacement": "mudroom1",
+      "effect": "武器+1",
+      "obtainCondition": "武器+1",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-knife",
+      "name": "菜刀",
+      "index": 7,
+      "star": 2,
+      "source": "R6厨房",
+      "initialPlacement": "kitchen1",
+      "effect": "武器+2",
+      "obtainCondition": "武器+2",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-hammer",
+      "name": "锤子",
+      "index": 8,
+      "star": 2,
+      "source": "R6工具箱",
+      "initialPlacement": "hall1",
+      "effect": "武器+2；封存柜可尝试特定破坏",
+      "obtainCondition": "武器+2；封存柜可尝试特定破坏",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-rope",
+      "name": "绳索",
+      "index": 9,
+      "star": 0,
+      "source": "H",
+      "initialPlacement": "store1",
+      "effect": "开悬崖路线无需危险检定；消耗一次部署，转为场景设施",
+      "obtainCondition": "开悬崖路线无需危险检定；消耗一次部署，转为场景设施",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-candle",
+      "name": "蜡烛盒",
+      "index": 10,
+      "star": 0,
+      "source": "R6仓库",
+      "initialPlacement": "store1",
+      "effect": "满足一次场景照明，熄灭不等于消耗全部",
+      "obtainCondition": "满足一次场景照明，熄灭不等于消耗全部",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-chess-key",
+      "name": "旧铁钥匙",
+      "index": 11,
+      "star": 0,
+      "source": "R6娱乐室空缺补写",
+      "initialPlacement": "lounge盒内1，唯一",
+      "effect": "开hall毕业册柜",
+      "obtainCondition": "P2或C2侦察成功",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-film",
+      "name": "胶卷",
+      "index": 12,
+      "star": 0,
+      "source": "R6客厅",
+      "initialPlacement": "living柜内1，唯一",
+      "effect": "在projector读取C7，不消耗",
+      "obtainCondition": "C3侦察成功",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-clock-key",
+      "name": "钟钥匙",
+      "index": 13,
+      "star": 0,
+      "source": "R6缺位置补写",
+      "initialPlacement": "dining拼图内1，唯一",
+      "effect": "开living座钟",
+      "obtainCondition": "P6",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-record-key",
+      "name": "档案钥匙",
+      "index": 14,
+      "star": 0,
+      "source": "H",
+      "initialPlacement": "shrine箱内1，唯一",
+      "effect": "开steward密码柜的替代路线",
+      "obtainCondition": "C11精神成功",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-sword-key",
+      "name": "剑柜钥匙",
+      "index": 15,
+      "star": 0,
+      "source": "R6管家房M50",
+      "initialPlacement": "steward密码柜内1，唯一",
+      "effect": "开hall太刀展示柜",
+      "obtainCondition": "P5或C4智力成功",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-gun-key",
+      "name": "枪柜钥匙",
+      "index": 16,
+      "star": 0,
+      "source": "R6管家房M51",
+      "initialPlacement": "steward普通抽屉内1，唯一",
+      "effect": "开hall枪展示柜",
+      "obtainCondition": "管家房抽屉搜索成功",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-katana",
+      "name": "太刀",
+      "index": 17,
+      "star": 4,
+      "source": "R6事件I8",
+      "initialPlacement": "hall展示柜1，唯一",
+      "effect": "武器+4",
+      "obtainCondition": "武器+4",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-shotgun",
+      "name": "展示枪",
+      "index": 18,
+      "star": 5,
+      "source": "R6事件I8",
+      "initialPlacement": "hall展示柜1，唯一",
+      "effect": "武器+5，随卡记录2次射击，次数耗尽不可作5星攻击",
+      "obtainCondition": "武器+5，随卡记录2次射击，次数耗尽不可作5星攻击",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-spear",
+      "name": "古长枪",
+      "index": 19,
+      "star": 4,
+      "source": "R6事件I8",
+      "initialPlacement": "hall展示柜1，唯一",
+      "effect": "武器+4，与太刀用同一剑柜钥匙（H）",
+      "obtainCondition": "武器+4，与太刀用同一剑柜钥匙（H）",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-mask",
+      "name": "木面具",
+      "index": 20,
+      "star": 0,
+      "source": "R6神社",
+      "initialPlacement": "shrine祭台1，唯一",
+      "effect": "保护佩戴者1次免遭追踪，消耗的是庇护次数，物品保留",
+      "obtainCondition": "保护佩戴者1次免遭追踪，消耗的是庇护次数，物品保留",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-antidote",
+      "name": "剧情解药",
+      "index": 21,
+      "star": 0,
+      "source": "R6渔民家",
+      "initialPlacement": "fisher1份",
+      "effect": "消耗后解除剧情“中毒”标记；无现实成分或剂量",
+      "obtainCondition": "C10智力成功",
+      "locationId": null,
+      "quantity": 1,
+      "unique": false,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    },
+    {
+      "id": "item-boat-key",
+      "name": "船钥匙",
+      "index": 22,
+      "star": 0,
+      "source": "H",
+      "initialPlacement": "NPC steward持1，唯一",
+      "effect": "boatReady的一条来源；可由交涉自愿交出",
+      "obtainCondition": "C1/C2/C7证据加不互杀承诺",
+      "locationId": null,
+      "quantity": 1,
+      "unique": true,
+      "stackMax": 1,
+      "slots": 1,
+      "provenance": "H数值及获取补齐"
+    }
+  ],
+  "presets": [
+    {
+      "id": "pc-observer",
+      "name": "观察员",
+      "attributes": {
+        "constitution": 3,
+        "strength": 2,
+        "speed": 4,
+        "observation": 5,
+        "spirit": 3,
+        "intellect": 3
+      },
+      "talent": "痕迹辨识，仅物理足迹",
+      "startingItemIds": [
+        "item-lamp"
+      ],
+      "talentIndex": 1
+    },
+    {
+      "id": "pc-guard",
+      "name": "护卫",
+      "attributes": {
+        "constitution": 4,
+        "strength": 5,
+        "speed": 4,
+        "observation": 2,
+        "spirit": 3,
+        "intellect": 2
+      },
+      "talent": "绳结，仅固定与救援",
+      "startingItemIds": [
+        "item-rod"
+      ],
+      "talentIndex": 2
+    },
+    {
+      "id": "pc-scholar",
+      "name": "文献员",
+      "attributes": {
+        "constitution": 2,
+        "strength": 2,
+        "speed": 3,
+        "observation": 4,
+        "spirit": 4,
+        "intellect": 5
+      },
+      "talent": "旧文献整理，仅检索档案",
+      "startingItemIds": [
+        "item-notebook"
+      ],
+      "talentIndex": 3
+    },
+    {
+      "id": "pc-medic",
+      "name": "医护员",
+      "attributes": {
+        "constitution": 4,
+        "strength": 2,
+        "speed": 3,
+        "observation": 3,
+        "spirit": 5,
+        "intellect": 3
+      },
+      "talent": "医学，仅治疗和辨识伤情",
+      "startingItemIds": [
+        "item-medkit"
+      ],
+      "talentIndex": 4
+    }
+  ],
+  "clues": [
+    {
+      "id": "C1",
+      "locationId": "loc-hall",
+      "method": "hall，查看593柜",
+      "text": "1960报纸描述岛上祭祀及失踪（R）",
+      "successBonus": "智力；成功串起年代",
+      "leads": "recordsKnown；lounge、projector",
+      "core": true
+    },
+    {
+      "id": "C2",
+      "locationId": "loc-lounge",
+      "method": "lounge，检查盒与残页",
+      "text": "1951三篇日记警告成人、钥匙牌与夜晚（R）；本版卡不补造缺失姓名地址",
+      "successBonus": "侦察；成功多找到盒内钥匙",
+      "leads": "recordsKnown；living、steward",
+      "core": true
+    },
+    {
+      "id": "C3",
+      "locationId": "loc-living",
+      "method": "living，观察钟／敲击壁炉",
+      "text": "午夜房屋复原（R）；钟背写“物归其主，墙回其位”（H）",
+      "successBonus": "侦察；成功获得胶卷",
+      "leads": "clockKnown；steward",
+      "core": true
+    },
+    {
+      "id": "C4",
+      "locationId": "loc-steward",
+      "method": "steward，读工作簿",
+      "text": "三套法阵运行记录（R）；追踪印记来自钥匙牌（H）",
+      "successBonus": "智力；成功找到剑柜钥匙",
+      "leads": "entranceKnown；basement",
+      "core": true
+    },
+    {
+      "id": "C5",
+      "locationId": "loc-chief",
+      "method": "chief，检视井边笔记和地图",
+      "text": "有村落疾病、地道图和星位墓地关系（R）",
+      "successBonus": "侦察；成功标注暗道安全点",
+      "leads": "west、fisher",
+      "core": true
+    },
+    {
+      "id": "C6",
+      "locationId": "loc-west",
+      "method": "west，核对墓碑与图",
+      "text": "48墓排6×8（R）；安全路线索引“2,2→5,7”（H）",
+      "successBonus": "智力；成功得到地道草图副本",
+      "leads": "routeKnown；shore",
+      "core": true
+    },
+    {
+      "id": "C7",
+      "locationId": "loc-projector",
+      "method": "projector，播放胶卷或检查留存片段",
+      "text": "学生选拔后面临留守仪式或前往神界的招募（R）",
+      "successBonus": "精神；失败惊扰，仍获得内容",
+      "leads": "recordsKnown；day2招募谈判",
+      "core": true
+    },
+    {
+      "id": "C8",
+      "locationId": "loc-basement",
+      "method": "basement，阅读配电标牌",
+      "text": "本版三阵分别追踪、修复、通路；关闭追踪不会关闭船（H）",
+      "successBonus": "智力；成功安全停机，无惊扰",
+      "leads": "boatReady；shore",
+      "core": true
+    },
+    {
+      "id": "C9",
+      "locationId": "loc-kitchen",
+      "method": "kitchen，读通信纸条",
+      "text": "管家与厨师有通信（R）；本版通信标注“备用启动柄在船舱，不依赖主控”（H）",
+      "successBonus": "智力；成功无须密码书便读懂",
+      "leads": "shore备用boatReady途径",
+      "core": true
+    },
+    {
+      "id": "C10",
+      "locationId": "loc-fisher",
+      "method": "fisher，对照日记与封存药瓶",
+      "text": "有对海上女孩的矛盾依恋和怀疑（R），不能凭此认定其为凶手",
+      "successBonus": "智力；成功得到解药卡",
+      "leads": "chief、shrine，旁支",
+      "core": true
+    },
+    {
+      "id": "C11",
+      "locationId": "loc-shrine",
+      "method": "shrine，读祭祀簿",
+      "text": "木灵曾守护村人（R）；庇护可屏蔽一次钥匙牌追踪（H）",
+      "successBonus": "精神；成功获档案钥匙",
+      "leads": "steward、逃离夜间遭遇",
+      "core": true
+    },
+    {
+      "id": "C12",
+      "locationId": "loc-shore",
+      "method": "shore，检查系泊牌／船舱",
+      "text": "风向潮汐允许在第二日末离岛，船内有备用启动柄（H）",
+      "successBonus": "侦察；成功找到无伤登船路线",
+      "leads": "routeKnown；boatReady（花1轮操作）",
+      "core": true
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "P1",
+      "name": "593柜",
+      "prompt": "柜旁提示“按红、蓝、白计数”；展示图明确红5、蓝9、白3（题面H，R原稿只有颜色备注，贝壳数量7/8/3不是答案）",
+      "answer": "输入593（R）",
+      "success": "开报纸柜，发C1",
+      "alternative": "错误无伤不扣体力；可用智力额度问色序提示；C2／C7替代主线"
+    },
+    {
+      "id": "P2",
+      "name": "娱乐室盒",
+      "prompt": "R只有“国际象棋谜题”。本版替换为非专业棋规的排列题：三棋子王、车、马；王在最右，车在马左；从左到右摆放",
+      "answer": "车、马、王（H）",
+      "success": "开盒得C2及旧铁钥匙领取资格",
+      "alternative": "无重罚；主持重述左右；撬盒普通力量成功同样打开，失败C2仍在盒外残页"
+    },
+    {
+      "id": "P3",
+      "name": "星位墓图",
+      "prompt": "6行8列，行自北向南1—6，列自西向东1—8；图明示从(2,2)到(5,7)，按行再列读四位数",
+      "answer": "2257（H）",
+      "success": "取得C6，开west→shore暗道",
+      "alternative": "不需要凭空解2×2或5×7数学；公开shore路始终可达"
+    },
+    {
+      "id": "P4",
+      "name": "画像问答",
+      "prompt": "三画可提问，R的三问和答案见来源事件栏J9:L11；本版在毕业册／片段给出“人异之间”“颠黑覆白”“天野沙吾美”原样字条",
+      "answer": "依次回答三句，可接受“颠倒黑白”等近义解释（近义容错H）",
+      "success": "画像移动，开放hall→basement",
+      "alternative": "角色不必猜无出处的人名；C4附维修通道拉杆也能开；仍可走C9／C12启动船"
+    },
+    {
+      "id": "P5",
+      "name": "管家密码柜",
+      "prompt": "提示弟弟生日（R），原料无具体生日。本版抽屉照片背面写“给弟弟，7月12日”（H）",
+      "answer": "0712（H）或item-record-key",
+      "success": "发C4，授剑柜钥匙",
+      "alternative": "未得生日可查抽屉，无需额外骰；不是用现实人物生日猜密码"
+    },
+    {
+      "id": "P6",
+      "name": "餐盘拼片",
+      "prompt": "R只有“餐盘彩绘”，本版三片有1、2、3编号，分别红、蓝、白",
+      "answer": "按编号复原，读出红蓝白（H）",
+      "success": "提供P1色序，并授钟钥匙",
+      "alternative": "无损重试；P1柜本身亦有提示，钟不开也能看复原证据"
+    },
+    {
+      "id": "P7",
+      "name": "摩斯通信",
+      "prompt": "R缺码串。本版纸上`-... --- .- -`，旁注字符间空格为分隔，密码书附B=-... O=--- A=.- T=-",
+      "answer": "BOAT（H），同页给C9中文备用启动说明",
+      "success": "明确去shore的线头",
+      "alternative": "字母解码不锁死中文核心信息"
+    }
+  ],
+  "events": [
+    {
+      "id": "E1",
+      "gameTime": "day1上午1",
+      "name": "入场会议",
+      "effect": "全员hall，说明失联与公共行动规则；公开可访房间与海岸，intro=true，不扣体力"
+    },
+    {
+      "id": "E2",
+      "gameTime": "day1凌晨1",
+      "name": "异常脚步",
+      "effect": "私发给在户外且带普通钥匙牌者，提示有人跟踪；无必定袭击，未带牌者无事"
+    },
+    {
+      "id": "E3",
+      "gameTime": "day1结束午夜",
+      "name": "房屋复原",
+      "effect": "公告被移动的家具和墙面恢复，clockKnown可由亲眼观察获得；不把角色瞬移、不复活、不刷物品"
+    },
+    {
+      "id": "E4",
+      "gameTime": "day2上午1",
+      "name": "早餐告示",
+      "effect": "不占主要行动；公开海岸归航窗口为当日凌晨2，减少错过结局的风险"
+    },
+    {
+      "id": "E5",
+      "gameTime": "day2晚上2",
+      "name": "招募",
+      "effect": "以公共通信向所有清醒角色发出选择，不要求瞬移或必须在场；offerMade=true，不覆盖本轮已付费行动"
+    },
+    {
+      "id": "E6",
+      "gameTime": "day2凌晨1",
+      "name": "海岸阻拦",
+      "effect": "shore首次进入且带未解除牌者遇npc-pursuer；无牌／庇护／C8停追踪者直接通过"
+    },
+    {
+      "id": "E7",
+      "gameTime": "day2凌晨2",
+      "name": "最后选择",
+      "effect": "已到shore者可登船或留守；未到者可接受招募或作为留岛续章结束，不宣布自动死亡"
+    }
+  ],
+  "endings": [
+    {
+      "id": "END-return",
+      "condition": "day2凌晨2、角色在shore且同意登船，boatReady=true",
+      "text": "归航；离岛前能带走已制卡物品和证据。船钥匙、C8或C12备用启动任一达成boatReady，未得档案也能生还"
+    },
+    {
+      "id": "END-witness",
+      "condition": "满足return，且自愿共享选拔证据C1/C2/C7任一与午夜证据C3/C4/亲眼观察任一",
+      "text": "携证归航；主线完整调查结局，不要求解所有支线"
+    },
+    {
+      "id": "END-keep",
+      "condition": "offerMade且角色明确接受留守",
+      "text": "留岛管理者结局；不替其他玩家选择"
+    },
+    {
+      "id": "END-beyond",
+      "condition": "offerMade且明确接受前往神界",
+      "text": "远行结局，原演说称有去无回，不伪称此线已配完整战役"
+    },
+    {
+      "id": "END-remain",
+      "condition": "到最后时点仍未离岛且未选择招募",
+      "text": "困岛续章，记录位置、资源与同伴；本试跑收束"
+    }
+  ],
+  "rules": {
+    "attributeBudget": 20,
+    "attributeMin": 1,
+    "attributeMax": 5,
+    "inventorySlots": 4,
+    "daySlots": 8,
+    "dayMax": 2,
+    "coreCluesGuaranteed": true,
+    "diceSides": 6
+  },
+  "npcs": [
+    {
+      "id": "npc-steward",
+      "name": "管家",
+      "description": "希望保住学生又畏惧组织。取得C1/C2/C7任一证据并承诺不互杀，可交船钥匙。"
+    },
+    {
+      "id": "npc-amano",
+      "name": "天野沙吾美",
+      "description": "第二日发出留守或前往神界的招募；归航仍是可选路线。"
+    },
+    {
+      "id": "npc-echo",
+      "name": "1951年记录者",
+      "description": "仅以残页出现，作者姓名地址缺失，不生成活人。"
+    },
+    {
+      "id": "npc-pursuer",
+      "name": "无名追踪者",
+      "description": "阻拦带未解除钥匙牌者；放牌、庇护、谈判或击退均可通过。"
+    }
+  ],
+  "automation": {
+    "puzzles": {
+      "P1": {
+        "location": "loc-hall",
+        "answers": [
+          "593"
+        ],
+        "clues": [
+          "C1"
+        ]
+      },
+      "P2": {
+        "location": "loc-lounge",
+        "answers": [
+          "车马王"
+        ],
+        "clues": [
+          "C2"
+        ],
+        "reward": "item-chess-key"
+      },
+      "P3": {
+        "location": "loc-west",
+        "answers": [
+          "2257"
+        ],
+        "clues": [
+          "C6"
+        ],
+        "flag": "cliffOpen"
+      },
+      "P4": {
+        "location": "loc-hall",
+        "answers": [
+          "人异之间颠黑覆白天野沙吾美"
+        ],
+        "flag": "basementOpen"
+      },
+      "P5": {
+        "location": "loc-steward",
+        "answers": [
+          "0712"
+        ],
+        "clues": [
+          "C4"
+        ],
+        "reward": "item-sword-key"
+      },
+      "P6": {
+        "location": "loc-dining",
+        "answers": [
+          "红蓝白"
+        ],
+        "reward": "item-clock-key"
+      },
+      "P7": {
+        "location": "loc-kitchen",
+        "answers": [
+          "BOAT"
+        ],
+        "clues": [
+          "C9"
+        ]
+      }
+    },
+    "exploreRewards": {
+      "loc-lounge": [
+        "item-chess-key"
+      ],
+      "loc-living": [
+        "item-film"
+      ],
+      "loc-steward": [
+        "item-sword-key",
+        "item-gun-key"
+      ],
+      "loc-shrine": [
+        "item-record-key"
+      ],
+      "loc-fisher": [
+        "item-antidote"
+      ]
+    },
+    "items": {
+      "item-medkit": {
+        "location": "loc-hall"
+      },
+      "item-food": {
+        "location": "loc-kitchen"
+      },
+      "item-umbrella": {
+        "location": "loc-mudroom"
+      },
+      "item-knife": {
+        "location": "loc-kitchen"
+      },
+      "item-hammer": {
+        "location": "loc-hall"
+      },
+      "item-rope": {
+        "location": "loc-store"
+      },
+      "item-candle": {
+        "location": "loc-store"
+      },
+      "item-chess-key": {
+        "location": "loc-lounge",
+        "reward": true
+      },
+      "item-film": {
+        "location": "loc-living",
+        "reward": true
+      },
+      "item-clock-key": {
+        "location": "loc-dining",
+        "reward": true
+      },
+      "item-record-key": {
+        "location": "loc-shrine",
+        "reward": true
+      },
+      "item-sword-key": {
+        "location": "loc-steward",
+        "reward": true
+      },
+      "item-gun-key": {
+        "location": "loc-steward",
+        "reward": true
+      },
+      "item-katana": {
+        "location": "loc-hall",
+        "requires": "item-sword-key"
+      },
+      "item-shotgun": {
+        "location": "loc-hall",
+        "requires": "item-gun-key"
+      },
+      "item-spear": {
+        "location": "loc-hall",
+        "requires": "item-sword-key"
+      },
+      "item-mask": {
+        "location": "loc-shrine"
+      },
+      "item-antidote": {
+        "location": "loc-fisher",
+        "reward": true
+      }
+    },
+    "checks": {
+      "loc-hall": 5,
+      "loc-lounge": 3,
+      "loc-living": 3,
+      "loc-steward": 5,
+      "loc-chief": 3,
+      "loc-west": 5,
+      "loc-projector": 4,
+      "loc-basement": 5,
+      "loc-kitchen": 5,
+      "loc-fisher": 5,
+      "loc-shrine": 4,
+      "loc-shore": 3
+    },
+    "scenes": {
+      "loc-hall": {
+        "features": [
+          "画像与报纸柜",
+          "陈列柜与急救用品"
+        ]
+      },
+      "loc-mudroom": {
+        "features": [
+          "衣架与雨具"
+        ]
+      },
+      "loc-lounge": {
+        "features": [
+          "棋盘盒与日记残页"
+        ]
+      },
+      "loc-dining": {
+        "features": [
+          "彩绘餐盘与拼片"
+        ]
+      },
+      "loc-kitchen": {
+        "features": [
+          "通信纸条",
+          "食物与厨具"
+        ]
+      },
+      "loc-living": {
+        "features": [
+          "座钟、壁炉与留声机"
+        ]
+      },
+      "loc-library": {
+        "features": [
+          "书架与毕业册"
+        ]
+      },
+      "loc-music": {
+        "features": [
+          "乐器与安静的休息处"
+        ]
+      },
+      "loc-projector": {
+        "features": [
+          "放映设备与旧银幕"
+        ]
+      },
+      "loc-steward": {
+        "features": [
+          "工作记录、照片与上锁柜子"
+        ]
+      },
+      "loc-store": {
+        "features": [
+          "仓储箱与绳索"
+        ]
+      },
+      "loc-bath": {
+        "features": [
+          "浴场与桑拿房入口"
+        ]
+      },
+      "loc-sauna": {
+        "features": [
+          "可以安抚精神的温暖房间"
+        ]
+      },
+      "loc-village": {
+        "features": [
+          "房屋、石板路与公共水井"
+        ]
+      },
+      "loc-chief": {
+        "features": [
+          "地图与家族笔记"
+        ]
+      },
+      "loc-rat": {
+        "features": [
+          "旧屋陈设与生活痕迹"
+        ]
+      },
+      "loc-fisher": {
+        "features": [
+          "日记与药瓶"
+        ]
+      },
+      "loc-spirit-house": {
+        "features": [
+          "木制陈设与旧日记录"
+        ]
+      },
+      "loc-west": {
+        "features": [
+          "墓碑与星位图"
+        ]
+      },
+      "loc-east": {
+        "features": [
+          "林中小宅与神社方向的路"
+        ]
+      },
+      "loc-shrine": {
+        "features": [
+          "祈愿簿与供台"
+        ]
+      },
+      "loc-basement": {
+        "features": [
+          "配电标牌与控制阵法"
+        ]
+      },
+      "loc-shore": {
+        "features": [
+          "系泊牌、船舱与备用装置"
+        ]
+      }
+    }
+  }
+}

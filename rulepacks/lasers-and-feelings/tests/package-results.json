@@ -1,0 +1,228 @@
+{
+  "passed": 52,
+  "checks": [
+    {
+      "name": "bundle_installed",
+      "passed": true
+    },
+    {
+      "name": "player_cannot_edit_profile",
+      "passed": true
+    },
+    {
+      "name": "invalid_number_rejected",
+      "passed": true
+    },
+    {
+      "name": "duplicate_ship_strength_rejected",
+      "passed": true
+    },
+    {
+      "name": "four_adventure_tables",
+      "passed": true
+    },
+    {
+      "name": "player_cannot_generate_secret",
+      "passed": true
+    },
+    {
+      "name": "main_before_close_0",
+      "passed": true
+    },
+    {
+      "name": "wrong_owner_help_0",
+      "passed": true
+    },
+    {
+      "name": "same_id_help_0",
+      "passed": true
+    },
+    {
+      "name": "new_id_help_0",
+      "passed": true
+    },
+    {
+      "name": "frozen_bonus_0",
+      "passed": true
+    },
+    {
+      "name": "late_help_0",
+      "passed": true
+    },
+    {
+      "name": "concurrent_main_0",
+      "passed": true
+    },
+    {
+      "name": "success_and_insight_0",
+      "passed": true
+    },
+    {
+      "name": "prepared_expert_and_help_0",
+      "passed": true
+    },
+    {
+      "name": "new_id_main_0",
+      "passed": true
+    },
+    {
+      "name": "durable_insight_question_0",
+      "passed": true
+    },
+    {
+      "name": "duplicate_question_0",
+      "passed": true
+    },
+    {
+      "name": "player_cannot_mark_answered_0",
+      "passed": true
+    },
+    {
+      "name": "answered_state_0",
+      "passed": true
+    },
+    {
+      "name": "main_before_close_1",
+      "passed": true
+    },
+    {
+      "name": "wrong_owner_help_1",
+      "passed": true
+    },
+    {
+      "name": "same_id_help_1",
+      "passed": true
+    },
+    {
+      "name": "new_id_help_1",
+      "passed": true
+    },
+    {
+      "name": "frozen_bonus_1",
+      "passed": true
+    },
+    {
+      "name": "late_help_1",
+      "passed": true
+    },
+    {
+      "name": "concurrent_main_1",
+      "passed": true
+    },
+    {
+      "name": "success_and_insight_1",
+      "passed": true
+    },
+    {
+      "name": "prepared_expert_and_help_1",
+      "passed": true
+    },
+    {
+      "name": "new_id_main_1",
+      "passed": true
+    },
+    {
+      "name": "durable_insight_question_1",
+      "passed": true
+    },
+    {
+      "name": "duplicate_question_1",
+      "passed": true
+    },
+    {
+      "name": "player_cannot_mark_answered_1",
+      "passed": true
+    },
+    {
+      "name": "answered_state_1",
+      "passed": true
+    },
+    {
+      "name": "main_before_close_2",
+      "passed": true
+    },
+    {
+      "name": "wrong_owner_help_2",
+      "passed": true
+    },
+    {
+      "name": "same_id_help_2",
+      "passed": true
+    },
+    {
+      "name": "new_id_help_2",
+      "passed": true
+    },
+    {
+      "name": "frozen_bonus_2",
+      "passed": true
+    },
+    {
+      "name": "late_help_2",
+      "passed": true
+    },
+    {
+      "name": "concurrent_main_2",
+      "passed": true
+    },
+    {
+      "name": "success_and_insight_2",
+      "passed": true
+    },
+    {
+      "name": "prepared_expert_and_help_2",
+      "passed": true
+    },
+    {
+      "name": "new_id_main_2",
+      "passed": true
+    },
+    {
+      "name": "durable_insight_question_2",
+      "passed": true
+    },
+    {
+      "name": "duplicate_question_2",
+      "passed": true
+    },
+    {
+      "name": "player_cannot_mark_answered_2",
+      "passed": true
+    },
+    {
+      "name": "answered_state_2",
+      "passed": true
+    },
+    {
+      "name": "three_actions_same_revision",
+      "passed": true
+    },
+    {
+      "name": "cancelled_cannot_roll",
+      "passed": true
+    },
+    {
+      "name": "unsubmitted_helper_is_late",
+      "passed": true
+    },
+    {
+      "name": "zero_bonus_for_unsubmitted",
+      "passed": true
+    }
+  ],
+  "rulesetRevision": "19c66634e09817ffafa267ff76fd8896c53ba95984240339dcc799f205a55e28",
+  "scope": "production reusable rules, ordinary player main/helper, synthetic insight for question tests",
+  "sourceHashes": {
+    "adventure.lua": "400e77084e7bb07cf7fbcfbb8148598a9174b7b016e0ba243311da2851f31f84",
+    "answer.lua": "1285eb75e94de5a3a1480ba45ad447837fffdbce135e5d7d82bf4fce1bc79d2e",
+    "cancel.lua": "a1d08db4d03dbbb2209521a76bb8a9f0d50491814f5c13e313f7134ceb489d05",
+    "close.lua": "7244f94c09593438bd088446d1efb16637d15557b9fa954c7125d5e5ac3a855d",
+    "help.lua": "c27b1ee48b6d2d05377a9e0f48fca97d5c7ab06da4db7bb7b70c2868af941ed1",
+    "library.lua": "ad79e627f6870b62a4a4e7482a86893b9c5de037acb2915b9b809eb3b72bcef3",
+    "main.lua": "f2bfbc990b635419eb7423215127719435be4101e7cff403de9b9f0ce11cdb88",
+    "open.lua": "189449accf77c6d5e07de2179879ac4399f954721a37645e10c37972ac8a34de",
+    "profile.lua": "75677e1723a3c3544d2726659adf0c07aa43e6d48b0468d2fe4644f073cb770b",
+    "question.lua": "04f8351d17786feb4b6bfec5c6df25ab120f1edfdd5d92c933a98646efecf73a",
+    "ship.lua": "919127fb5173633f13c6dabdc89f6fee1cbcd81c55485d5337cbd9f7deaf3cb2"
+  }
+}

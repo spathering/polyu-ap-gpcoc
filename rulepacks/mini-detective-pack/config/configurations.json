@@ -1,0 +1,81 @@
+[
+  {
+    "configurationId": "md.character",
+    "revision": "2",
+    "typeRef": "actor",
+    "defaults": {
+      "constitution": 3,
+      "strength": 2,
+      "speed": 4,
+      "observation": 5,
+      "spirit": 3,
+      "intellect": 3,
+      "hp": 9,
+      "hpMax": 9,
+      "stamina": 2,
+      "staminaMax": 3,
+      "intellectRemaining": 3,
+      "location": 1,
+      "injury": 0,
+      "shock": 0,
+      "requestOpen": 0,
+      "requestAttribute": 1,
+      "requestTalent": 0,
+      "lastDie": 0,
+      "lastPassed": 0,
+      "slotUsed": 0,
+      "day": 1,
+      "slot": 1,
+      "ending": 0,
+      "approved": 0,
+      "weapon": 0,
+      "fatigue1": 0,
+      "fatigue2": 0,
+      "fatigue3": 0,
+      "fatigue4": 0,
+      "fatigue5": 0,
+      "fatigue6": 0,
+      "talent": 0,
+      "encounterActive": 0,
+      "poisoned": 0,
+      "maxHp": 9
+    }
+  },
+  {
+    "configurationId": "md.world",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "day": 1,
+      "slot": 1,
+      "phase": 0,
+      "basementOpen": 0,
+      "cliffOpen": 0,
+      "boatReady": 0,
+      "trackingOff": 0,
+      "offerMade": 0,
+      "closed": 0
+    }
+  },
+  {
+    "configurationId": "md.item",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "itemIndex": 1,
+      "count": 1,
+      "confirmed": 0,
+      "star": 0,
+      "charges": 0,
+      "equipped": 0
+    }
+  },
+  {
+    "configurationId": "md.bag",
+    "revision": "1",
+    "typeRef": "actor",
+    "defaults": {
+      "slots": 4
+    }
+  }
+]

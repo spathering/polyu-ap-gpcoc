@@ -1,0 +1,31 @@
+{
+  "passed": 25,
+  "checks": [
+    "13 rules imported and activated",
+    "owner sees character",
+    "other player cannot see character",
+    "profile locked",
+    "PL cannot settle resources",
+    "PL cannot patch protected numbers",
+    "cannot roll without KP request",
+    "authoritative d6",
+    "same command replay same dice",
+    "request consumed once",
+    "explore cost and location",
+    "one main action per slot",
+    "sleep restored stamina",
+    "private reveal visible to recipient",
+    "private reveal hidden from others",
+    "private narration hidden",
+    "world advanced",
+    "confirmed weapon and ammunition",
+    "other player cannot equip item",
+    "PL cannot download secrets",
+    "public metadata omits hidden basement",
+    "two day noncombat route reaches shore and recorded ending",
+    "host backup created",
+    "restart preserves character and ending",
+    "scenario coverage"
+  ],
+  "mode": "real HTTP host + pack same-origin adapter"
+}

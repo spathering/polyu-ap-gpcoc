@@ -1,0 +1,38 @@
+{
+  "id": "lasers-and-feelings",
+  "version": "1.0.0",
+  "status": "implemented",
+  "protocolVersion": 1,
+  "originalVersion": "1.4",
+  "author": "John Harper",
+  "license": "SEE LICENSE.md",
+  "source": "https://johnharper.itch.io/lasers-feelings",
+  "rules": [
+    "adventure.lua",
+    "answer.lua",
+    "cancel.lua",
+    "close.lua",
+    "help.lua",
+    "library.lua",
+    "main.lua",
+    "open.lua",
+    "profile.lua",
+    "question.lua",
+    "ship.lua"
+  ],
+  "data": [
+    "lf.json"
+  ],
+  "configurations": "config/configurations.json",
+  "entry": "ui/index.html",
+  "rulings": {
+    "successTier": "3 or more",
+    "questionsPerRoll": 1,
+    "help": "one character per account, no self-help or recursive help",
+    "maxParticipants": 30,
+    "maxDice": 32
+  },
+  "rulesContentLicense": "CC BY 4.0",
+  "softwareLicense": "unspecified",
+  "windowsLauncher": "启动激光与情感.exe"
+}

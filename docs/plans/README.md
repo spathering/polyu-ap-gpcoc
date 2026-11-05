@@ -6,7 +6,7 @@
 
 | 文档 | 状态 | 说明 |
 | --- | --- | --- |
-| [轻量跑团规则与前端方案](games/lasers-and-feelings/README.md) | 草案 | Lasers & Feelings v1.4 完整官方规则书、中文整理、配置包准备及基于首测工程的叙事前端方案；讨论后再实现 |
+| [轻量跑团规则与前端](../../rulepacks/lasers-and-feelings/README.md) | 当前实现入口 | Lasers & Feelings 规则包与独立桌面已实现；包内使用和设计为现行正文，早期验证已归档 |
 | [更新问题 Issues](Issues/README.md) | 进行中 | 后续问题统一索引、模板，并链接已有设计议题 |
 | [首测版工程设计](<project planning/first-test-engineering-design.md>) | 进行中 | 首测技术基线、独立文件数据管理模块、房间与实例结构、事务/恢复、动态 Lua 及本机 HTTP/WS；已有本机首测实现，实际状态见当前工程 |
 | [首测版施工计划](<project planning/first-test-construction-plan.md>) | 进行中 | E0—E6 工作包、依赖、退出条件与故障验收矩阵；首测施工顺序的统一入口；工程自动验收已落地，独立作者试写待验收 |

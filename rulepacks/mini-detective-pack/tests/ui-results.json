@@ -1,0 +1,27 @@
+{
+  "passed": 17,
+  "checks": [
+    "kp login and desktop",
+    "player1 login and desktop",
+    "player2 login and desktop",
+    "single tab navigation 0",
+    "single tab navigation 1",
+    "single tab navigation 2",
+    "queue collapsible",
+    "queue survives page change",
+    "authorized reveal visible",
+    "hidden room absent for other PL",
+    "KP management forms",
+    "scenario editing form",
+    "trusted file import form",
+    "browser creates approved character and initial item",
+    "browser creates scenario NPC",
+    "PL lacks KP management",
+    "no browser script errors"
+  ],
+  "errors": [],
+  "viewport": [
+    1440,
+    900
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "passed": 25,
+  "checks": [
+    {
+      "name": "three_logins_in_one_browser_context",
+      "passed": true
+    },
+    {
+      "name": "root_and_slot_cookies_do_not_override_each_other",
+      "passed": true
+    },
+    {
+      "name": "all_account_tabs_survive_reload",
+      "passed": true
+    },
+    {
+      "name": "slot_cookies_keep_httponly_samesite_and_scoped_paths",
+      "passed": true
+    },
+    {
+      "name": "csrf_from_another_slot_is_rejected",
+      "passed": true
+    },
+    {
+      "name": "adapter_keeps_origin_validation",
+      "passed": true
+    },
+    {
+      "name": "player_tab_does_not_inherit_kp_interface",
+      "passed": true
+    },
+    {
+      "name": "install_from_frontend",
+      "passed": true
+    },
+    {
+      "name": "player_can_request_character",
+      "passed": true
+    },
+    {
+      "name": "kp_reviews_request_with_trusted_sender",
+      "passed": true
+    },
+    {
+      "name": "adventure_persists_for_kp",
+      "passed": true
+    },
+    {
+      "name": "adventure_secret_absent_from_player_view",
+      "passed": true
+    },
+    {
+      "name": "create_characters_with_custom_goals",
+      "passed": true
+    },
+    {
+      "name": "save_shared_ship",
+      "passed": true
+    },
+    {
+      "name": "publish_scene_to_players",
+      "passed": true
+    },
+    {
+      "name": "create_action_without_new_ruleset",
+      "passed": true
+    },
+    {
+      "name": "reload_recovers_lost_committed_response",
+      "passed": true
+    },
+    {
+      "name": "share_host_result_card",
+      "passed": true
+    },
+    {
+      "name": "main_roll_from_frontend",
+      "passed": true
+    },
+    {
+      "name": "private_question_answer_and_durable_state",
+      "passed": true
+    },
+    {
+      "name": "mobile_has_no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "operation_journals_are_scoped_by_slot_and_account",
+      "passed": true
+    },
+    {
+      "name": "logout_only_clears_its_own_slot",
+      "passed": true
+    },
+    {
+      "name": "slot_relogin_restores_same_account",
+      "passed": true
+    },
+    {
+      "name": "no_uncaught_browser_errors",
+      "passed": true
+    }
+  ],
+  "scope": "one real browser context, default tab plus three cookie-isolated account tabs; insight may use explicit synthetic state",
+  "screenshots": "tests\\output\\browser-9a09d77a8c",
+  "sourceHashes": {
+    "ui/index.html": "87df0d91a1cfb10d628eaf92329770ec6d6e10e975dd142e77b1c426b7b9c98d",
+    "ui/app.js": "efd4187eb0a8ab4875070543ebf3b8a986e9ed2d3408848429088cbf3147ea2f",
+    "ui/styles.css": "58c90a0e70a6c1291878af4996ae809ed7aa7520fce9fc9247c41a54dacceec5",
+    "tools/launch.py": "6cefad583b8d4176187dcbdc656a030a87d1dbe8d2d4ddd27526e069c472f8cf"
+  }
+}

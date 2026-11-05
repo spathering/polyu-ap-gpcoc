@@ -1,0 +1,33 @@
+{
+  "source": "tools/AccountLauncher.cs",
+  "sourceSha256": "7974e45bafe2294e7dbae8618307ecf1f18280de69efdd9511f488e5a6b6b423",
+  "compiler": "4.8.9232.0 built by: NET481REL1LAST_C",
+  "builtAt": "2026-11-02T13:38:00.5404084+08:00",
+  "executables": [
+    {
+      "file": "KP主持人.exe",
+      "account": "kp",
+      "sha256": "cdf74ac9ecb2fc2b9d6a1c802982e25b838948198fbf23ba392679734ccf097f"
+    },
+    {
+      "file": "PL1观察员.exe",
+      "account": "player1",
+      "sha256": "d319b86b7b8199143ac634393d9067d7975caadc27a76533ca67d9564f80e36d"
+    },
+    {
+      "file": "PL2护卫.exe",
+      "account": "player2",
+      "sha256": "a88a133ccf2c510bb7e9cfc8cacae40affeefbdff7f07ecadd258079457a7e05"
+    },
+    {
+      "file": "PL3文献员.exe",
+      "account": "player3",
+      "sha256": "12ccfb285133e9a0adf69e788d9f5f9d3f527202d4fc2aecd0c3992cab597207"
+    },
+    {
+      "file": "PL4医护员.exe",
+      "account": "player4",
+      "sha256": "4152f2a51fcd444608514095a00385a8b2ef8befad27b7881a0a62926bda57f0"
+    }
+  ]
+}

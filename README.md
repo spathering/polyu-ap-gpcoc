@@ -18,6 +18,8 @@
 
 [`engineering/`](engineering/README.md) 用于存放工程代码及相关构建、测试配置。
 
+独立游戏配置包放在同级的 [`rulepacks/`](rulepacks/README.md)，当前包含[《激光与情感》配置包与跑团桌面](rulepacks/lasers-and-feelings/README.md)。配置包工作只查阅工程文档并使用现有能力，工程侧问题提交 Issues，由工程责任者处理。
+
 ## 文档入口
 
 从 [文档索引](docs/README.md) 开始阅读。

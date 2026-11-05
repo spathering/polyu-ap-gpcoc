@@ -1,0 +1,8 @@
+{
+  "source": "tools/PackLauncher.cs",
+  "sourceSha256": "8230b36b0cf349701cb8410231a58fe700989a943637d29edeb34c0f99ce2305",
+  "executable": "启动激光与情感.exe",
+  "executableSha256": "751fa613951a1d9ae2d3c802d95e435aeddfc37cd0b6c7a03741c4a8d0d092a8",
+  "compilerVersion": "4.8.9232.0 built by: NET481REL1LAST_C",
+  "builtAt": "2026-11-01T00:10:28.0711853+08:00"
+}

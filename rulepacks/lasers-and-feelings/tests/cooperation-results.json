@@ -1,0 +1,139 @@
+{
+  "scope": "HTTP black-box minimum cooperation proof; KP also plays helper2; not full package acceptance",
+  "checks": [
+    {
+      "name": "chat_text_cannot_close_help",
+      "passed": true
+    },
+    {
+      "name": "main_cannot_impersonate_helper",
+      "passed": true
+    },
+    {
+      "name": "nonparticipant_rejected",
+      "passed": true
+    },
+    {
+      "name": "stale_action_version_rejected",
+      "passed": true
+    },
+    {
+      "name": "invalid_number_rolls_back_submission",
+      "passed": true
+    },
+    {
+      "name": "helper1_same_id_retry",
+      "passed": true
+    },
+    {
+      "name": "helper1_new_id_duplicate_rejected",
+      "passed": true
+    },
+    {
+      "name": "helper1_roll_comparison",
+      "passed": true,
+      "dice": [
+        3
+      ],
+      "successes": 1,
+      "insights": 1
+    },
+    {
+      "name": "helper2_same_id_retry",
+      "passed": true
+    },
+    {
+      "name": "helper2_new_id_duplicate_rejected",
+      "passed": true
+    },
+    {
+      "name": "helper2_roll_comparison",
+      "passed": true,
+      "dice": [
+        1
+      ],
+      "successes": 0,
+      "insights": 0
+    },
+    {
+      "name": "player_cannot_close",
+      "passed": true
+    },
+    {
+      "name": "frozen_bonus_matches_helpers",
+      "passed": true
+    },
+    {
+      "name": "late_help_rejected",
+      "passed": true
+    },
+    {
+      "name": "other_player_cannot_consume",
+      "passed": true
+    },
+    {
+      "name": "concurrent_main_has_exactly_one_commit",
+      "passed": true
+    },
+    {
+      "name": "main_dice_uses_frozen_bonus",
+      "passed": true
+    },
+    {
+      "name": "main_same_id_retry",
+      "passed": true
+    },
+    {
+      "name": "main_new_id_duplicate_rejected",
+      "passed": true
+    },
+    {
+      "name": "share_failure_does_not_undo_action",
+      "passed": true
+    },
+    {
+      "name": "duplicate_shares_do_not_change_business_state",
+      "passed": true
+    },
+    {
+      "name": "host_cards_are_visible",
+      "passed": true
+    },
+    {
+      "name": "insight_text_reply_is_linked",
+      "passed": true
+    },
+    {
+      "name": "insight_dm_excludes_other_player",
+      "passed": true
+    },
+    {
+      "name": "restart_keeps_receipt_and_dice",
+      "passed": true
+    },
+    {
+      "name": "restart_keeps_consumed_guard",
+      "passed": true
+    },
+    {
+      "name": "revoked_member_cannot_submit",
+      "passed": true
+    }
+  ],
+  "passed": 27,
+  "rulesetRevision": "b19ab3171593613d807669119cfd6501a099414d860b1aaa80983b8da5c7b245",
+  "sourceHashes": {
+    "close.lua": "2e9b9c215b87ef2aa67495bcfdd9b6af63b4dbf13fa4efcdf6f2348fdf0cbede",
+    "help.lua": "b3d1b10a99d4923a144acbcdc35acc847b021c583117e0d83bb2d85e1bb3cb08",
+    "main.lua": "7497633b7d127ae66ea085595849298c4588c1909a88ed25d185ee7d2a14bf61",
+    "roll.lua": "aa5c9fc670700e5527d0f1903b2d36a3ce68c26e9a1beda1c6eca445fc8fd97b"
+  },
+  "mainResult": {
+    "insights": 0,
+    "dice": [
+      5,
+      1
+    ],
+    "successes": 1
+  }
+}

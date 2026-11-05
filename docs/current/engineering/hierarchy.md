@@ -4,8 +4,8 @@
 - 文档子类：工程
 - 状态：有效
 - 创建日期：2026-10-29
-- 最后更新：2026-10-30
-- 最近目录核对：2026-10-30
+- 最后更新：2026-11-02
+- 最近目录核对：2026-11-02（本次核对 mini-detective-pack 含自动行动服务、分区界面、五个账号入口及验收；全工程核对仍为 2026-11-01）
 - 关联文档：[工程文档索引](README.md)、[文档维护标准](../../standards/document-maintenance.md)
 
 ## 工程实际目录
@@ -38,15 +38,113 @@
 | `docs/history/README.md` | 历史文档索引与归档说明 |
 | `docs/history/2026-10-29-lua-script-reference.md` | 首轮 Lua 编写协议正文及验证背景归档 |
 | `docs/plans/README.md` | 计划文档索引 |
+| `rulepacks/AGENTS.md` | 配置包作者只使用工程、不修改工程的施工边界 |
+| `rulepacks/lasers-and-feelings/.gitignore` | 独立 L&F 配置包文件 |
+| `rulepacks/lasers-and-feelings/assets/README.md` | 独立 L&F 配置包文件 |
+| `rulepacks/lasers-and-feelings/config/configurations.json` | 对象配置或原规则静态资料 |
+| `rulepacks/lasers-and-feelings/config/lf.json` | 对象配置或原规则静态资料 |
+| `rulepacks/lasers-and-feelings/config/README.md` | 对象配置或原规则静态资料 |
+| `rulepacks/lasers-and-feelings/docs/history/2026-10-31-cooperation-validation.md` | 当前包文档或历史验证记录 |
+| `rulepacks/lasers-and-feelings/docs/history/README.md` | 当前包文档或历史验证记录 |
+| `rulepacks/lasers-and-feelings/docs/package-preparation.md` | 当前包文档或历史验证记录 |
+| `rulepacks/lasers-and-feelings/docs/README.md` | 当前包文档或历史验证记录 |
+| `rulepacks/lasers-and-feelings/docs/rules.md` | 当前包文档或历史验证记录 |
+| `rulepacks/lasers-and-feelings/docs/usage.md` | 当前包文档或历史验证记录 |
+| `rulepacks/lasers-and-feelings/flows/README.md` | 独立 L&F 配置包文件 |
+| `rulepacks/lasers-and-feelings/LICENSE.md` | 独立 L&F 配置包文件 |
+| `rulepacks/lasers-and-feelings/manifest.json` | 独立 L&F 配置包文件 |
+| `rulepacks/lasers-and-feelings/README.md` | 独立 L&F 配置包文件 |
+| `rulepacks/lasers-and-feelings/rules/adventure.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/answer.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/cancel.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/close.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/help.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/library.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/main.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/open.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/profile.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/question.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/README.md` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/rules/ship.lua` | 当前可复用 Lua 规则或规则索引 |
+| `rulepacks/lasers-and-feelings/sources/lasers-and-feelings-original.pdf` | 完整原始规则、来源、许可与摘要 |
+| `rulepacks/lasers-and-feelings/sources/lasers-and-feelings-original.txt` | 完整原始规则、来源、许可与摘要 |
+| `rulepacks/lasers-and-feelings/sources/README.md` | 完整原始规则、来源、许可与摘要 |
+| `rulepacks/lasers-and-feelings/sources/source-checksums.txt` | 完整原始规则、来源、许可与摘要 |
+| `rulepacks/lasers-and-feelings/start.ps1` | 独立 L&F 配置包文件 |
+| `rulepacks/lasers-and-feelings/启动激光与情感.exe` | Windows 原生控制台启动入口 |
+| `rulepacks/lasers-and-feelings/tools/PackLauncher.cs` | 配置包 exe 源码及退出进程清理 |
+| `rulepacks/lasers-and-feelings/tools/build-launcher.ps1` | 仅在包内生成 exe 与摘要的编译脚本 |
+| `rulepacks/lasers-and-feelings/tools/launcher-build.json` | 源码、exe 摘要和编译环境记录 |
+| `rulepacks/lasers-and-feelings/tools/README.md` | 包工具、exe 构建和启动清理说明 |
+| `rulepacks/lasers-and-feelings/tests/verify_launcher.py` | 原生 exe 的真实启动、退出清理及重启验证 |
+| `rulepacks/lasers-and-feelings/tests/launcher-results.json` | 10 项原生启动验证机器结果 |
+| `rulepacks/lasers-and-feelings/tests/.gitignore` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/cooperation-results.json` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/fixtures/close.lua` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/fixtures/help.lua` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/fixtures/main.lua` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/fixtures/roll.lua` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/package-results.json` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/README.md` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/ui-results.json` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/verify_cooperation.py` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/verify_package.py` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tests/verify_ui.py` | 包级验证、浏览器验证、机器证据或历史夹具 |
+| `rulepacks/lasers-and-feelings/tools/client.py` | 仅使用现有 CLI/HTTP 的独立启动、导出或包工具 |
+| `rulepacks/lasers-and-feelings/tools/export.py` | 仅使用现有 CLI/HTTP 的独立启动、导出或包工具 |
+| `rulepacks/lasers-and-feelings/tools/launch.py` | 独立启动、同源适配及同机多账号会话槽位 |
+| `rulepacks/lasers-and-feelings/tools/package.py` | 仅使用现有 CLI/HTTP 的独立启动、导出或包工具 |
+| `rulepacks/lasers-and-feelings/ui/app.js` | 跑团桌面界面、样式或设计 |
+| `rulepacks/lasers-and-feelings/ui/frontend-design.md` | 跑团桌面界面、样式或设计 |
+| `rulepacks/lasers-and-feelings/ui/index.html` | 跑团桌面界面、样式或设计 |
+| `rulepacks/lasers-and-feelings/ui/README.md` | 跑团桌面界面、样式或设计 |
+| `rulepacks/lasers-and-feelings/ui/styles.css` | 跑团桌面界面、样式或设计 |
+| `rulepacks/README.md` | 独立配置包分类、资料或待实施方案 |
+| `rulepacks/mini-detective-pack/README.md` | 铃蔓回转录资料、规则复原、本机实现与自动行动入口 |
+| `rulepacks/mini-detective-pack/docs/README.md` | 铃蔓资料与计划文档索引 |
+| `rulepacks/mini-detective-pack/docs/sources.md` | 五张规则图、七张工作表、三张UI参考、网络检索及原料冲突证据 |
+| `rulepacks/mini-detective-pack/docs/plans/README.md` | 铃蔓规则与配置补全计划索引 |
+| `rulepacks/mini-detective-pack/docs/plans/rules.md` | 六维、探索、体力、卡片与战斗的复原及试跑规则草案 |
+| `rulepacks/mini-detective-pack/docs/plans/configuration.md` | 参数、对象、权限、状态机与验收规格草案 |
+| `rulepacks/mini-detective-pack/docs/plans/scenario.md` | 两日主持场景、地图、库存、线索、谜题及结局补全草案 |
+| `rulepacks/mini-detective-pack/docs/plans/map-and-items.md` | 宅邸与岛屿地图、22种道具分布及获取依赖的Mermaid草案 |
+| `rulepacks/mini-detective-pack/docs/plans/frontend-design.md` | 新增UI参考适配、KP与PL界面和前端实施计划 |
+| `rulepacks/mini-detective-pack/docs/plans/interface-flows.md` | 建卡、KP与PL操作、战斗时序和秘密信息投影Mermaid草案 |
+| `rulepacks/mini-detective-pack/raw/12EC99D144C79211680B3CB83DDFDE55.png` | 用户提供的企划玩法原图 |
+| `rulepacks/mini-detective-pack/raw/5576AAC5876167733B85FAEE1A978AA5.png` | 用户提供的行动轮、体力与探索原图 |
+| `rulepacks/mini-detective-pack/raw/85AD675A5E3B80BE55A62EAB58577AEB.png` | 用户提供的战斗机制原图 |
+| `rulepacks/mini-detective-pack/raw/99B0B7DE1C3110F18003D2D0D7A502FF.png` | 用户提供的六维与卡片机制原图 |
+| `rulepacks/mini-detective-pack/raw/B1D563E533F8B0012B91AB2A2AE3B32A.png` | 用户提供的战斗示例原图 |
+| `rulepacks/mini-detective-pack/raw/铃蔓回转录.xlsx` | 用户提供的场景、角色、日程与后期战斗工作簿 |
+| `rulepacks/mini-detective-pack/raw/UI/65cb0a21-b583-4261-8f15-22084de2ffc9.png` | 用户新增的建角界面参考图 |
+| `rulepacks/mini-detective-pack/raw/UI/9ea93a5d-5705-4b90-9591-88b7970d3507.png` | 用户新增的背包弹层参考图 |
+| `rulepacks/mini-detective-pack/raw/UI/c80d39dd-b28b-4260-9866-3c028e4133a4.png` | 用户新增的叙事与选择主界面参考图 |
+| `rulepacks/mini-detective-pack/assets/README.md` | 已下载网络占位素材的用途、许可与绑定索引 |
+| `rulepacks/mini-detective-pack/assets/placeholders/manifest.json` | 20份占位素材的来源、作者、许可、摘要与22道具及23地点绑定 |
+| `rulepacks/mini-detective-pack/assets/placeholders/CREDITS.md` | 网络占位素材逐件署名、来源与许可 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-lantern.svg` | 网络占位素材：Lantern，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-key.svg` | 网络占位素材：Key，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-hammer-drop.svg` | 网络占位素材：Hammer Drop，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-broadsword.svg` | 网络占位素材：Broadsword，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-candle-light.svg` | 网络占位素材：Candle Light，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-scroll-unfurled.svg` | 网络占位素材：Scroll Unfurled，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-hood.svg` | 网络占位素材：Hood，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-pine-tree.svg` | 网络占位素材：Pine Tree，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-castle.svg` | 网络占位素材：Castle，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/delapouite-film-strip.svg` | 网络占位素材：Film Strip，Delapouite，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/delapouite-rope-coil.svg` | 网络占位素材：Rope Coil，Delapouite，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/delapouite-island.svg` | 网络占位素材：Island，Delapouite，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/delapouite-village.svg` | 网络占位素材：Village，Delapouite，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/delapouite-sailboat.svg` | 网络占位素材：Sailboat，Delapouite，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-meat.svg` | 网络占位素材：Meat，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-round-bottom-flask.svg` | 网络占位素材：Round Bottom Flask，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/sbed-health-normal.svg` | 网络占位素材：Health Normal，sbed，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/skoll-winchester-rifle.svg` | 网络占位素材：Winchester Rifle，Skoll，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/icons/lorc-umbrella.svg` | 网络占位素材：Umbrella，Lorc，CC-BY-3.0 |
+| `rulepacks/mini-detective-pack/assets/placeholders/textures/parchment.png` | 网络占位素材：Parchment，Mattias Lejbrink，CC0-1.0 |
+| `docs/plans/Issues/issue-003-rulepack-cooperative-ruling.md` | 配置包协作问题：包侧已解决并验证，待工程责任者复核记录 |
 | `docs/plans/games/README.md` | 轻量跑团资料与适配计划索引 |
-| `docs/plans/games/lasers-and-feelings/frontend-design.md` | 角色、协助检定、叙事和主持工作台前端方案 |
-| `docs/plans/games/lasers-and-feelings/package-preparation.md` | 规则包准备、对象映射与实际后端能力边界 |
-| `docs/plans/games/lasers-and-feelings/README.md` | 轻量科幻跑团规则资料与前端方案入口 |
-| `docs/plans/games/lasers-and-feelings/rules.md` | 完整规则中文整理、选项表与待裁定事项 |
-| `docs/plans/games/lasers-and-feelings/sources/lasers-and-feelings-original.pdf` | 官方 Lasers & Feelings v1.4 完整一页规则书 |
-| `docs/plans/games/lasers-and-feelings/sources/lasers-and-feelings-original.txt` | 官方规则书全页提取正文 |
-| `docs/plans/games/lasers-and-feelings/sources/README.md` | 官方规则来源、版本、许可与完整性核验 |
-| `docs/plans/games/lasers-and-feelings/sources/source-checksums.txt` | 原始 PDF 与提取正文的 SHA-256 摘要 |
+| `docs/plans/games/lasers-and-feelings/README.md` | 已迁入独立配置包的兼容入口 |
 | `docs/plans/project planning/first-test-engineering-design.md` | 首测工程设计与实施对照，保留设计基线 |
 | `docs/plans/project planning/first-test-construction-plan.md` | 首测 E0—E6 任务与验收基线，独立作者试写待验收 |
 | `docs/plans/project planning/Issue/README.md` | 工程规划待解决问题索引 |
@@ -153,7 +251,71 @@
 | `docs/current/engineering/chat-backend.md` | 当前聊天室后端、模型、接口及约束 |
 | `engineering/acceptance/chat-results-2026-10-30.json` | 聊天室追加与完整回归的机器验收摘要 |
 
-生成目录：`engineering/.venv/` 是依赖环境；`engineering/.runtime/` 存放游玩数据、桌面工具的独立 Python/环境、缓存及日志；`engineering/.test-output/` 存放隔离测试、离线 wheel、截图与报告；Python/pytest 缓存不登记逐文件清单。生成目录仍受其父目录施工占用约束。
+本次配置包实际新增文件：
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `rulepacks/mini-detective-pack/.gitignore` | 配置包清单／启动或忽略配置 |
+| `rulepacks/mini-detective-pack/config/configurations.json` | 本包场景／对象配置 |
+| `rulepacks/mini-detective-pack/config/scenario.json` | 本包场景／对象配置 |
+| `rulepacks/mini-detective-pack/docs/implementation.md` | 本包当前实现与运行说明 |
+| `rulepacks/mini-detective-pack/manifest.json` | 配置包清单／启动或忽略配置 |
+| `rulepacks/mini-detective-pack/rules/advance.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/check.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/combat.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/confirm.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/consume.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/damage.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/enter.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/equip.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/finish.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/profile.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/request.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/resolve.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/rules/sync.lua` | 本包Lua权威规则 |
+| `rulepacks/mini-detective-pack/start.ps1` | 配置包清单／启动或忽略配置 |
+| `rulepacks/mini-detective-pack/tests/README.md` | 包级验收驱动／机器结果 |
+| `rulepacks/mini-detective-pack/tests/results.json` | 包级验收驱动／机器结果 |
+| `rulepacks/mini-detective-pack/tests/run_ui.py` | 包级验收驱动／机器结果 |
+| `rulepacks/mini-detective-pack/tests/ui-results.json` | 包级验收驱动／机器结果 |
+| `rulepacks/mini-detective-pack/tests/verify_package.py` | 包级验收驱动／机器结果 |
+| `rulepacks/mini-detective-pack/tests/verify_ui.py` | 包级验收驱动／机器结果 |
+| `rulepacks/mini-detective-pack/tools/client.py` | 包侧公开CLI／HTTP启动与适配工具 |
+| `rulepacks/mini-detective-pack/tools/launch.py` | 包侧公开CLI／HTTP启动与适配工具 |
+| `rulepacks/mini-detective-pack/tools/package.py` | 包侧公开CLI／HTTP启动与适配工具 |
+| `rulepacks/mini-detective-pack/ui/app.js` | 本机单标签KP／PL前端 |
+| `rulepacks/mini-detective-pack/ui/index.html` | 本机单标签KP／PL前端 |
+| `rulepacks/mini-detective-pack/ui/styles.css` | 本机单标签KP／PL前端 |
+| `docs/plans/Issues/issue-004-mini-pack-management.md` | 配置包在线恢复与组合管理接口边界 |
+
+账号原生入口新增文件：
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `rulepacks/mini-detective-pack/KP主持人.exe` | 预设账号Windows原生入口 |
+| `rulepacks/mini-detective-pack/PL1观察员.exe` | 预设账号Windows原生入口 |
+| `rulepacks/mini-detective-pack/PL2护卫.exe` | 预设账号Windows原生入口 |
+| `rulepacks/mini-detective-pack/PL3文献员.exe` | 预设账号Windows原生入口 |
+| `rulepacks/mini-detective-pack/PL4医护员.exe` | 预设账号Windows原生入口 |
+| `rulepacks/mini-detective-pack/tests/launcher-results.json` | 账号启动器源码、构建、说明或验收 |
+| `rulepacks/mini-detective-pack/tests/verify_account_launchers.py` | 账号启动器源码、构建、说明或验收 |
+| `rulepacks/mini-detective-pack/tools/AccountLauncher.cs` | 账号启动器源码、构建、说明或验收 |
+| `rulepacks/mini-detective-pack/tools/build-launchers.ps1` | 账号启动器源码、构建、说明或验收 |
+| `rulepacks/mini-detective-pack/tools/launcher-build.json` | 账号启动器源码、构建、说明或验收 |
+| `rulepacks/mini-detective-pack/tools/README.md` | 账号启动器源码、构建、说明或验收 |
+
+生成目录：`rulepacks/mini-detective-pack/runtime/` 为独立游玩数据，含 `room/` 宿主存档、`room-automation/` 自动化队列与凭据及停服备份，`rulepacks/mini-detective-pack/tests/output/` 为隔离测试存档、日志和截图，均忽略且不逐文件登记，仍受对应施工范围约束。`rulepacks/lasers-and-feelings/runtime/` 为独立游玩存档，`rulepacks/lasers-and-feelings/exports/` 为导出 ZIP；均不入库且不逐文件登记。`rulepacks/lasers-and-feelings/tests/output/` 存放配置包的独立实验存档、日志与接口发现结果，不入库、不逐文件登记，仍受对应施工范围约束。`engineering/.venv/` 是依赖环境；`engineering/.runtime/` 存放游玩数据、桌面工具的独立 Python/环境、缓存及日志；`engineering/.test-output/` 存放隔离测试、离线 wheel、截图与报告；Python/pytest 缓存不登记逐文件清单。生成目录仍受其父目录施工占用约束。
+
+本次自动化与界面新增文件：
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `rulepacks/mini-detective-pack/tools/scene.py` | 当前场景、可达出口及逐PL已探索／一跳周边地图投影 |
+| `rulepacks/mini-detective-pack/tools/automation.py` | KP自动处理总开关、固定行动验证、恢复及人工裁决 |
+| `rulepacks/mini-detective-pack/ui/workflow.js` | KP／PL分区导航、顶部自动开关和中文结果呈现 |
+| `rulepacks/mini-detective-pack/docs/automation-and-ui.md` | 当前自动化、导航、Mermaid、权限及升级说明 |
+| `rulepacks/mini-detective-pack/tests/verify_automation.py` | 真实宿主与桌面浏览器自动化专项 |
+| `rulepacks/mini-detective-pack/tests/automation-results.json` | 自动化专项机器结果 |
 
 ## 施工登记
 

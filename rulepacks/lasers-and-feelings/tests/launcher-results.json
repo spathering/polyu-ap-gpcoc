@@ -1,0 +1,47 @@
+{
+  "passed": 10,
+  "checks": [
+    {
+      "name": "help_from_unrelated_working_directory",
+      "passed": true
+    },
+    {
+      "name": "missing_companion_reports_error_without_hanging",
+      "passed": true
+    },
+    {
+      "name": "fresh_start",
+      "passed": true
+    },
+    {
+      "name": "login_after_start_0",
+      "passed": true
+    },
+    {
+      "name": "unicode_and_space_data_argument",
+      "passed": true
+    },
+    {
+      "name": "launcher_exit_cleans_frontend_and_host_0",
+      "passed": true
+    },
+    {
+      "name": "restart_same_data_and_ports",
+      "passed": true
+    },
+    {
+      "name": "login_after_start_1",
+      "passed": true
+    },
+    {
+      "name": "launcher_exit_cleans_frontend_and_host_1",
+      "passed": true
+    },
+    {
+      "name": "exe_matches_build_record",
+      "passed": true
+    }
+  ],
+  "executableSha256": "751fa613951a1d9ae2d3c802d95e435aeddfc37cd0b6c7a03741c4a8d0d092a8",
+  "scope": "native EXE; fresh isolated data; forced launcher exit and restart; no manual double-click interaction"
+}

@@ -1,0 +1,8 @@
+return rule('lf.help', {'actor'}, function(r, actor)
+  local c = r.call('lf.library', actor, 'context', 0)
+  assert(c.role == 2, 'LF_NOT_HELPER')
+  assert(r.number(c.action, 'phase') == 1, 'LF_HELP_CLOSED')
+  assert(r.number(actor, 'state') == 0, 'LF_ALREADY_SUBMITTED')
+  r.set(actor, 'state', 1)
+  return r.call('lf.library', actor, 'roll', 1 + r.number(actor, 'prepared') + r.number(actor, 'expert'))
+end, {dependencies={'lf.library'}})

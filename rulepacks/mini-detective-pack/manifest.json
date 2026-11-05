@@ -1,0 +1,51 @@
+{
+  "id": "mini-detective-pack",
+  "version": "0.2.0",
+  "status": "implementation",
+  "protocolVersion": 1,
+  "rules": [
+    "advance.lua",
+    "check.lua",
+    "combat.lua",
+    "confirm.lua",
+    "consume.lua",
+    "damage.lua",
+    "enter.lua",
+    "equip.lua",
+    "finish.lua",
+    "profile.lua",
+    "request.lua",
+    "resolve.lua",
+    "sync.lua"
+  ],
+  "data": [
+    "scenario.json"
+  ],
+  "configurations": "config/configurations.json",
+  "entry": "ui/index.html",
+  "sourceStatus": "reconstructed with documented supplements",
+  "contentLicense": "SEE docs/sources.md",
+  "softwareLicense": "unspecified",
+  "windowsLaunchers": [
+    {
+      "account": "kp",
+      "executable": "KP主持人.exe"
+    },
+    {
+      "account": "player1",
+      "executable": "PL1观察员.exe"
+    },
+    {
+      "account": "player2",
+      "executable": "PL2护卫.exe"
+    },
+    {
+      "account": "player3",
+      "executable": "PL3文献员.exe"
+    },
+    {
+      "account": "player4",
+      "executable": "PL4医护员.exe"
+    }
+  ]
+}

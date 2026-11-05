@@ -1,0 +1,10 @@
+return rule('lf.profile', {'actor', 'number:amount', 'style:amount', 'job:amount', 'goal:amount'}, function(r, actor, number, style, job, goal)
+  assert(r.matches(actor, 'lf.character'), 'LF_NOT_CHARACTER')
+  assert(number >= 2 and number <= 5, 'LF_INVALID_NUMBER')
+  assert(style >= 1 and style <= 7 and job >= 1 and job <= 7 and goal <= 7, 'LF_INVALID_PROFILE')
+  r.set(actor, 'number', number)
+  r.set(actor, 'style', style)
+  r.set(actor, 'job', job)
+  r.set(actor, 'goal', goal)
+  return {character=actor, number=number, style=style, job=job, goal=goal}
+end, {kp=true})
