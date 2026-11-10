@@ -6,6 +6,10 @@
 
 | 文档 | 归档日期 | 原因 / 后续文档 |
 | --- | --- | --- |
+| [2026-11-09-room-manager](2026-11-09-room-manager.md) | 2026-11-09 | Python/LAN 迁移前材料；现行见[工程说明](../current/engineering/room-manager.md) |
+| [2026-11-09-room-manager-design](2026-11-09-room-manager-design.md) | 2026-11-09 | Python/LAN 迁移前材料；现行见[工程说明](../current/engineering/room-manager.md) |
+| [2026-11-09-room-manager-construction-plan](2026-11-09-room-manager-construction-plan.md) | 2026-11-09 | Python/LAN 迁移前材料；现行见[工程说明](../current/engineering/room-manager.md) |
+
 | [主机账号维护 ISSUE-005](2026-11-05-issue-005-online-account-management.md) | 2026-11-05 | 已实现，[本机主机账号维护](../current/engineering/host-accounts.md)为现行说明 |
 | [首轮 Lua 编写协议参考](2026-10-29-lua-script-reference.md) | 2026-10-29 | 原作者协议由[宿主 API 与简化方案](<../plans/project planning/lua-authoring-facade.md>)替代；旧样例仍供对照 |
 

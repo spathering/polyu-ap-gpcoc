@@ -1,0 +1,520 @@
+{
+  "title": "树桩镇",
+  "version": 1,
+  "items": [
+    {
+      "id": "needle",
+      "name": "针剑",
+      "kind": "weapon",
+      "slots": 1,
+      "uses": 3,
+      "damage": "d6",
+      "useDie": true,
+      "description": "轻型单手武器。战斗结束后检查用量。"
+    },
+    {
+      "id": "torch",
+      "name": "火把",
+      "kind": "item",
+      "slots": 1,
+      "uses": 3,
+      "light": true,
+      "description": "每燃烧六个探索轮，消耗一格用量。"
+    },
+    {
+      "id": "ration",
+      "name": "口粮",
+      "kind": "item",
+      "slots": 1,
+      "uses": 3,
+      "description": "每次食用消耗一格用量。"
+    },
+    {
+      "id": "rope",
+      "name": "绳索",
+      "kind": "item",
+      "slots": 1,
+      "uses": 3,
+      "useDie": true,
+      "description": "用于攀爬与固定，危险使用后由主持决定是否检查用量。"
+    },
+    {
+      "id": "armor",
+      "name": "轻甲",
+      "kind": "armor",
+      "slots": 2,
+      "uses": 3,
+      "armor": 1,
+      "description": "轻甲占副手和一个身体槽，装备且仍有用量时减伤1。战后检查用量。",
+      "shape": "offhand-body",
+      "useDie": true
+    },
+    {
+      "id": "cheese",
+      "name": "整轮奶酪",
+      "kind": "item",
+      "slots": 1,
+      "uses": 0,
+      "price": 100,
+      "description": "场景物品。价值依据地点对照，实际占槽待原版终校。"
+    },
+    {
+      "id": "idol",
+      "name": "金叶鼠像",
+      "kind": "item",
+      "slots": 4,
+      "uses": 0,
+      "price": 600,
+      "description": "庭院池底宝物，占四槽。"
+    },
+    {
+      "id": "pots",
+      "name": "铜锅盘",
+      "kind": "item",
+      "slots": 1,
+      "uses": 0,
+      "price": 10,
+      "description": "洗劫屋散落的器具，每件10p。"
+    },
+    {
+      "id": "flute",
+      "name": "蛇笛",
+      "kind": "item",
+      "slots": 1,
+      "uses": 0,
+      "description": "由主持根据场景裁定对守卫蛇的影响。价值待定。"
+    },
+    {
+      "id": "paddle",
+      "name": "搅拌桨",
+      "kind": "item",
+      "slots": 2,
+      "uses": 3,
+      "description": "奶酪工厂的器具。用途由主持裁定。"
+    },
+    {
+      "id": "cloth",
+      "name": "滤布",
+      "kind": "item",
+      "slots": 1,
+      "uses": 3,
+      "description": "奶酪工厂的过滤布。"
+    },
+    {
+      "id": "injured",
+      "name": "受伤",
+      "kind": "condition",
+      "slots": 1,
+      "uses": 0,
+      "description": "状态占一格。按对应规则完成恢复后由主持解除。"
+    },
+    {
+      "id": "exhausted",
+      "name": "疲惫",
+      "kind": "condition",
+      "slots": 1,
+      "uses": 0,
+      "description": "状态占一格。解除条件由规则速查及主持确认。"
+    },
+    {
+      "id": "frightened",
+      "name": "惊惧",
+      "kind": "condition",
+      "slots": 1,
+      "uses": 0,
+      "description": "状态占一格。"
+    },
+    {
+      "id": "spell",
+      "name": "法术石板",
+      "kind": "spell",
+      "slots": 1,
+      "uses": 3,
+      "description": "法术效果、用量与充能条件由主持填写并裁定。"
+    },
+    {
+      "id": "lantern",
+      "name": "电提灯",
+      "kind": "item",
+      "slots": 1,
+      "uses": 6,
+      "light": true,
+      "description": "六格用量的照明工具。"
+    }
+  ],
+  "locations": [
+    {
+      "index": 1,
+      "name": "入口隧道",
+      "description": "一条狭窄隧道通向树桩深处，前方可见一轮奶酪。",
+      "truth": "大石机关的诱饵为一轮奶酪，价值100p。触发伤害d12。先询问调查方法，再裁定触发。",
+      "exits": [
+        2
+      ],
+      "features": [
+        "观察地面",
+        "检查奶酪"
+      ],
+      "stock": [
+        {
+          "item": 6,
+          "count": 1
+        }
+      ],
+      "clues": []
+    },
+    {
+      "index": 2,
+      "name": "主门",
+      "description": "石板门阻挡着前进的道路，门上留有可转动的把手。",
+      "truth": "转动把手会触发倾倒机关。d20伤害，DEX豁免成功减半。门和机关分开记录。",
+      "exits": [
+        1,
+        3
+      ],
+      "features": [
+        "检查把手",
+        "尝试开门"
+      ],
+      "stock": [],
+      "clues": []
+    },
+    {
+      "index": 3,
+      "name": "庭院",
+      "description": "庭院中央有池塘，梯子通往树桩上的房屋。",
+      "truth": "池底有金叶鼠像600p，占4槽，另有140p钱袋。Jack位于08奶酪工厂。",
+      "exits": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "features": [
+        "调查池塘",
+        "观察梯子"
+      ],
+      "stock": [
+        {
+          "item": 7,
+          "count": 1
+        }
+      ],
+      "pips": 140,
+      "clues": []
+    },
+    {
+      "index": 4,
+      "name": "洗劫屋",
+      "description": "房间被翻找过，生活用具散落各处。",
+      "truth": "首次搜查生成d6件铜锅盘，每件10p。数量必须持久化，重复访问不重掷。",
+      "exits": [
+        3
+      ],
+      "features": [
+        "搜查器具"
+      ],
+      "stock": [],
+      "clues": []
+    },
+    {
+      "index": 5,
+      "name": "废弃屋",
+      "description": "一间安静的旧屋，墙上保留着节庆的图画。",
+      "truth": "节庆画可以提示雕像原来的位置。分享图画线索时只公开调查者已获得的内容。",
+      "exits": [
+        3
+      ],
+      "features": [
+        "观察旧画"
+      ],
+      "stock": [],
+      "clues": [
+        {
+          "id": "festival",
+          "title": "旧日节庆画",
+          "text": "图画记录了庭院旧日的节庆布置，其中出现一尊鼠像。"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "name": "蛛网屋",
+      "description": "黏密蛛网遮住了屋内的视线，深处传出微弱动静。",
+      "truth": "两只蜘蛛与被困村民Roquefort、Paneer。两名村民和两只蜘蛛分别记录，初始仅KP可见。",
+      "exits": [
+        3
+      ],
+      "features": [
+        "查看蛛网",
+        "呼唤屋内"
+      ],
+      "stock": [],
+      "clues": []
+    },
+    {
+      "index": 7,
+      "name": "大厅",
+      "description": "宽大的厅堂里堆放着桶与杂物，可以听见活动的声音。",
+      "truth": "首次生成2d6只Dedratz。蛇笛在此，战利品抽取三次。桶后锁门通08。鼠帮数值与战利品表须终校。",
+      "exits": [
+        3,
+        8
+      ],
+      "features": [
+        "观察厅堂",
+        "交涉"
+      ],
+      "stock": [
+        {
+          "item": 9,
+          "count": 1
+        }
+      ],
+      "clues": []
+    },
+    {
+      "index": 8,
+      "name": "奶酪工厂",
+      "description": "屋内的器具显示这里曾经用于制作奶酪。",
+      "truth": "Jack、搅拌桨和滤布在此。与03以门和升降机相连，与07之间有锁门，铁门通09，屋顶货口通室外。特殊移动由KP裁定。",
+      "exits": [
+        3,
+        7,
+        9
+      ],
+      "features": [
+        "检查设备",
+        "寻找出口"
+      ],
+      "stock": [
+        {
+          "item": 10,
+          "count": 1
+        },
+        {
+          "item": 11,
+          "count": 1
+        }
+      ],
+      "clues": []
+    },
+    {
+      "index": 9,
+      "name": "蛇笼",
+      "description": "铁门分隔了前后的空间，深处传来轻微摩擦声。",
+      "truth": "守卫蛇在此，蛇实例全局复用，随机遭遇不重复生成。原版对照数值STR12、DEX10、WIL10、HP12、护甲2、d8咬击。",
+      "exits": [
+        8,
+        10
+      ],
+      "features": [
+        "观察铁门",
+        "聆听"
+      ],
+      "stock": [],
+      "clues": []
+    },
+    {
+      "index": 10,
+      "name": "熟成洞",
+      "description": "洞窟里堆着熟成的奶酪，空气中满是浓郁气味。",
+      "truth": "Ernie在此熟睡，库存八轮奶酪，每轮100p。宝箱抽战利品两次。Ernie数值与出口线索正文待原版终校。",
+      "exits": [
+        9
+      ],
+      "features": [
+        "查看奶酪",
+        "观察睡者"
+      ],
+      "stock": [
+        {
+          "item": 6,
+          "count": 8
+        }
+      ],
+      "clues": [
+        {
+          "id": "north",
+          "title": "北方据点的线索",
+          "text": "进一步调查指向北方的一处据点。主持在确认获取条件后补充详情，树桩镇首轮在此收束。"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "mul",
+      "name": "木栗",
+      "description": "谨慎的探路小鼠",
+      "str": 10,
+      "dex": 12,
+      "wil": 9,
+      "hp": 4,
+      "pips": 3,
+      "items": [
+        {
+          "item": 1,
+          "slot": 1
+        },
+        {
+          "item": 2,
+          "slot": 2
+        },
+        {
+          "item": 3,
+          "slot": 5
+        },
+        {
+          "item": 4,
+          "slot": 6
+        }
+      ]
+    },
+    {
+      "id": "dou",
+      "name": "豆叶",
+      "description": "善于交涉的小鼠",
+      "str": 9,
+      "dex": 10,
+      "wil": 12,
+      "hp": 5,
+      "pips": 2,
+      "items": [
+        {
+          "item": 1,
+          "slot": 1
+        },
+        {
+          "item": 2,
+          "slot": 2
+        },
+        {
+          "item": 3,
+          "slot": 5
+        },
+        {
+          "item": 4,
+          "slot": 6
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "key": "roquefort",
+      "name": "Roquefort",
+      "location": 6,
+      "kind": "村民",
+      "hp": 1,
+      "str": 10,
+      "dex": 10,
+      "wil": 10,
+      "armor": 0,
+      "verified": false
+    },
+    {
+      "key": "paneer",
+      "name": "Paneer",
+      "location": 6,
+      "kind": "村民",
+      "hp": 1,
+      "str": 10,
+      "dex": 10,
+      "wil": 10,
+      "armor": 0,
+      "verified": false
+    },
+    {
+      "key": "spider1",
+      "name": "蜘蛛一",
+      "location": 6,
+      "kind": "蜘蛛",
+      "hp": 6,
+      "str": 8,
+      "dex": 15,
+      "wil": 10,
+      "armor": 1,
+      "verified": true,
+      "source": "SRD通用蜘蛛；场景专属条目待原版终校"
+    },
+    {
+      "key": "spider2",
+      "name": "蜘蛛二",
+      "location": 6,
+      "kind": "蜘蛛",
+      "hp": 6,
+      "str": 8,
+      "dex": 15,
+      "wil": 10,
+      "armor": 1,
+      "verified": true,
+      "source": "SRD通用蜘蛛；场景专属条目待原版终校"
+    },
+    {
+      "key": "jack",
+      "name": "Jack",
+      "location": 8,
+      "kind": "NPC",
+      "hp": 4,
+      "str": 10,
+      "dex": 10,
+      "wil": 10,
+      "armor": 0,
+      "verified": false
+    },
+    {
+      "key": "snake",
+      "name": "守卫蛇",
+      "location": 9,
+      "kind": "蛇",
+      "hp": 12,
+      "str": 12,
+      "dex": 10,
+      "wil": 10,
+      "armor": 2,
+      "damage": "d8",
+      "verified": true
+    },
+    {
+      "key": "ernie",
+      "name": "Ernie",
+      "location": 10,
+      "kind": "NPC",
+      "hp": 4,
+      "str": 10,
+      "dex": 10,
+      "wil": 10,
+      "armor": 0,
+      "verified": false
+    }
+  ],
+  "encounters": [
+    "待主持依据原版遭遇表填写第1项",
+    "待主持依据原版遭遇表填写第2项",
+    "待主持依据原版遭遇表填写第3项",
+    "待主持依据原版遭遇表填写第4项",
+    "待主持依据原版遭遇表填写第5项",
+    "待主持依据原版遭遇表填写第6项"
+  ],
+  "rules": [
+    {
+      "title": "属性豁免",
+      "text": "掷d20，结果不高于当前属性即成功。优势取两骰低值，劣势取高值。",
+      "source": "https://mausritter.com/srd/how-to-play/"
+    },
+    {
+      "title": "物品栏",
+      "text": "双手2格、身体2格、背包6格。状态卡也占格。超载时不能跑，豁免具有劣势。",
+      "source": "https://mausritter.com/srd/inventory/"
+    },
+    {
+      "title": "光源",
+      "text": "火把通常3格用量，每六个探索轮消耗一格。",
+      "source": "https://mausritter.com/srd/inventory/"
+    }
+  ],
+  "sourceStatus": "场景拓扑按现有计划，部分NPC及冒险随机表待正版原页终校；预设为自制测试角色"
+}

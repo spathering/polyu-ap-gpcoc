@@ -7,7 +7,8 @@
 | 文档 | 说明 |
 | --- | --- |
 | [本机主机账号维护](host-accounts.md) | 工程外账号工具、运行实例选择、主机用户授权和在线密码重设 |
-| [独立桌面房间管理工具](room-manager.md) | 工程外原生 GUI、现有管理接口、变化观察、关注、回执与备份创建 |
+| [局域网联网模块](network-lan.md) | 独立 LAN HTTP/WS、身份与路由边界、启停 GUI |
+| [独立桌面房间管理工具](room-manager.md) | 工程外 Python/Tkinter GUI、现有管理接口、变化观察、关注、回执与备份创建 |
 | [Windows 安装与启动工具](desktop-tools.md) | 两个 exe、共享配置、独立运行时、更新与启停 |
 | [首测工程与运行](first-test.md) | 模块、实际接口、部署、文件存档、备份恢复与限额 |
 | [聊天室后端](chat-backend.md) | 频道/消息/权限、分页、结果卡片、存档与 SDK 接入 |

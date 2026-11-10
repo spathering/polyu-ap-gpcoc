@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T19:42:20.487686+08:00",
+  "checks": [
+    "PL preset automatically runs through idle authenticated KP page, displaying real save, narrative, inventory and trap changes",
+    "inspection plus prepared opening consumes rope, reveals courtyard and updates live scene facts",
+    "executor offline is shown as automatic waiting, never KP adjudication; reopening a KP page completes queued action",
+    "explicit manual choice stays in KP queue; approval executes recipe and delivers its actual discoveries"
+  ],
+  "consoleErrors": []
+}

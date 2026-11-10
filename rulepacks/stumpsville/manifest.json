@@ -1,0 +1,37 @@
+{
+  "id": "stumpsville",
+  "name": "树桩镇",
+  "version": "0.4.0",
+  "protocolVersion": 1,
+  "status": "implementation",
+  "entry": "ui/index.html",
+  "configurations": "config/configurations.json",
+  "data": [
+    "game.json",
+    "scene-actions.json"
+  ],
+  "rules": [
+    "layout.lua",
+    "profile.lua",
+    "check.lua",
+    "inventory.lua",
+    "damage.lua",
+    "world.lua",
+    "generate.lua",
+    "rest.lua",
+    "ready.lua",
+    "travel.lua",
+    "grant.lua",
+    "transfer.lua",
+    "remove.lua",
+    "create.lua",
+    "morale.lua",
+    "automation.lua",
+    "auto-travel.lua",
+    "adjudicate.lua",
+    "check-core.lua",
+    "inventory-core.lua",
+    "scene.lua"
+  ],
+  "contentLicense": "SEE docs/current/sources.md"
+}

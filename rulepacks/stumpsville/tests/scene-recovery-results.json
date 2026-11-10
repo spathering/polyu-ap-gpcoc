@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T19:41:07.233999+08:00",
+  "checks": [
+    "scene upgrade preserves custom rules and character resources without adding an account or identity file",
+    "interrupted feedback resumes after reload; the original waiting card becomes one completed result; duplicate executor delivery is idempotent",
+    "interruption after the host transaction cannot reroll the save, duplicate cheese or lose the finite-stock decrement",
+    "full inventory blocks before rolling or reducing shared stock",
+    "deliberate global manual mode remains manual when automation is re-enabled"
+  ]
+}

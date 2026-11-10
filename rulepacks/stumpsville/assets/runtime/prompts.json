@@ -1,0 +1,18 @@
+{
+  "created": "2026-11-09",
+  "tool": "image_gen.imagegen",
+  "prompts": [
+    {
+      "id": "welcome",
+      "prompt": "Create a wide landscape original illustration for a Chinese Mausritter-inspired tabletop app's login page, no text anywhere. Fine graphite and black ink hatching on pale ivory paper, restrained muted moss watercolor. A tiny brave mouse carrying a needle sword, backpack and lantern stands outside an immense hollow tree stump with a little front door and mushrooms. Exterior only, no cross section, no interior map, no hidden places. Generous ivory negative space on the right for a separate HTML form. Hand-drawn old tabletop rulebook aesthetic, delicate botanical borders, friendly but adventurous. Flat illustration, not a screenshot. 3:2 landscape."
+    },
+    {
+      "id": "courtyard",
+      "prompt": "Create a wide original illustration of a woodland mouse village courtyard inside an open tree stump. Graphite pencil and fine black ink hatching, pale ivory paper, muted moss watercolor. Small shallow pond center, rope ladder climbing to high wooden house doors, bark and small ferns. Mouse-scale view from ground. No animals, no hidden treasure, no underground cross section, no map, no numbered locations, no text or UI. Calm investigative tabletop RPG rulebook art, wide 16:9 composition, detailed but legible."
+    },
+    {
+      "id": "mouse",
+      "prompt": "Create one full-body original tiny adventurer mouse character token facing slightly left, wearing a short cloak, small backpack, carrying a needle sword and unlit torch. Fine graphite black ink hatching, subtle moss green cloth, tabletop paper rulebook illustration. Entire character and feet visible, centered with margins, isolated on genuinely transparent background. No text, no frame, no scenery, no shadow outside the character."
+    }
+  ]
+}

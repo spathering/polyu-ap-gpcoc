@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T19:40:38.099387+08:00",
+  "authority": "existing authenticated KP-page executor; no service identity or stored KP credential",
+  "presetActions": [
+    "cage-gate",
+    "cage-listen",
+    "cave-cheese",
+    "cave-sleeper",
+    "courtyard-ladders",
+    "courtyard-pool",
+    "factory-equipment",
+    "factory-exits",
+    "gate-handle",
+    "gate-open",
+    "hall-negotiate",
+    "hall-observe",
+    "house-painting",
+    "house-pots",
+    "tunnel-cheese",
+    "tunnel-ground",
+    "web-call",
+    "web-inspect"
+  ],
+  "checks": [
+    "offline executor queues automatic work separately from KP requests; only an existing authenticated KP page can execute it",
+    "entry-to-courtyard loop reveals routes, resolves a real save, disables a trap, consumes rope and grants finite money without per-action KP intervention",
+    "all 18 preset actions produce narrative plus discoveries, persistent world facts, finite rewards or doors across the ten-room exploration loop",
+    "failed risky preset exposes raw save/damage rolls, applies HP loss and leaves its intended door closed",
+    "wrong-room, forged-choice and raw privileged-rule requests cannot bypass server validation or reveal private scene state",
+    "explicit manual selection and out-of-preset free intent remain KP requests; approving a preset executes its actual recipe",
+    "concurrent players cannot duplicate the last shared item",
+    "scene flags, depleted stock and original action receipts survive package reload"
+  ]
+}

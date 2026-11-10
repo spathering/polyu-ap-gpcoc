@@ -4,7 +4,7 @@
 - 文档子类：设计
 - 状态：有效
 - 创建日期：2026-10-29
-- 最后更新：2026-11-05
+- 最后更新：2026-11-09
 - 关联文档：[设计文档索引](README.md)、[文档索引](../../README.md)、[计划文档](../../plans/README.md)
 
 ## 项目目标
@@ -49,8 +49,10 @@ Lua 首测宿主已实现短业务调用、隔离工作进程、动态导入、�
 
 2026-11-05，用户确认在 engineering 之外规划独立桌面 GUI，使用宿主公开接口管理运行房间。首版先接入现有管理功能和数据变化观察；完整变更历史与存档管理后续补齐。工具独立运行，房间数据仍由宿主权威管理。
 
-该方向已落实为 `tools/room-manager/` 独立 Windows 桌面工具。首版现行能力与接口边界见[工程说明](../engineering/room-manager.md)，实现依据及完整历史/存档管理后续阶段见[工程设计](../../plans/room-manager-design.md)和[施工计划](../../plans/room-manager-construction-plan.md)。
+该方向已落实为 `tools/room-manager/` 独立 Python/Tkinter 桌面工具。首版现行能力与接口边界见[工程说明](../engineering/room-manager.md)，实现依据及完整历史/存档管理后续阶段见[工程设计](../../plans/room-manager-design.md)和[施工计划](../../plans/room-manager-construction-plan.md)。
 
 ## 文档边界
 
 当前有效设计记录在本目录；与当前代码及实际工程一致的说明记录在 [工程目录](../engineering/README.md)；未来需求、候选方案与实施计划记录在 `../../plans/`；跨阶段约定记录在 `../../standards/`；失效材料转入 `../../history/` 并说明原因。
+
+局域网采用独立 HTTP/WebSocket 网关，原宿主保留本机监听与全部业务权威；GUI 提供启停与共享地址，详见[LAN 模块](../engineering/network-lan.md)。

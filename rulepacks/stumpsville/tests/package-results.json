@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T19:35:22.660983+08:00",
+  "checks": [
+    "real host initialized; KP + two scoped player sessions; approved characters",
+    "check receipt replay does not reroll",
+    "private projections, ownership and role/origin boundaries",
+    "six rounds consume only lit torch; relighting and retry preserve clock",
+    "four-slot collision rolls back; overflow applies disadvantage",
+    "KP-approved transfer moves item atomically between private characters",
+    "01→02→03 travel; closed doors enforced; selected clues revealed separately",
+    "persistent one-time generation; stock grants and retries cannot duplicate treasure",
+    "long rest restores HP or one attribute; armor and WIL morale save",
+    "chat edit, server-derived receipt summary, direct/group audience isolation",
+    "published recap excludes private notes; pause rejects gameplay",
+    "stage, isolated preview, activate and paired backup",
+    "authenticated scoped WebSocket proxy delivers host snapshots",
+    "host and adapter restart preserve resources, notes and idempotent receipts",
+    "paired host/package backup restores into a second empty directory"
+  ]
+}

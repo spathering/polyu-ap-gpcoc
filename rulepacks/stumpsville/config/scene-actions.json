@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "adaptation": "固定做法与成功/失败分支为本包自动游玩适配；沿用现有十地点资料，不宣称是原版完整规则。",
+  "actions": [
+    {"id":"tunnel-ground","location":1,"label":"观察地面","hint":"不触碰物件，检查地面痕迹。","choices":[{"id":"inspect","label":"仔细观察","process":"无需投骰；获得可见发现并记录。"}]},
+    {"id":"tunnel-cheese","location":1,"label":"检查奶酪","hint":"先检查，再决定是否取走。","choices":[{"id":"inspect","label":"检查周围，不触碰","process":"无需投骰；识别连接和风险。"},{"id":"careful","label":"解除连接后取走","process":"DEX 豁免；失败可能受到 d12 伤害，消耗一探索轮。"},{"id":"take","label":"直接拿取","process":"未解除的机关会触发 d12 伤害；消耗一探索轮。"}]},
+    {"id":"gate-handle","location":2,"label":"检查把手","hint":"从门框与铰接处寻找开启方法。","choices":[{"id":"inspect","label":"检查结构","process":"无需投骰；记录机关结构。"}]},
+    {"id":"gate-open","location":2,"label":"尝试开门","hint":"选择有准备的开启方式，或承担直接开门的风险。","choices":[{"id":"brace","label":"用绳索固定后开门","process":"需已检查结构和可用绳索；消耗一格绳索用量及一探索轮。"},{"id":"force","label":"直接转动把手","process":"机关未解除时掷 d20 伤害；DEX 豁免成功减半，再计算护甲；消耗一探索轮。"}]},
+    {"id":"courtyard-pool","location":3,"label":"调查池塘","hint":"观察水下，或潜入回收已经发现的物品。","choices":[{"id":"inspect","label":"查看池底","process":"无需投骰；记录水下发现。"},{"id":"money","label":"打捞钱袋","process":"DEX 豁免；失败受 d4 伤害，成功取得有限钱币；消耗一探索轮。"},{"id":"idol","label":"打捞鼠像","process":"DEX 豁免；失败受 d4 伤害，成功自动安置四格物品；消耗一探索轮。"}]},
+    {"id":"courtyard-ladders","location":3,"label":"观察梯子","hint":"辨认庭院相连的房屋和通路。","choices":[{"id":"inspect","label":"辨认路线","process":"无需投骰；揭示可见相邻地点。"}]},
+    {"id":"house-pots","location":4,"label":"搜查器具","hint":"搜查产生有限库存，重复查看不会重掷数量。","choices":[{"id":"search","label":"整理散落器具","process":"首次掷 d6 确定库存并消耗一探索轮。"},{"id":"take","label":"取走一件器具","process":"从剩余库存领取一件，自动放入可用槽位。"}]},
+    {"id":"house-painting","location":5,"label":"观察旧画","hint":"阅读画面并记录与庭院有关的线索。","choices":[{"id":"inspect","label":"阅读画面","process":"无需投骰；线索加入个人记录。"}]},
+    {"id":"web-inspect","location":6,"label":"查看蛛网","hint":"在屋外辨认网线与屋内动静。","choices":[{"id":"inspect","label":"观察网线","process":"无需投骰；记录危险与被困者线索。"}]},
+    {"id":"web-call","location":6,"label":"呼唤屋内","hint":"与被困者建立联系，或使用武器割断束缚。","choices":[{"id":"whisper","label":"低声呼唤","process":"无需投骰；记录回应。"},{"id":"rescue","label":"避开蛛网，割断束缚","process":"需可用武器；DEX 豁免，失败受到 d6 毒咬伤害（溢出扣 DEX）；消耗一探索轮。"}]},
+    {"id":"hall-observe","location":7,"label":"观察厅堂","hint":"观察鼠帮、杂物和后门。","choices":[{"id":"inspect","label":"观察而不靠近","process":"首次掷 2d6 确定鼠帮人数；数量保持不变。"}]},
+    {"id":"hall-negotiate","location":7,"label":"交涉","hint":"尝试取得通行和物品交换许可。","choices":[{"id":"talk","label":"说明来意，请求通行","process":"WIL 豁免；每次遭遇只允许一次口头尝试，消耗一探索轮。"},{"id":"food","label":"提供一份口粮交换","process":"消耗一格口粮用量；达成通行与蛇笛交换，消耗一探索轮。"}]},
+    {"id":"factory-equipment","location":8,"label":"检查设备","hint":"检查工厂设备并整理可携带物品。","choices":[{"id":"inspect","label":"检查器具并询问 Jack","process":"无需投骰；记录设备和人物回应。"},{"id":"paddle","label":"取走搅拌桨","process":"领取有限库存，自动安排两格占用。"},{"id":"cloth","label":"取走滤布","process":"领取有限库存，自动放入可用槽位。"}]},
+    {"id":"factory-exits","location":8,"label":"寻找出口","hint":"检查门、升降机和屋顶货口。","choices":[{"id":"survey","label":"辨认出口位置","process":"无需投骰；揭示相邻通路并记录货口。"},{"id":"iron","label":"打开通往蛇笼的铁门","process":"解除本侧门闩，开放通路；消耗一探索轮。"},{"id":"lift","label":"乘升降机返回庭院","process":"移动到庭院；消耗一探索轮。"}]},
+    {"id":"cage-gate","location":9,"label":"观察铁门","hint":"检查通向洞窟的铁门和守卫状况。","choices":[{"id":"inspect","label":"检查门与通道","process":"无需投骰；记录守卫与出口条件。"},{"id":"open","label":"趁守卫平静时开门","process":"需已安抚守卫蛇；开放通往洞窟的通路。"}]},
+    {"id":"cage-listen","location":9,"label":"聆听","hint":"辨认蛇的动静，选择应对方式。","choices":[{"id":"listen","label":"保持距离聆听","process":"无需投骰；记录守卫动静。"},{"id":"flute","label":"吹奏蛇笛","process":"需携带蛇笛；使守卫蛇平静，消耗一探索轮。"},{"id":"sneak","label":"趁间隙绕过守卫开门","process":"DEX 豁免；失败受到 d8 咬击伤害，消耗一探索轮。"}]},
+    {"id":"cave-cheese","location":10,"label":"查看奶酪","hint":"清点存货，决定是否取用。","choices":[{"id":"inspect","label":"清点存货","process":"无需投骰；显示剩余库存。"},{"id":"take","label":"取走一轮奶酪","process":"获得许可后直接领取；否则 DEX 豁免，失败会惊醒睡者；消耗一探索轮。"}]},
+    {"id":"cave-sleeper","location":10,"label":"观察睡者","hint":"观察 Ernie，或询问村民的去向。","choices":[{"id":"observe","label":"远处观察","process":"无需投骰；记录睡者状态。"},{"id":"talk","label":"温和唤醒并询问去向","process":"记录北方据点线索并取得取用许可；消耗一探索轮。"}]}
+  ]
+}

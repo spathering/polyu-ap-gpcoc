@@ -12,6 +12,7 @@
 
 | 路径 | 职责 |
 | --- | --- |
+| `network-lan/` | 独立 LAN HTTP/WebSocket 网关及可嵌入/独立 GUI，不导入后端业务 |
 | `desktop/` | Windows 两个 exe 的源码、共享配置对接、构建与验收 |
 | `backend/src/onlinecoc/` | 领域约束、命令、身份、聊天室、Lua 子进程、持久流程；`server.py` 为本机联网适配器 |
 | `data-management/onlinecoc_data/` | 无业务/网络依赖的文件快照、排他锁、CAS、查询、导出与恢复 |

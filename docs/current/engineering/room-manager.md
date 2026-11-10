@@ -1,26 +1,22 @@
-# 独立桌面房间管理工具
+# Python 独立桌面房间管理器
 
 - 文档类型：当前
 - 文档子类：工程
 - 状态：有效
 - 创建日期：2026-11-05
-- 最后更新：2026-11-05
-- 关联文档：[工具与运行入口](../../../tools/room-manager/README.md)、[使用说明](../../../tools/room-manager/docs/usage.md)、[验收结果](../../../tools/room-manager/docs/acceptance.md)、[后续施工计划](../../plans/room-manager-construction-plan.md)
+- 最后更新：2026-11-09
+- 关联文档：[工具入口](../../../tools/room-manager/README.md)、[使用说明](../../../tools/room-manager/docs/usage.md)、[LAN 模块](network-lan.md)、[验收](../../../tools/room-manager/docs/acceptance.md)
 
 ## 当前实现
 
-独立工具位于 `tools/room-manager/`，与 `engineering/` 同级分离。首版 0.1.0 为 Windows x64 原生 WinForms 程序，运行要求 .NET Framework 4.8；只通过协议 1 的 HTTP/WebSocket 接口连接已运行的本机宿主，不依赖宿主源码、Python 或虚拟环境，不启动第二个 Host。
+0.2.0 已将原 C# WinForms 前端迁移为 Python/Tkinter，源码、构建、依赖锁、测试和发布位于 `tools/room-manager/`。Windows x64 发布目录内置 Python 运行时；开发环境验证为 CPython 3.14.2、Tk 8.6。管理器不导入宿主实现、不打开存档文件，所有业务写入均通过现有协议 1 接口。
 
-首版支持 KP 查询与现有管理接口写入：配置修订、Lua/JSON 完整规则组暂存与激活、活跃实例编辑及归档、关系、个人进度、成员、房间状态、流程等待/取消/重试、素材上传/下载/挂接/移除，以及宿主侧备份创建。编辑提供独立字段表单、原始结构查看、实体版本冲突比较和命令回执查询。
+原配置、规则暂存/激活、实例/关系/进度、成员与房间状态、流程、素材、备份创建、观察和关注、版本冲突比较及命令回执功能均有 Python 入口。原始结构只读，已知操作采用字段表单，结构字段为多行 JSON。旧 WinForms 代码、文档和发布物保留于 `legacy/winforms/`，不再作为现行启动方式。
 
-变化观察分别使用 WS 授权快照与管理轮询，提供对象/字段关注、筛选、观察段和缓存限额。该能力只反映收到的样本，不是完整变更历史；宿主审计独立展示。非实体操作没有统一原子版本保护。备份仅返回宿主 backupId，不包含身份库，也未提供列表、导出、删除和恢复。
+新增“局域网联机”页，可启动/停止独立 LAN 网关、选择本机网卡和端口、复制地址与查看连接数量；也可通过 `--lan` 单独打开面板。网关代码位于 `engineering/network-lan/`，不依赖后端或数据模块。具体边界见[LAN 架构](network-lan.md)。
 
-操作及限制的唯一正文见[使用说明](../../../tools/room-manager/docs/usage.md)，模块、构建和测试入口见[开发说明](../../../tools/room-manager/docs/development.md)。本轮未修改宿主代码或契约。
+## 现行限制
 
-## 后续边界
+首版 LAN 为可信网络内 HTTP/WebSocket，未实现公网穿透、TLS 和 UDP 自动发现。网页配置包代理与真实宿主可能不同端口，管理器须连接真实宿主或本次 LAN 网关。
 
-权威历史 H1/H2 和完整存档管理 S1/S2 仍在[施工计划](../../plans/room-manager-construction-plan.md)中。其实现需要新增宿主管理接口，不能以工具直接读写存档替代。原设计中的预期功能与验证项应以本次[验收结果](../../../tools/room-manager/docs/acceptance.md)和实际代码为准。
-
-## 连接地址排错
-
-配置包网页入口与真实宿主可能使用不同端口。当前 mini-detective-pack 网页代理转发 HTTP，但不转发 WebSocket；管理器必须连接宿主的 `serve --port` 地址。登录成功后一直等待快照的排查步骤见[使用说明](../../../tools/room-manager/docs/usage.md#登录成功但一直等待快照)。本次诊断未修改宿主、配置包或运行中的房间数据。
+观察仅是收到样本的差异，不是完整历史。非实体操作没有统一原子版本保护，备份只创建而不提供列表/导出/删除/恢复。未来工作仍见[后续施工计划](../../plans/room-manager-construction-plan.md)。本轮未修改宿主业务、存储或账号控制代码。

@@ -27,4 +27,4 @@
 
 后续更新的问题入口为 [Issues](plans/Issues/README.md)，新增问题使用其中的模板；原规划 Issue 保留正文并通过该索引链接。Windows 快速使用见 [exe 工具说明](current/engineering/desktop-tools.md)。
 
-独立桌面房间管理工具首版已实现，见[当前工程说明](current/engineering/room-manager.md)和[使用文档](../tools/room-manager/docs/usage.md)。[施工计划](plans/room-manager-construction-plan.md)保留完整变更历史与存档管理等后续工作。
+独立桌面房间管理工具已迁移到 Python，并增加[LAN 模块与面板](current/engineering/network-lan.md)，见[当前工程说明](current/engineering/room-manager.md)和[使用文档](../tools/room-manager/docs/usage.md)。[施工计划](plans/room-manager-construction-plan.md)保留完整变更历史与存档管理等后续工作。

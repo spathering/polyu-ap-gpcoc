@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T19:42:23.658107+08:00",
+  "powershell": "5.1.19041.6456",
+  "checks": [
+    "UTF-8 BOM retained and Windows PowerShell parses without errors",
+    "actual start.cmd launches the HTTP entry page",
+    "port, no-browser, and Chinese/space data path pass through both launchers",
+    "isolated empty archive is served without initializing the real runtime",
+    "owned launcher process tree and listening port are cleaned up"
+  ]
+}

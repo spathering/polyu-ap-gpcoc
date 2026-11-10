@@ -1,0 +1,18 @@
+{
+  "passed": 4,
+  "failed": 0,
+  "modes": [
+    {
+      "mode": [],
+      "nativeWindow": true,
+      "cleanExit": true
+    },
+    {
+      "mode": [
+        "--lan"
+      ],
+      "nativeWindow": true,
+      "cleanExit": true
+    }
+  ]
+}

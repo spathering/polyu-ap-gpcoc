@@ -20,7 +20,7 @@
 
 独立游戏配置包放在同级的 [`rulepacks/`](rulepacks/README.md)，当前包含[《激光与情感》配置包与跑团桌面](rulepacks/lasers-and-feelings/README.md)。配置包工作只查阅工程文档并使用现有能力，工程侧问题提交 Issues，由工程责任者处理。
 
-独立桌面房间管理工具首版已位于 [`tools/room-manager/`](tools/room-manager/README.md)，通过现有接口管理已运行房间并观察数据变化。先启动宿主，再运行 [RoomManager.exe](tools/room-manager/dist/RoomManager.exe)；使用与测试见[工程文档](docs/current/engineering/room-manager.md)，完整历史与存档管理仍属后续计划。
+Python/Tkinter 独立桌面房间管理工具已位于 [`tools/room-manager/`](tools/room-manager/README.md)，通过现有接口管理已运行房间并观察数据变化。先启动宿主，再运行 [RoomManager.exe](tools/room-manager/dist/RoomManager/RoomManager.exe)；使用与测试见[工程文档](docs/current/engineering/room-manager.md)，完整历史与存档管理仍属后续计划。
 
 主机上的账号维护使用 [HostAccounts.exe](tools/host-accounts/HostAccounts.exe)，自动选择当前 Windows 用户启动的本机实例，支持查询账号、创建身份与重设密码。先重启至新版宿主，使用说明见[账号工具](tools/host-accounts/README.md)。
 
@@ -40,3 +40,5 @@
 新增或修改文档前，请阅读 [文档维护标准](docs/standards/document-maintenance.md)。
 
 Agent 或人员施工前，必须检查 [hierarchy 目录与施工登记](docs/current/engineering/hierarchy.md)，用唯一 ID 登记使用或改动范围，确认无冲突后施工，结束后释放标记。
+
+局域网联机使用独立的 [LAN 模块](docs/current/engineering/network-lan.md)，管理器内提供配套 GUI。支持可信局域网 HTTP/WebSocket；公网联机仍待后续。

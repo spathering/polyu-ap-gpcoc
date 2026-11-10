@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "frontend": "Python/Tkinter",
+  "python": "3.14.2",
+  "sha256": "424b2a8642288e0c9959d8a36020c8be63c64ce10f0fbe057a0ff89403f0fb33",
+  "sources": {
+    "tools/room-manager/python/room_manager/gui.py": "d82810b8633b484be39a39208fc490b97bc26c62ff16b2518b371f537bcfb43a",
+    "tools/room-manager/python/room_manager/protocol.py": "e1544a4406bf1fce1f7aaaaa0c51b1b57adc39216cc5a083bae5cfd1de58b90e",
+    "tools/room-manager/python/room_manager/state.py": "e0223de83f628617f9ab21de9287d0b1947c9a4ff77b253bdfbfa5df3262a21a",
+    "tools/room-manager/python/room_manager/__init__.py": "4def3bc8a32e816ce20d300db7bdafc5b2f1a5f0f8d3955ee2cf6e4b58044865",
+    "engineering/network-lan/src/onlinecoc_lan/gateway.py": "41beeb276e2b8384e9cb514a20f99d0b216d496fe85677bbb59d1e3fa274b7e7",
+    "engineering/network-lan/src/onlinecoc_lan/gui.py": "25334bb4d212c2ea292401095db14d5fa95be66ec6bdd7aaed3f77b4222400c0",
+    "engineering/network-lan/src/onlinecoc_lan/__init__.py": "4fc7a06ebf021e9fccd3cdf98fc0da0e1d1d1870b1ef492a91dcd92c83a9884b",
+    "engineering/network-lan/src/onlinecoc_lan/__main__.py": "b66e998dbb56e770582468cb2baf9f662a5bf7d30ebf468a56178488e750c91d",
+    "tools/room-manager/manager.py": "9180fb58eb1e85615a49fbc32d9f3a4b56429c5bf50feb937248bd7ea9583c15"
+  }
+}

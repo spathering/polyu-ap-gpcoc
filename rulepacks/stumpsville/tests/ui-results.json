@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T19:37:20.622308+08:00",
+  "browser": "Microsoft Edge / Playwright",
+  "checks": [
+    "three same-browser session slots retain separate authenticated identities",
+    "canonical pages and legacy routes render without JavaScript errors or desktop overflow",
+    "browser check and item move commit through real host rules",
+    "unified KP console sends a visible rejection and explanation to the requesting player",
+    "automatic move, explicit event request and KP automation toggle work in browser",
+    "manual roll process and KP result update in-place without discarding unsaved notes",
+    "live chat and unread messages are integrated in the scene panel and KP console",
+    "floating panels toggle, collapse, reopen and persist their layout after reload",
+    "390px player layout remains within viewport",
+    "two root pages create independent login slots; reload and one-page logout leave other accounts signed in"
+  ],
+  "consoleErrors": []
+}

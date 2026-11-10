@@ -4,8 +4,8 @@
 - 文档子类：工程
 - 状态：有效
 - 创建日期：2026-10-29
-- 最后更新：2026-11-05
-- 最近目录核对：2026-11-05（本次核对独立桌面管理工具源码、发布、测试和文档；mini-detective-pack 核对仍为 2026-11-02，全工程核对仍为 2026-11-01）
+- 最后更新：2026-11-10
+- 最近目录核对：2026-11-10（本次增核stumpsville 0.4.0十地点预设自动裁决、场景状态和恢复验收；其他范围沿用下列日期）；2026-11-09（本次核对 Python 桌面管理器、LAN 模块及相关发布、测试、归档和文档；mini-detective-pack 核对仍为 2026-11-02，全工程目录核对仍为 2026-11-01）；同日增核调查型线上跑团对照包文档、Mausritter 独立核查、Stumpsville 导入计划与界面参考资源，及 stumpsville 新包的页面导航、组成树、十张界面设计板和0.1.0包侧实现、运行资源及验收文件（含Windows PowerShell 5.1真实启动入口修复）
 - 关联文档：[工程文档索引](README.md)、[文档维护标准](../../standards/document-maintenance.md)
 
 ## 工程实际目录
@@ -100,6 +100,23 @@
 | `rulepacks/lasers-and-feelings/ui/README.md` | 跑团桌面界面、样式或设计 |
 | `rulepacks/lasers-and-feelings/ui/styles.css` | 跑团桌面界面、样式或设计 |
 | `rulepacks/README.md` | 独立配置包分类、资料或待实施方案 |
+| `rulepacks/investigation-vtt-reference/README.md` | 调查型线上跑团对照配置包入口 |
+| `rulepacks/investigation-vtt-reference/.gitignore` | 排除参考资料的临时解压目录 |
+| `rulepacks/investigation-vtt-reference/Mausritter_neural_link_export_Masterwork_Bundle.zip` | 对照研究的原始配置资料压缩包 |
+| `rulepacks/investigation-vtt-reference/docs/plans/README.md` | 调查型线上跑团对照包计划索引 |
+| `rulepacks/investigation-vtt-reference/docs/plans/reference-research.md` | 规则、配置与界面样本调研和适配计划 |
+| `rulepacks/investigation-vtt-reference/docs/plans/mausritter-completeness.md` | Mausritter 资料树、完整性核查与后续验证计划 |
+| `rulepacks/investigation-vtt-reference/docs/plans/stumpsville-foundry-plan.md` | Stumpsville 原版对照、地图、Foundry 导入及界面计划 |
+| `rulepacks/investigation-vtt-reference/docs/plans/stumpsville-interface-reference.md` | Stumpsville 界面参考图集与实测清单 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/external/pips-character-sheet.jpg` | Pips & Paws 浅色角色表截图 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/external/pips-character-sheet-dark.jpg` | Pips & Paws 深色角色表截图 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/external/pips-gm-dashboard.jpg` | Pips & Paws 主持面板截图 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/external/pips-gm-battlemap.jpg` | Pips & Paws 主持战术地图截图 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/external/mausritter-character-sheet.png` | Mausritter 原版角色卡页图 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/external/mausritter-gm-tracker-es.png` | Mausritter 西语主持追踪表页图 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/wireframes/stumpsville-character-entry.png` | Stumpsville 入场与建角线框 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/wireframes/stumpsville-kp-workbench.png` | Stumpsville 主持端线框 |
+| `rulepacks/investigation-vtt-reference/assets/interface-reference/wireframes/stumpsville-pl-workbench.png` | Stumpsville 玩家端线框 |
 | `rulepacks/mini-detective-pack/README.md` | 铃蔓回转录资料、规则复原、本机实现与自动行动入口 |
 | `rulepacks/mini-detective-pack/docs/README.md` | 铃蔓资料与计划文档索引 |
 | `rulepacks/mini-detective-pack/docs/sources.md` | 五张规则图、七张工作表、三张UI参考、网络检索及原料冲突证据 |
@@ -317,50 +334,90 @@
 | `rulepacks/mini-detective-pack/tests/verify_automation.py` | 真实宿主与桌面浏览器自动化专项 |
 | `rulepacks/mini-detective-pack/tests/automation-results.json` | 自动化专项机器结果 |
 
-## 独立桌面房间管理工具
+## Python 独立桌面房间管理器与 LAN 模块
 
 | 实际文件 | 用途 |
 | --- | --- |
-| `docs/plans/room-manager-design.md` | 使用、工程、验收或后续计划说明 |
-| `docs/plans/room-manager-construction-plan.md` | 使用、工程、验收或后续计划说明 |
-| `docs/current/engineering/room-manager.md` | 使用、工程、验收或后续计划说明 |
-| `tools/room-manager/.gitignore` | 构建、运行依赖或本地配置 |
-| `tools/room-manager/app.manifest` | 构建、运行依赖或本地配置 |
-| `tools/room-manager/build.ps1` | 构建、运行依赖或本地配置 |
-| `tools/room-manager/dependency-manifest.json` | 构建、运行依赖或本地配置 |
-| `tools/room-manager/dist/contract-baseline.json` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/dist/dependency-manifest.json` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/dist/README.txt` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/dist/release.json` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/dist/RoomManager.exe` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/dist/RoomManager.exe.config` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/dist/source-sha256.txt` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/dist/tool-config.json` | 可独立复制的发布程序、配置或摘要 |
-| `tools/room-manager/docs/acceptance.md` | 使用、工程、验收或后续计划说明 |
-| `tools/room-manager/docs/development.md` | 使用、工程、验收或后续计划说明 |
-| `tools/room-manager/docs/screenshots/editing.png` | 真实原生窗口验收截图 |
-| `tools/room-manager/docs/screenshots/large-list.png` | 真实原生窗口验收截图 |
-| `tools/room-manager/docs/screenshots/observation.png` | 真实原生窗口验收截图 |
-| `tools/room-manager/docs/usage.md` | 使用、工程、验收或后续计划说明 |
-| `tools/room-manager/README.md` | 使用、工程、验收或后续计划说明 |
-| `tools/room-manager/src/LocalSettings/Options.cs` | 原生管理器源码 |
-| `tools/room-manager/src/LocalSettings/Settings.cs` | 原生管理器源码 |
-| `tools/room-manager/src/Observation/Observer.cs` | 原生管理器源码 |
-| `tools/room-manager/src/Program.cs` | 原生管理器源码 |
-| `tools/room-manager/src/Protocol/ApiClient.cs` | 原生管理器源码 |
-| `tools/room-manager/src/Protocol/Json.cs` | 原生管理器源码 |
-| `tools/room-manager/src/Protocol/Validate.cs` | 原生管理器源码 |
-| `tools/room-manager/src/UI/MainForm.cs` | 原生管理器源码 |
-| `tools/room-manager/tests/contract-baseline.json` | 单元、协议、GUI、重连测试或机器结果 |
-| `tools/room-manager/tests/GuiSmoke.cs` | 单元、协议、GUI、重连测试或机器结果 |
-| `tools/room-manager/tests/Integration.cs` | 单元、协议、GUI、重连测试或机器结果 |
-| `tools/room-manager/tests/ProtocolEdges.cs` | 单元、协议、GUI、重连测试或机器结果 |
-| `tools/room-manager/tests/Reconnect.cs` | 单元、协议、GUI、重连测试或机器结果 |
-| `tools/room-manager/tests/results.json` | 单元、协议、GUI、重连测试或机器结果 |
-| `tools/room-manager/tests/run.py` | 单元、协议、GUI、重连测试或机器结果 |
-| `tools/room-manager/tool-config.json` | 构建、运行依赖或本地配置 |
+| `docs/current/engineering/room-manager.md` | 当前设计、后续计划或 WinForms 阶段归档 |
+| `docs/current/engineering/network-lan.md` | 当前设计、后续计划或 WinForms 阶段归档 |
+| `docs/plans/room-manager-design.md` | 当前设计、后续计划或 WinForms 阶段归档 |
+| `docs/plans/room-manager-construction-plan.md` | 当前设计、后续计划或 WinForms 阶段归档 |
+| `docs/history/2026-11-09-room-manager.md` | 当前设计、后续计划或 WinForms 阶段归档 |
+| `docs/history/2026-11-09-room-manager-design.md` | 当前设计、后续计划或 WinForms 阶段归档 |
+| `docs/history/2026-11-09-room-manager-construction-plan.md` | 当前设计、后续计划或 WinForms 阶段归档 |
+| `engineering/network-lan/.gitignore` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `engineering/network-lan/README.md` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `engineering/network-lan/pyproject.toml` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `engineering/network-lan/requirements.lock` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `engineering/network-lan/src/onlinecoc_lan/__init__.py` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `engineering/network-lan/src/onlinecoc_lan/__main__.py` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `engineering/network-lan/src/onlinecoc_lan/gateway.py` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `engineering/network-lan/src/onlinecoc_lan/gui.py` | 独立 LAN 网关、CLI、GUI 或运行依赖说明 |
+| `tools/room-manager/.gitignore` | 构建、启动或依赖配置 |
+| `tools/room-manager/README.md` | 当前使用、开发或验收说明 |
+| `tools/room-manager/build.ps1` | 构建、启动或依赖配置 |
+| `tools/room-manager/build.py` | 构建、启动或依赖配置 |
+| `tools/room-manager/dist/RoomManager/README.txt` | Python 独立发布程序、依赖锁或摘要 |
+| `tools/room-manager/dist/RoomManager/RoomManager.exe` | Python 独立发布程序、依赖锁或摘要 |
+| `tools/room-manager/dist/RoomManager/release.json` | Python 独立发布程序、依赖锁或摘要 |
+| `tools/room-manager/dist/RoomManager/requirements-runtime.lock` | Python 独立发布程序、依赖锁或摘要 |
+| `tools/room-manager/docs/acceptance.md` | 当前使用、开发或验收说明 |
+| `tools/room-manager/docs/development.md` | 当前使用、开发或验收说明 |
+| `tools/room-manager/docs/screenshots/lan-panel.png` | 真实 Python 原生窗口验收截图 |
+| `tools/room-manager/docs/screenshots/manager.png` | 真实 Python 原生窗口验收截图 |
+| `tools/room-manager/docs/usage.md` | 当前使用、开发或验收说明 |
+| `tools/room-manager/legacy/winforms/README.md` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/app.manifest` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/build.ps1` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dependency-manifest.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/README.txt` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/RoomManager.exe` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/RoomManager.exe.config` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/contract-baseline.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/dependency-manifest.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/release.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/source-sha256.txt` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/dist/tool-config.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/docs/acceptance.md` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/docs/development.md` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/docs/screenshots/editing.png` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/docs/screenshots/large-list.png` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/docs/screenshots/observation.png` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/docs/usage.md` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/LocalSettings/Options.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/LocalSettings/Settings.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/Observation/Observer.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/Program.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/Protocol/ApiClient.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/Protocol/Json.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/Protocol/Validate.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/src/UI/MainForm.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tests/GuiSmoke.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tests/Integration.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tests/ProtocolEdges.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tests/Reconnect.cs` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tests/contract-baseline.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tests/results.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tests/run.py` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/legacy/winforms/tool-config.json` | 旧 WinForms 实现、发布或验收归档，非现行入口 |
+| `tools/room-manager/manager.py` | Python 管理器源码与入口 |
+| `tools/room-manager/python/room_manager/__init__.py` | Python 管理器源码与入口 |
+| `tools/room-manager/python/room_manager/gui.py` | Python 管理器源码与入口 |
+| `tools/room-manager/python/room_manager/protocol.py` | Python 管理器源码与入口 |
+| `tools/room-manager/python/room_manager/state.py` | Python 管理器源码与入口 |
+| `tools/room-manager/requirements-build.lock` | 构建、启动或依赖配置 |
+| `tools/room-manager/requirements-runtime.lock` | 构建、启动或依赖配置 |
+| `tools/room-manager/start.cmd` | 构建、启动或依赖配置 |
+| `tools/room-manager/tests/distribution-results.json` | Python/LAN/发布验证脚本或机器结果 |
+| `tools/room-manager/tests/python-results.json` | Python/LAN/发布验证脚本或机器结果 |
+| `tools/room-manager/tests/verify_distribution.py` | Python/LAN/发布验证脚本或机器结果 |
+| `tools/room-manager/tests/verify_python.py` | Python/LAN/发布验证脚本或机器结果 |
 
-`tools/room-manager/.test-output/` 存放隔离宿主、测试程序、日志与截图，已忽略且不逐文件登记；不属于发布内容，仍受工具目录占用范围约束。工具使用者的设置位于本机用户目录，测试使用 `--settings-dir` 指向本目录内的隔离路径。
+`tools/room-manager/dist/RoomManager/_internal/` 为 PyInstaller 生成的 Python、Tk 与第三方运行依赖，随整个 RoomManager 目录复制，不逐文件登记；不能只复制 exe。
+
+`rulepacks/investigation-vtt-reference/temp/` 为参考资料的临时解压目录，已忽略，可从原始 ZIP 重建。树桩镇只忽略包根目录的 `runtime*/` 游玩数据，`assets/runtime/` 为实际界面素材，随版本入库。
+
+`tools/room-manager/.venv/` 为独立开发依赖环境，`.build/` 为构建中间文件和缓存，`.test-output/` 为隔离宿主、临时发布副本、日志与截图，均已忽略且不属于发布内容。Python 的 `__pycache__/` 为缓存。这些目录仍受各自父目录占用约束；使用者设置位于用户目录，测试以 `--settings-dir` 指向隔离目录。
 
 首次准备回归新增文件（2026-11-05）：
 
@@ -399,6 +456,102 @@
 | `rulepacks/mini-detective-pack/tools/service-manager-build.json` | 服务管理器源码、exe摘要及构建记录 |
 | `rulepacks/mini-detective-pack/tests/verify_service_manager.py` | 实际原生管理器与隔离进程生命周期验收 |
 | `rulepacks/mini-detective-pack/tests/service-manager-results.json` | 原生服务管理器验收结果 |
+
+## 树桩镇界面设计资料（2026-11-09）
+
+| 实际文件 | 用途 |
+| --- | --- |
+| `rulepacks/stumpsville/assets/references/original-stumpsville-preview.jpg` | 官方树桩镇公开预览，仅供美术研究 |
+| `rulepacks/stumpsville/assets/references/README.md` | 树桩镇界面设计、导航、组成树、来源或索引 |
+| `rulepacks/stumpsville/assets/ui-design/01-entry.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/02-player-scene.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/03-character-inventory.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/04-journals-records.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/05-gm-workbench.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/06-location-reveal.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/07-encounters.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/08-management.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/09-subui.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/10-system-states.png` | 树桩镇页面、子 UI 或组件美术设计板 |
+| `rulepacks/stumpsville/assets/ui-design/prompts.json` | 内置 image_gen 提示词与图稿修订记录 |
+| `rulepacks/stumpsville/assets/ui-design/README.md` | 树桩镇界面设计、导航、组成树、来源或索引 |
+| `rulepacks/stumpsville/docs/plans/interface-design.md` | 树桩镇界面设计、导航、组成树、来源或索引 |
+| `rulepacks/stumpsville/docs/plans/README.md` | 树桩镇界面设计、导航、组成树、来源或索引 |
+| `rulepacks/stumpsville/README.md` | 树桩镇界面设计、导航、组成树、来源或索引 |
+
+| `rulepacks/stumpsville/.gitignore` | 树桩镇独立配置包入口或清单 |
+| `rulepacks/stumpsville/assets/runtime/courtyard.png` | 树桩镇原创运行插画与生成记录 |
+| `rulepacks/stumpsville/assets/runtime/mouse.png` | 树桩镇原创运行插画与生成记录 |
+| `rulepacks/stumpsville/assets/runtime/prompts.json` | 树桩镇原创运行插画与生成记录 |
+| `rulepacks/stumpsville/assets/runtime/README.md` | 树桩镇原创运行插画与生成记录 |
+| `rulepacks/stumpsville/assets/runtime/welcome.png` | 树桩镇原创运行插画与生成记录 |
+| `rulepacks/stumpsville/config/configurations.json` | 树桩镇配置与场景资料 |
+| `rulepacks/stumpsville/config/game.json` | 树桩镇配置与场景资料 |
+| `rulepacks/stumpsville/docs/current/implementation.md` | 树桩镇当前使用、实现与来源文档 |
+| `rulepacks/stumpsville/docs/current/README.md` | 树桩镇当前使用、实现与来源文档 |
+| `rulepacks/stumpsville/docs/current/sources.md` | 树桩镇当前使用、实现与来源文档 |
+| `rulepacks/stumpsville/docs/current/usage.md` | 树桩镇当前使用、实现与来源文档 |
+| `rulepacks/stumpsville/docs/README.md` | 树桩镇当前使用、实现与来源文档 |
+| `rulepacks/stumpsville/manifest.json` | 树桩镇独立配置包入口或清单 |
+| `rulepacks/stumpsville/rules/check.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/create.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/damage.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/generate.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/grant.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/inventory.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/layout.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/morale.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/profile.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/ready.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/remove.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/rest.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/transfer.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/travel.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/rules/world.lua` | 树桩镇宿主 Lua 规则 |
+| `rulepacks/stumpsville/start.cmd` | 树桩镇独立配置包入口或清单 |
+| `rulepacks/stumpsville/start.ps1` | 树桩镇独立配置包入口或清单 |
+| `rulepacks/stumpsville/tests/harness.py` | 树桩镇隔离真实宿主或浏览器验收 |
+| `rulepacks/stumpsville/tests/package-results.json` | 树桩镇隔离真实宿主或浏览器验收 |
+| `rulepacks/stumpsville/tests/probe_host.py` | 树桩镇隔离真实宿主或浏览器验收 |
+| `rulepacks/stumpsville/tests/README.md` | 树桩镇隔离真实宿主或浏览器验收 |
+| `rulepacks/stumpsville/tests/ui-results.json` | 树桩镇隔离真实宿主或浏览器验收 |
+| `rulepacks/stumpsville/tests/verify_package.py` | 树桩镇隔离真实宿主或浏览器验收 |
+| `rulepacks/stumpsville/tests/verify_ui.py` | 树桩镇隔离真实宿主或浏览器验收 |
+| `rulepacks/stumpsville/tools/client.py` | 树桩镇公开接口适配与启动工具 |
+| `rulepacks/stumpsville/tools/launch.py` | 树桩镇公开接口适配与启动工具 |
+| `rulepacks/stumpsville/tools/package.py` | 树桩镇公开接口适配与启动工具 |
+| `rulepacks/stumpsville/ui/app.js` | 树桩镇可交互页面与样式 |
+| `rulepacks/stumpsville/ui/index.html` | 树桩镇可交互页面与样式 |
+| `rulepacks/stumpsville/ui/styles.css` | 树桩镇可交互页面与样式 |
+
+`rulepacks/stumpsville/runtime*/` 为本包独立游玩或恢复存档，`rulepacks/stumpsville/tests/output/` 为隔离验收存档、日志和截图；两者不逐文件登记且不入库。
+
+| `rulepacks/stumpsville/tests/verify_launcher.py` | 树桩镇真实CMD与Windows PowerShell入口回归验收 |
+| `rulepacks/stumpsville/tests/launcher-results.json` | 树桩镇Windows PowerShell 5.1启动修复验收结果 |
+
+| `rulepacks/stumpsville/rules/adjudicate.lua` | 树桩镇自动裁决规则及主持内部结算 |
+| `rulepacks/stumpsville/rules/auto-travel.lua` | 树桩镇自动裁决规则及主持内部结算 |
+| `rulepacks/stumpsville/rules/automation.lua` | 树桩镇自动裁决规则及主持内部结算 |
+| `rulepacks/stumpsville/rules/check-core.lua` | 树桩镇自动裁决规则及主持内部结算 |
+| `rulepacks/stumpsville/rules/inventory-core.lua` | 树桩镇自动裁决规则及主持内部结算 |
+| `rulepacks/stumpsville/tests/automation-results.json` | 树桩镇自动裁决专项验收及机器结果 |
+| `rulepacks/stumpsville/tests/verify_automation.py` | 树桩镇自动裁决专项验收及机器结果 |
+
+| `rulepacks/stumpsville/docs/current/interface.md` | 树桩镇现行导航 Mermaid、悬浮面板与控制台功能树 |
+| `rulepacks/stumpsville/tests/verify_feedback.py` | 树桩镇行动反馈、权限与恢复专项验收 |
+| `rulepacks/stumpsville/tests/feedback-results.json` | 树桩镇持久行动反馈专项机器结果 |
+
+| `rulepacks/stumpsville/config/scene-actions.json` | 树桩镇18个预设行动及固定做法定义 |
+| `rulepacks/stumpsville/rules/scene.lua` | 树桩镇场景原子检定、资源与机关结算 |
+| `rulepacks/stumpsville/tools/scenes.py` | 树桩镇有限库存映射及玩家可见场景事实 |
+| `rulepacks/stumpsville/docs/current/scene-actions.md` | 树桩镇18个行动结果、自动队列导航及功能树 |
+| `rulepacks/stumpsville/tests/verify_scenes.py` | 树桩镇全部预设、有限奖励和权限验收 |
+| `rulepacks/stumpsville/tests/verify_scene_ui.py` | 树桩镇已有KP页面自动执行及玩家可见结果验收 |
+| `rulepacks/stumpsville/tests/verify_scene_recovery.py` | 树桩镇场景升级、恢复与容量边界验收 |
+| `rulepacks/stumpsville/tests/scene-results.json` | 树桩镇18个预设的8组机器验收结果 |
+| `rulepacks/stumpsville/tests/scene-recovery-results.json` | 树桩镇场景恢复与权限边界5组机器结果 |
+
+| `rulepacks/stumpsville/tests/scene-ui-results.json` | 树桩镇场景浏览器4组自动与人工闭环结果 |
 
 ## 施工登记
 

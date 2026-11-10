@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T19:38:38.431297+08:00",
+  "checks": [
+    "automatic dice process and result persist once; feedback remains owner scoped",
+    "inventory movements and light changes contain readable before/after values",
+    "pending, approved and rejected stages reach original player without early or duplicate execution",
+    "transfers notify both owners; KP resource changes and exploration updates reach affected players",
+    "movement explains destination; events do not contain hidden locations or NPC snapshots",
+    "interrupted feedback generation resumes the committed result without rerolling",
+    "feedback and fixed-id action receipts survive host and package restart"
+  ]
+}
