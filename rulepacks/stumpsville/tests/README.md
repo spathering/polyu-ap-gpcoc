@@ -2,6 +2,8 @@
 
 测试通过公开 CLI/HTTP/WebSocket 操作真实宿主；数据全部写入本包被忽略的 `tests/output/`，不使用工程存档。测试自动结束自己的服务进程，不写入正式 `runtime/`。
 
+2026-11-12：0.4.1局域网启动新增10组专项验收通过。使用实际 `pythonw.exe` 和Tk窗口，在本机真实WLAN IPv4验证网卡名称、端口与密码校验、首次准备、KP及两PL登录、Origin／本机账号控制边界、地址复制与主持页链接、占用冲突、停止释放端口、重启保留账号／存档、关闭窗口清理，以及实际 `start-lan.cmd` 的中文／空格路径。测试客户端仍在同一物理电脑；不声称已完成跨设备或防火墙环境验收。窗口截图位于 `output/screenshots/lan-running.png`。
+
 2026-11-10 0.4.0通过55组验收：15组已有业务、6组通用自动裁决、7组行动反馈、10组已有浏览器交互、8组场景预设、5组场景恢复及4组场景浏览器闭环。浏览器未捕获 JavaScript 异常；包含旧地址兼容、单页面板开关/折叠/状态恢复、内嵌 KP 裁决、玩家原页结果更新、编辑手记时保留草稿、实时消息、390px窄屏及同浏览器账号隔离。
 
 场景专项遍历全部18个预设，验证成功和失败的真实骰点、叙述、机关／库存／门／线索效果，重复领取与两玩家竞争最后一件物品，旧规则补充安装、背包已满阻止，以及主事务提交后和反馈发布时中断的恢复。自动执行使用现有已登录KP页面，不新增账号、不持久化KP凭据。浏览器覆盖离线等待、重开KP页面自动继续、主动人工申请与真实结果返回；自动队列不会显示为待KP人工批准。截图见 `output/screenshots/scene-action-*.png` 和 `scene-kp-console.png`。
@@ -23,10 +25,12 @@ engineering/.venv/Scripts/python.exe -B rulepacks/stumpsville/tests/verify_scene
 engineering/.venv/Scripts/python.exe -B rulepacks/stumpsville/tests/verify_scene_recovery.py
 engineering/.venv/Scripts/python.exe -B rulepacks/stumpsville/tests/verify_scene_ui.py
 engineering/.venv/Scripts/python.exe -B rulepacks/stumpsville/tests/verify_launcher.py
+engineering/.venv/Scripts/pythonw.exe -B rulepacks/stumpsville/tests/verify_lan.py
 ```
 
 | 证据 | 内容 |
 | --- | --- |
+| [lan-results.json](lan-results.json) · [脚本](verify_lan.py) | 10组真实Tk窗口、LAN包入口、多账号、冲突和生命周期验收；pythonw无控制台，完成情况查看结果文件，失败信息在output/lan-error.log |
 | [scene-results.json](scene-results.json) · [脚本](verify_scenes.py) | 全部18个预设的8组真实宿主结果、有限库存、失败后果与权限验收 |
 | [scene-recovery-results.json](scene-recovery-results.json) · [脚本](verify_scene_recovery.py) | 5组旧规则迁移、中断恢复、容量及手动开关验收 |
 | [scene-ui-results.json](scene-ui-results.json) · [脚本](verify_scene_ui.py) | 4组已有KP页面自动执行、玩家过程／结果、断线继续及主动人工裁决 |

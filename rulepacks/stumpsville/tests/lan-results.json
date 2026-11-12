@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-12T10:41:57.965151+08:00",
+  "checks": [
+    "real connected WLAN adapters are named, filtered to private IPv4 and deduplicated",
+    "invalid port and mismatching first-run passwords are explained before starting or changing a save",
+    "first-run password setup initializes the real host locally; pythonw GUI serves the full package on selected IPv4 and port",
+    "KP and two PL sessions use full game routes; remote bootstrap, local account control and forged origins stay blocked",
+    "native window shows/copies exact player address and opens the separate KP login entry",
+    "duplicate save and occupied port fail clearly without stopping the existing room or creating another save",
+    "stop clears the stale address, stops owned backend, releases listening port and saves only IP/port preferences",
+    "restart on the same data directory preserves existing accounts and saved game data without asking for a new password",
+    "closing the native window stops the owned adapter and host while retaining the save",
+    "actual start-lan.cmd opens pythonw native window from a space/Chinese path and closes without modifying a save"
+  ],
+  "network": "real private WLAN IPv4, all clients on this physical computer; cross-device firewall not tested"
+}

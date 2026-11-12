@@ -4,8 +4,8 @@
 - 文档子类：工程
 - 状态：有效
 - 创建日期：2026-10-29
-- 最后更新：2026-11-10
-- 最近目录核对：2026-11-10（本次增核stumpsville 0.4.0十地点预设自动裁决、场景状态和恢复验收；其他范围沿用下列日期）；2026-11-09（本次核对 Python 桌面管理器、LAN 模块及相关发布、测试、归档和文档；mini-detective-pack 核对仍为 2026-11-02，全工程目录核对仍为 2026-11-01）；同日增核调查型线上跑团对照包文档、Mausritter 独立核查、Stumpsville 导入计划与界面参考资源，及 stumpsville 新包的页面导航、组成树、十张界面设计板和0.1.0包侧实现、运行资源及验收文件（含Windows PowerShell 5.1真实启动入口修复）
+- 最后更新：2026-11-12
+- 最近目录核对：2026-11-12（增核stumpsville 0.4.1局域网启动窗口、入口和专项验收）；2026-11-10（本次增核stumpsville 0.4.0十地点预设自动裁决、场景状态和恢复验收；其他范围沿用下列日期）；2026-11-09（本次核对 Python 桌面管理器、LAN 模块及相关发布、测试、归档和文档；mini-detective-pack 核对仍为 2026-11-02，全工程目录核对仍为 2026-11-01）；同日增核调查型线上跑团对照包文档、Mausritter 独立核查、Stumpsville 导入计划与界面参考资源，及 stumpsville 新包的页面导航、组成树、十张界面设计板和0.1.0包侧实现、运行资源及验收文件（含Windows PowerShell 5.1真实启动入口修复）
 - 关联文档：[工程文档索引](README.md)、[文档维护标准](../../standards/document-maintenance.md)
 
 ## 工程实际目录
@@ -552,6 +552,11 @@
 | `rulepacks/stumpsville/tests/scene-recovery-results.json` | 树桩镇场景恢复与权限边界5组机器结果 |
 
 | `rulepacks/stumpsville/tests/scene-ui-results.json` | 树桩镇场景浏览器4组自动与人工闭环结果 |
+
+| `rulepacks/stumpsville/start-lan.cmd` | 树桩镇可双击的局域网窗口入口 |
+| `rulepacks/stumpsville/tools/lan.py` | 树桩镇网卡发现、端口选择、地址复制及本机服务生命周期 |
+| `rulepacks/stumpsville/tests/verify_lan.py` | 树桩镇真实Tk窗口与局域网启动专项验收 |
+| `rulepacks/stumpsville/tests/lan-results.json` | 树桩镇局域网启动10组机器验收结果 |
 
 ## 施工登记
 

@@ -4,14 +4,14 @@
 - 文档子类：工程
 - 状态：有效
 - 创建日期：2026-11-09
-- 最后更新：2026-11-10
+- 最后更新：2026-11-12
 - 关联文档：[实现](implementation.md)、[验收](../../tests/README.md)、[工程运行](../../../../docs/current/engineering/first-test.md)
 
 ## 启动与入场
 
 前提是现有 `engineering/.venv/` 可运行 FastAPI、uvicorn、httpx、websockets 和宿主依赖。包启动不安装或修改工程环境。
 
-1. 双击包内 `start.cmd`，或在项目根目录运行 `powershell -File rulepacks/stumpsville/start.ps1`。默认打开 `http://127.0.0.1:8899`。
+1. 本机游玩双击包内 `start.cmd`，默认打开 `http://127.0.0.1:8899`；局域网游玩双击 [start-lan.cmd](../../start-lan.cmd)，在窗口选择网卡和端口，详见下方“局域网”。
 2. 全新运行目录先设置8–128位初始密码。宿主建立 `kp`、`player1`、`player2` 三个测试账号，初始共用此密码。随后登录，不自动把准备操作当登录。
 3. 同设备、同浏览器可同时打开多个根地址页面，每个页面自动取得独立登录入口；也可点“新开独立登录页”。分别登录 `kp`、`player1`、`player2` 即可共存，不需要无痕窗口。刷新保留该页会话，复制相同完整地址则共享该入口。固定的 `/sessions/kp/`、`/sessions/player1/`、`/sessions/player2/` 仍可使用。
 4. 玩家从大厅创建预设或随机草稿。KP 在“控制台→控制与队伍”审核；随机角色背景及起始装备须按 SRD 核定。玩家打开背包检查后标记准备，KP 在控制台开场。
@@ -20,7 +20,7 @@ Ctrl+C 结束启动器，同时关闭它启动的宿主。存档位于本包 `ru
 
 `start.cmd` 使用 Windows PowerShell。含中文的 `start.ps1` 保存为带 BOM 的 UTF-8，确保 Windows PowerShell 5.1 正确解析；编辑此文件时应保留 BOM。2026-11-09 已修复无 BOM 导致的“字符串缺少终止符”错误，并通过真实 CMD→PowerShell→Python 入口验收。
 
-两个入口均支持 `-Port`、`-Bind`、`-DataDir` 和 `-NoBrowser`；后两项分别指定独立存档目录和关闭自动打开浏览器。例如在项目根目录执行：
+本机命令行入口 `start.cmd` 与 `start.ps1` 均支持 `-Port`、`-Bind`、`-DataDir` 和 `-NoBrowser`；后两项分别指定独立存档目录和关闭自动打开浏览器。例如在项目根目录执行：
 
 ```powershell
 rulepacks/stumpsville/start.cmd -Port 8900 -DataDir "D:\Studies\Art Programming\OnlineCOC\rulepacks\stumpsville\runtime-other" -NoBrowser
@@ -46,13 +46,23 @@ rulepacks/stumpsville/start.cmd -Port 8900 -DataDir "D:\Studies\Art Programming\
 
 ## 局域网
 
-先在本机完成准备，再关闭启动器，以明确的私有 IPv4 重新启动，例如：
+0.4.1提供可直接双击的 [start-lan.cmd](../../start-lan.cmd)，不需要输入命令。该入口使用现有Python环境中的Tkinter，并直接启动树桩镇游戏服务；不需要另开通用LAN网关。
+
+1. 若原 `start.cmd` 仍在运行，先关闭它；两个入口共用默认 `runtime/` 存档，不能同时占用。
+2. 双击 `start-lan.cmd`。窗口自动识别已连接网卡的私有IPv4，优先选择上次使用的地址，否则选择有默认网关的网卡；可下拉切换并点击“刷新网卡”。没有可用地址时不会启动，连接Wi-Fi或网线后再刷新。
+3. 确认玩家连接端口，默认8899，可直接修改。首次使用时在窗口填写两遍8–128位初始密码，再点“启动局域网”。账号准备在本机完成，已有账号不会被重置。
+4. 启动成功后窗口显示可复制的玩家地址，并自动打开主持登录页。点“复制玩家地址”，将地址发给同一局域网的玩家；玩家在浏览器分别登录自己的账号。
+5. 保持启动窗口打开，自动裁决还需至少一个已登录KP网页在线。“停止房间”或关闭启动窗口会停止本窗口启动的服务及宿主，保留存档；再次启动继续原房间。
+
+运行期间锁定网卡和端口，需停止后再修改。端口被占用、IP失效、重复占用同一存档会显示错误，失败时不会显示可分享地址。`runtime/lan-settings.json` 只保存上次成功使用的IP和端口，不保存密码。此GUI也接受可选的 `--data-dir` 与 `--no-browser` 参数，供独立存档和验收使用；日常双击不需要参数。
+
+原命令行方式仍可用：先在本机完成准备，再关闭启动器，以明确的私有IPv4重新启动，例如：
 
 ```powershell
 powershell -File rulepacks/stumpsville/start.ps1 -Port 8899 -Bind 192.168.1.23
 ```
 
-参与者访问相同地址，具体地址以本机实际网卡为准。服务限定 Host/Origin，不能使用 `0.0.0.0` 作为访问地址。首次初始化仅允许回环来源。包不会添加防火墙规则或映射公网端口；此 HTTP 适配器用于本机/可信局域网。实际跨设备与防火墙环境尚未验收。
+参与者访问窗口显示的同一地址，不要把 `127.0.0.1` 发给其他电脑。服务限定 Host/Origin，不能使用 `0.0.0.0` 作为访问地址；网页首次初始化仍仅允许回环来源，GUI直接在本机准备。包不会添加防火墙规则或映射公网端口；此HTTP服务用于可信局域网。若连接失败，检查设备间网络互通、访客Wi-Fi隔离及Windows防火墙所选端口。已在本机真实WLAN地址验证多账号和完整包页面；跨物理设备及实际防火墙环境尚未验收。
 
 ## 备份与恢复
 
