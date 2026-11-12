@@ -198,6 +198,9 @@ summary { cursor:pointer; padding:12px; font-weight:600; }
 .ruling-detail blockquote { margin:20px 0; padding:15px; background:#e9ebde; white-space:pre-wrap; overflow-wrap:anywhere; }
 .console-content .panel { padding:18px; }
 .console-content .row { flex-wrap:wrap; }
+.room-network { overflow-wrap:anywhere; }
+.room-network input { width:100%; min-width:0; }
+.room-network details { margin-top:14px; }
 .console-content table { display:block; overflow:auto; }
 @media(max-width:1100px) {
   .console-columns,.ruling-columns { grid-template-columns:1fr; }

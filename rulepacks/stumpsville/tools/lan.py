@@ -11,6 +11,7 @@ import socket
 import subprocess
 import sys
 import threading
+import time
 import tkinter as tk
 from tkinter import ttk, messagebox
 import webbrowser
@@ -74,6 +75,69 @@ ConvertTo-Json -InputObject $rows -Compress
     return sorted({a.address: a for a in found}.values(), key=lambda a: (not a.gateway, a.name, a.address))
 
 
+def connection_report(address, port, data, runtime=None):
+    """Read-only local checks. Local HTTP success never proves remote reachability."""
+    import httpx
+    lines = ['树桩镇连接诊断 · '+time.strftime('%Y-%m-%d %H:%M:%S'), f'玩家地址：http://{address}:{port}/']
+    adapters = discover_adapters()
+    lines.append('网卡：'+('当前IP仍在本机网卡上。' if any(a.address == address for a in adapters) else '所选IP已不在本机，请停止后刷新网卡，重新分享地址。'))
+    try:
+        with httpx.Client(trust_env=False, timeout=3) as client:
+            response = client.get(f'http://{address}:{port}/setup/status')
+            state = response.json()
+            ok = response.status_code == 200 and isinstance(state, dict) and all(isinstance(state.get(k), bool) for k in ('canSetup', 'ready'))
+        lines.append('本机访问：'+('游戏服务响应正常；这不代表其他设备已能访问。' if ok else f'返回异常 HTTP {response.status_code}，检查端口是否对应本房间。'))
+        if ok:
+            lines.append('房间宿主：'+('正在运行。' if state['ready'] else '尚未就绪，请完成首次准备或查看启动错误。'))
+    except (httpx.HTTPError, ValueError):
+        lines.append('本机访问：失败。先确认已点击启动、端口正确且窗口没有报错。')
+    if runtime is None:
+        lock = Path(data)/'package.lock'
+        try:
+            if lock.exists() and os.name == 'nt':
+                import msvcrt
+                with lock.open('r+b') as file:
+                    msvcrt.locking(file.fileno(), msvcrt.LK_NBLCK, 1)
+                    msvcrt.locking(file.fileno(), msvcrt.LK_UNLCK, 1)
+            lines.append('存档占用：未检测到包存档锁被持有；单独存在锁文件不代表卡死。')
+        except OSError:
+            lines.append('存档占用：仍被其他启动器使用或无访问权限；先从原窗口停止房间。')
+    else:
+        lines.append('存档占用：由本窗口持有，属于运行中的正常状态。')
+    if os.name == 'nt':
+        script = r"""
+$ErrorActionPreference='Stop'
+[Console]::OutputEncoding=New-Object System.Text.UTF8Encoding
+$ip=Get-NetIPAddress -AddressFamily IPv4 | Where-Object IPAddress -eq $env:SV_DIAG_IP | Select-Object -First 1
+$network=Get-NetConnectionProfile -InterfaceIndex $ip.InterfaceIndex
+$category=$network.NetworkCategory.ToString()
+$profile=if ($category -eq 'DomainAuthenticated') { 'Domain' } else { $category }
+$fw=Get-NetFirewallProfile -Name $profile
+@{adapter=$network.InterfaceAlias;category=$category;enabled=[bool]$fw.Enabled} | ConvertTo-Json -Compress
+"""
+        try:
+            result = subprocess.run(['powershell.exe','-NoProfile','-NonInteractive','-Command',script],
+                env={**os.environ,'SV_DIAG_IP':address}, capture_output=True, timeout=12, check=True,
+                creationflags=subprocess.CREATE_NO_WINDOW)
+            info = json.loads(result.stdout.decode('utf-8-sig'))
+            category = {'Public':'公用','Private':'专用','DomainAuthenticated':'域'}.get(info['category'],info['category'])
+            lines.append(f"Windows网络：{info['adapter']} / {category}；防火墙{'已开启' if info['enabled'] else '未开启'}。")
+            if info['enabled']:
+                lines.append(f'检查入站规则是否允许游戏程序或TCP {port}，且适用于当前“{category}”配置；防火墙已开启不等于已确认拦截。')
+        except (OSError, subprocess.SubprocessError, ValueError, KeyError, TypeError):
+            lines.append('Windows网络／防火墙：未能读取，请在系统防火墙中核对当前网络和入站端口。')
+    visits = runtime.network_snapshot()['visits'] if runtime else []
+    remote = [v for v in visits if not v['local']]
+    lines.append(f'本次进程最近记录：收到其他设备 {len(remote)} 次页面／登录／异常请求（最多保留60条，不是人数）。' if runtime else '访问记录：此窗口尚未管理运行中的服务，无法读取它的访问记录。')
+    for visit in remote[-5:]:
+        lines.append(time.strftime('%H:%M:%S',time.localtime(visit['time']))+f" · {visit['ip']} · {visit['kind']} · HTTP {visit['status']}")
+    lines.extend(['让朋友重新打开完整的 http://IP:端口/，再运行本检查。',
+        '没有收到访问：核对IP、端口、防火墙，以及校园／公司／访客Wi-Fi是否启用了设备隔离。',
+        '收到页面但登录失败：网络已到达服务，检查账号和密码。每位玩家使用自己的账号。',
+        '朋友无需安装本项目；浏览器打开地址并登录即可。同一Wi-Fi名称不保证设备之间互通。'])
+    return '\n'.join(lines)
+
+
 class LanService:
     """Own exactly one package adapter and its child host, until stop/close."""
     def __init__(self, data, events):
@@ -133,7 +197,7 @@ class LanService:
             password = None
             if self.cancel.is_set():
                 return
-            self.server = uvicorn.Server(uvicorn.Config(create_app(runtime), log_config=None, access_log=False,
+            self.server = uvicorn.Server(uvicorn.Config(create_app(runtime), log_config=None, access_log=False, proxy_headers=False,
                 log_level='warning', timeout_graceful_shutdown=8))
 
             async def serve():
@@ -225,6 +289,8 @@ class LanWindow:
         self.start_button.pack(side='left')
         self.stop_button = ttk.Button(buttons, text='停止房间', command=self.stop, state='disabled')
         self.stop_button.pack(side='left', padx=10)
+        self.diagnose_button = ttk.Button(buttons, text='检查连接 / 启动问题', command=self.diagnose)
+        self.diagnose_button.pack(side='left')
         self.status = tk.StringVar(value='正在识别网卡…')
         ttk.Label(frame, textvariable=self.status, wraplength=715).grid(row=6, column=0, columnspan=3, sticky='w', pady=(0, 12))
         links = ttk.LabelFrame(frame, text='玩家连接地址', padding=14)
@@ -306,6 +372,43 @@ class LanWindow:
         if self.url:
             webbrowser.open(self.url+'sessions/kp/')
 
+    def diagnose(self):
+        adapter = next((a for a in self.adapters if a.label == self.network.get()), None)
+        try:
+            port = int(self.port.get())
+            if not adapter or not 1 <= port <= 65535:
+                raise ValueError()
+        except ValueError:
+            self.status.set('请先选择有效网卡与端口，再检查连接。')
+            return
+        self.diagnose_button.configure(state='disabled')
+        self.status.set('正在检查本机服务、存档占用和网络配置…')
+        def work():
+            try:
+                report = connection_report(adapter.address, port, self.data, self.service.runtime)
+            except Exception as error:
+                report = '检查未完成：'+str(error)
+            self.events.put(('diagnostic', report))
+        threading.Thread(target=work, daemon=True).start()
+
+    def show_report(self, report):
+        self.last_report = report
+        window = tk.Toplevel(self.root)
+        window.title('树桩镇 · 连接诊断')
+        window.geometry('800x620')
+        body = ttk.Frame(window, padding=16); body.pack(fill='both', expand=True)
+        text = tk.Text(body, wrap='word', font=('Microsoft YaHei UI',10))
+        scroll = ttk.Scrollbar(body, command=text.yview)
+        text.configure(yscrollcommand=scroll.set)
+        scroll.pack(side='right',fill='y');text.pack(fill='both',expand=True)
+        text.insert('1.0',report);text.configure(state='disabled')
+        def copy_report():
+            self.root.clipboard_clear();self.root.clipboard_append(report)
+        ttk.Button(body,text='复制诊断报告',command=copy_report).pack(side='left',pady=(12,0))
+        if os.name == 'nt':
+            ttk.Button(body,text='打开防火墙设置',command=lambda:subprocess.Popen(['control.exe','/name','Microsoft.WindowsFirewall'])).pack(side='left',padx=12,pady=(12,0))
+        ttk.Button(body,text='关闭',command=window.destroy).pack(side='right',pady=(12,0))
+
     def close(self):
         self.closing = True
         if self.busy or self.service.active:
@@ -333,6 +436,11 @@ class LanWindow:
             elif kind == 'status':
                 if not self.closing:
                     self.status.set(payload)
+            elif kind == 'diagnostic':
+                self.diagnose_button.configure(state='normal')
+                if not self.closing:
+                    self.status.set('诊断已完成；可复制报告，也可让朋友重试后再次检查。')
+                    self.show_report(payload)
             elif kind == 'running':
                 if self.closing or self.service.cancel.is_set():
                     continue

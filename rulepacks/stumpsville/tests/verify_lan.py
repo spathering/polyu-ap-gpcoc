@@ -16,6 +16,7 @@ from unittest.mock import patch
 from harness import PACK, Account
 from lan import LanService, LanWindow, discover_adapters, private_ipv4
 import httpx
+from playwright.sync_api import sync_playwright, expect
 
 
 def pump(root, predicate, timeout=90):
@@ -130,8 +131,9 @@ def gui_suite():
         window.confirm.set(password)
         checks.append('invalid port and mismatching first-run passwords are explained before starting or changing a save')
 
-        window.start_button.invoke()
-        pump(root,lambda: bool(window.url) or window.failed)
+        with patch.dict(os.environ, {'FORWARDED_ALLOW_IPS':'*'}):
+            window.start_button.invoke()
+            pump(root,lambda: bool(window.url) or window.failed)
         assert window.url,window.status.get()
         origin=window.url.rstrip('/')
         assert window.url==f'http://{address}:{port}/'
@@ -143,6 +145,23 @@ def gui_suite():
 
         kp,p1,p2=[Account(origin,n,password,n) for n in ('kp','player1','player2')]
         assert kp.state()['role']=='kp' and p1.state()['accountId']=='player1' and p2.state()['accountId']=='player2'
+        runtime=window.service.runtime
+        network=kp.state()['network']
+        assert network['url']==origin+'/' and len(network['players'])==3
+        assert next(p for p in network['players'] if p['accountId']=='player1')['status']=='online'
+        assert 'network' not in p1.state()
+        assert 'network' not in kp.request('/package/state?preview=player1')
+        with runtime.net_lock:
+            for connection in runtime.connections.values():
+                if connection['accountId']=='player2':connection['lastSeen']-=40
+        assert next(p for p in kp.state()['network']['players'] if p['accountId']=='player2')['status']=='stale'
+        with runtime.net_lock:
+            for connection in runtime.connections.values():
+                if connection['accountId']=='player2':connection['lastSeen']-=130
+        assert next(p for p in kp.state()['network']['players'] if p['accountId']=='player2')['status']=='offline'
+        p2.state()
+        p2.request('/api/v1/logout',{})
+        assert next(p for p in kp.state()['network']['players'] if p['accountId']=='player2')['pages']==0
         p1.action('note',{'text':'LAN-PERSISTENCE'})
         with httpx.Client(base_url=origin,trust_env=False) as client:
             assert '树桩镇' in client.get('/').text
@@ -150,13 +169,60 @@ def gui_suite():
             assert client.post('/setup',headers={'Origin':origin},json={'password':'blocked'}).status_code==403
             assert client.get('/api/v1/host-control/accounts').status_code==404
             assert client.post('/api/v1/login',headers={'Origin':'http://invalid.example'},json={}).status_code==400
-        checks.append('KP and two PL sessions use full game routes; remote bootstrap, local account control and forged origins stay blocked')
+            client.get('/',headers={'X-Forwarded-For':'203.0.113.99'})
+        assert kp.state()['network']['visits'][-1]['ip']==address
+        assert all('password' not in v and 'cookie' not in v for v in runtime.network_snapshot()['visits'])
+        checks.append('KP and PL sessions, KP-only room/online/IP projection, preview isolation, heartbeat expiry, logout, genuine peer tracking and existing origin/account boundaries')
         window.copy_button.invoke();root.update()
         assert root.clipboard_get()==window.url
         with patch('lan.webbrowser.open') as opened:
             window.browser_button.invoke();opened.assert_called_once_with(origin+'/sessions/kp/')
         screenshot(root,shots/'lan-running.png')
-        checks.append('native window shows/copies exact player address and opens the separate KP login entry')
+        window.diagnose_button.invoke()
+        pump(root,lambda:hasattr(window,'last_report'))
+        assert '游戏服务响应正常' in window.last_report and '不代表其他设备' in window.last_report
+        assert '正常状态' in window.last_report and '防火墙' in window.last_report
+        assert password not in window.last_report
+        dialog=next(c for c in root.winfo_children() if isinstance(c,tk.Toplevel))
+        screenshot(dialog,shots/'lan-diagnostics.png');dialog.destroy()
+
+        p1.action('draft',{'preset':'mul','name':'木栗'})
+        kp.action('approve',{'account':'player1'})
+        p1.action('ready',{'ready':True});kp.action('world',{'operation':'start'})
+        errors=[]
+        with sync_playwright() as pw:
+            browser=pw.chromium.launch(channel='msedge',headless=True)
+            context=browser.new_context(viewport={'width':1440,'height':1000})
+            def login(name):
+                page=context.new_page();page.on('pageerror',lambda error:errors.append(str(error)))
+                page.goto(origin+'/sessions/'+name+'/')
+                page.locator('[name=loginName]').fill(name);page.locator('[name=password]').fill(password)
+                page.get_by_role('button',name='进入冒险',exact=True).click();page.locator('.identity').wait_for()
+                return page
+            gm,player=login('kp'),login('player1')
+            assert not player.evaluate('window.isSecureContext'),'Must test real insecure LAN HTTP'
+            gm.goto(origin+'/sessions/kp/#/gm/console')
+            expect(gm.locator('#room-network')).to_contain_text('房间信息与连线玩家')
+            expect(gm.locator('#room-network tr').filter(has_text='player1')).to_contain_text('在线',timeout=15000)
+            assert gm.locator('#room-url').input_value()==origin+'/'
+            gm.get_by_role('button',name='复制玩家地址',exact=True).click()
+            gm.locator('#room-visits summary').click()
+            gm.wait_for_timeout(3000)
+            assert gm.locator('#room-visits').evaluate('(node)=>node.open')
+            player.goto(origin+'/sessions/player1/#/play/scene')
+            assert not player.locator('#room-network').count()
+            before=p1.state()['character']['numbers']['checks']
+            player.get_by_role('button',name='属性检定',exact=True).first.click()
+            player.get_by_role('button',name='投骰',exact=True).click()
+            player.locator('dialog').wait_for(state='hidden')
+            assert p1.state()['character']['numbers']['checks']==before+1
+            expect(player.locator('#action-feedback .dice-result')).to_be_visible()
+            gm.screenshot(path=str(shots/'lan-room-console.png'),full_page=True)
+            gm.set_viewport_size({'width':390,'height':844})
+            assert gm.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
+            browser.close()
+        assert not errors,errors
+        checks.append('native copy/diagnostic report, real insecure LAN browser action submission, KP room/online console, PL privacy and narrow layout')
 
         duplicate=LanService(data,queue.Queue())
         duplicate.start(address,available_port(address))
@@ -176,7 +242,12 @@ def gui_suite():
         with socket.socket() as sock: assert sock.connect_ex((address,port))!=0
         stored=json.loads((data/'lan-settings.json').read_text(encoding='utf8'))
         assert stored=={'address':address,'port':port}
-        checks.append('stop clears the stale address, stops owned backend, releases listening port and saves only IP/port preferences')
+        del window.last_report
+        window.diagnose_button.invoke();pump(root,lambda:hasattr(window,'last_report'))
+        assert '本机访问：失败' in window.last_report and '未检测到包存档锁被持有' in window.last_report
+        assert '无法读取它的访问记录' in window.last_report
+        next(c for c in root.winfo_children() if isinstance(c,tk.Toplevel)).destroy()
+        checks.append('stop clears the stale address, stops owned backend, releases the port, saves only IP/port preferences; stopped-service diagnosis reports unreachable service and free save')
 
         window.start_button.invoke();pump(root,lambda:bool(window.url) or window.failed)
         assert window.url,window.status.get()

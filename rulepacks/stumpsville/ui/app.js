@@ -1,5 +1,12 @@
 const app = document.querySelector('#app');
 const dialog = document.querySelector('#dialog');
+// LAN pages use HTTP, where crypto.randomUUID/clipboard may be unavailable.
+function newId(){
+  const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;
+  const h=Array.from(b,x=>x.toString(16).padStart(2,'0')).join('');
+  return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;
+}
+const pageId=newId();
 const base = new URL('.', location.href);
 let state = null;
 let csrf = '';
@@ -18,6 +25,8 @@ let lastFocus = null;
 let connection = '连接中';
 let desktop = null, desktopAccount = '', consoleTab = 'control', selectedRequest = '', localAction = null, renderDeferred = false;
 let executorBusy = false, sceneInstallTried = false;
+let roomVisitsOpen=false;
+document.addEventListener('toggle',event=>{if(event.target.id==='room-visits')roomVisitsOpen=event.target.open;},true);
 const playerNav = [['play/scene','场景桌面']];
 const gmNav = [['gm/console','控制台'],['gm/locations','地点'],['gm/library','资料'],['gm/session','场次']];
 const icons = {weapon:'⚔',item:'◇',armor:'♧',condition:'✧',spell:'▤'};
@@ -84,7 +93,7 @@ function resultText(result) {
 }
 
 async function refresh(render = true) {
-  state = await api('package/state');
+  state = await api('package/state?page='+pageId);
   connection = '已同步';
   if (render) renderPage();
 }
@@ -93,7 +102,7 @@ async function perform(operation,args,existing) {
   if (busy) return;
   if(!existing && localStorage.getItem(pendingKey())) throw new Error('请先恢复待确认的原行动');
   busy = true;
-  const body = existing || {id:crypto.randomUUID(),operation,args};
+  const body = existing || {id:newId(),operation,args};
   const key = pendingKey();
   localStorage.setItem(key,JSON.stringify(body));
   localAction = {status:'submitting',text:'正在提交行动，等待服务器确认…'};
@@ -381,6 +390,13 @@ function rulingDetail(){
   const actor=state.characters.find(c=>c.instanceId===r.actor);
   return `<h3>${escape(requestDescription(r))}</h3><p>${escape(r.account)} · ${escape(actor?.name||'角色')} · ${escape(state.allLocations[String(r.location)]?.name||'')}</p><blockquote>${escape(r.text||'')}</blockquote><p>转交原因：${escape(r.reason||'玩家申请')}</p>${actor?`<p>当前资源：HP ${actor.numbers.hp}/${actor.numbers.maxHp} · STR ${actor.numbers.str} / DEX ${actor.numbers.dex} / WIL ${actor.numbers.wil}</p>`:''}${r.status==='pending'?`<form id="ruling-form"><input type="hidden" name="requestId" value="${escape(r.id)}">${select('裁决决定','approve',[['yes','批准'],['no','拒绝']],'yes')}${area('裁决依据与给玩家的回复','reason')}<p class="muted">${['check','inventory','travel','transfer','scene'].includes(r.kind)?'批准后执行规则，结算结果与资源变化会送达相关玩家。':'此类申请记录主持回复，数值影响请使用控制台工具另行结算。'}</p><button class="primary" type="submit">保存裁决并通知玩家</button></form>`:`<span class="tag">${r.status==='approved'?'已批准':'已拒绝'}</span><p>${escape(r.reason||'未附说明')}</p>`}`;
 }
+function roomNetworkPanel(){
+  const n=state.network;
+  if(!n)return '';
+  const rows=n.players.map(p=>`<tr><td>${escape(p.name)}<br><small>${escape(p.accountId)} · ${p.role==='kp'?'KP':p.role==='player'?'PL':'旁观'}</small></td><td>${escape(p.character||'尚未建角')}</td><td><span class="tag">${{online:'在线',stale:'暂时失联',offline:'离线'}[p.status]}</span></td><td>${p.pages}</td><td>${p.ips.map(escape).join('、')||'—'}</td><td>${p.lastSeen?new Date(p.lastSeen*1000).toLocaleTimeString():'本次启动尚未连接'}</td></tr>`).join('');
+  const visits=n.visits.slice(-8).reverse().map(v=>`<li>${new Date(v.time*1000).toLocaleTimeString()} · ${escape(v.ip)}${v.local?'（本机）':''} · ${escape(v.kind)} · HTTP ${v.status}</li>`).join('');
+  return `<section class="panel room-network" id="room-network"><h2>房间信息与连线玩家</h2><p><strong>树桩镇 ${escape(n.version)}</strong> · 房间 ${escape(state.roomId)} · ${{active:'运行中',paused:'已暂停',archived:'已归档'}[state.roomStatus]} · ${n.players.filter(p=>p.role==='player'&&p.status==='online').length} 位玩家在线</p><label>玩家连接地址<input id="room-url" readonly value="${escape(n.url)}"></label><div class="actions">${button('复制玩家地址','copy-room-address',{},'small')}<span>监听 ${escape(n.bind)}:${n.port} · 本次启动 ${new Date(n.startedAt*1000).toLocaleString()}</span></div>${n.bind==='127.0.0.1'?'<p class="notice">当前仅本机可访问。局域网游玩请用 start-lan.cmd 启动并选择 Wi-Fi 网卡。</p>':''}<p class="muted">朋友只需浏览器打开完整地址并登录自己的账号。在线按最近30秒的页面心跳判断，关闭页面后会延迟变为失联／离线；多个页面合并到同一账号。</p><table aria-label="连线玩家"><thead><tr><th>账号／身份</th><th>角色</th><th>连接状态</th><th>在线页面</th><th>来源 IP</th><th>最后心跳</th></tr></thead><tbody>${rows}</tbody></table><details id="room-visits" ${roomVisitsOpen?'open':''}><summary>最近访问与连接排查</summary><p>看不到朋友的访问记录时，请在局域网启动窗口点击“检查连接 / 启动问题”，核对地址、端口、防火墙和 Wi-Fi 设备隔离。本机可以打开页面，不代表其他设备一定可达。</p><ul>${visits||'<li>本次启动尚无页面／登录访问记录。</li>'}</ul><small>仅记录最近60次页面、登录及异常请求；此记录不是在线人数，不保存密码或令牌。</small></details></section>`;
+}
 function consolePage(){
   const pending=state.requests.filter(r=>r.status==='pending').length;
   const drafts=Object.values(state.drafts).filter(d=>d.status==='submitted');
@@ -389,7 +405,14 @@ function consolePage(){
   if(consoleTab==='control')content=`<div class="console-columns"><div>${panel('队伍与资源',charactersTable())}${panel('场景生物与遭遇工具',`<div class="actions">${button('掷遭遇检查','generate',{kind:'encounter'})}${button('抽取遭遇内容','generate',{kind:'encounter-table'})}${button('反应骰','generate',{kind:'reaction'})}${button('战利品骰','generate',{kind:'loot'})}${button('角色伤害','damage')}${!state.sceneAutomation?.ready?button('安装场景规则','scene-install',{},'primary'):''}${button('创建生物','npc-create')}</div>${(state.npcs||[]).map(n=>`<div class="row"><span>${escape(n.name)} · HP ${n.numbers.hp}/${n.numbers.maxHp}</span><div>${button('伤害','damage',{actor:n.instanceId},'small')}${button('士气','morale',{actor:n.instanceId},'small')}${button('数值','actor-edit',{id:n.instanceId},'small')}</div></div>`).join('')}`)}${panel('完整地点图',mapView(Object.values(state.allLocations),selectedLocation))}</div><aside>${panel('待处理行动 · '+pending,rulingQueue())}${panel('建角审核 · '+drafts.length,drafts.map(d=>`<article class="receipt"><strong>${escape(d.name)} · ${escape(d.account)}</strong><p>STR ${d.str} / DEX ${d.dex} / WIL ${d.wil} · HP ${d.hp}</p>${button('审核通过','approve',{account:d.account},'primary small')}${button('退回修改','reject',{account:d.account},'small')}</article>`).join('')||empty('没有待审核角色'))}</aside></div>`;
   if(consoleTab==='rulings')content=`<div class="ruling-columns">${panel('待处理队列',rulingQueue())}${panel('裁决详情',rulingDetail(),'ruling-detail')}</div><details><summary>近期裁决与自动行动</summary>${activityFeed()}</details>`;
   if(consoleTab==='messages')content=`<div class="grid2">${panel('频道与待处理消息',chatPanel())}${panel('行动通知',button('标记记录已读','events-read',{},'small')+activityFeed())}</div>`;
-  return heading('P09','主持控制台',`<span class="tag">待处理 ${pending+drafts.length}</span><span class="tag">自动裁决${state.automation.enabled?'开启':'关闭'}</span><span class="tag">${state.sceneAutomation?.executorOnline?'自动执行端在线':'正在连接自动执行端'}</span>`)+`<section class="kp-console" aria-label="主持统一控制台">${controls}<nav class="console-tabs" aria-label="控制台面板">${[['control','控制与队伍'],['rulings','待处理与裁决 · '+pending],['messages','消息与记录 · '+unreadMessages()+' 未读']].map(([tab,label])=>button(label,'console-tab',{tab},consoleTab===tab?'primary':'')).join('')}</nav><div class="console-content">${content}</div></section>`;
+  return heading('P09','主持控制台',`<span class="tag">待处理 ${pending+drafts.length}</span><span class="tag">自动裁决${state.automation.enabled?'开启':'关闭'}</span><span class="tag">${state.sceneAutomation?.executorOnline?'自动执行端在线':'正在连接自动执行端'}</span>`)+`<section class="kp-console" aria-label="主持统一控制台">${controls}<nav class="console-tabs" aria-label="控制台面板">${[['control','控制与队伍'],['rulings','待处理与裁决 · '+pending],['messages','消息与记录 · '+unreadMessages()+' 未读']].map(([tab,label])=>button(label,'console-tab',{tab},consoleTab===tab?'primary':'')).join('')}</nav><div class="console-content">${roomNetworkPanel()}${content}</div></section>`;
+}
+
+function updateRoomNetwork(){
+  const panel=document.querySelector('#room-network');
+  if(!panel||panel.contains(document.activeElement))return;
+  const template=document.createElement('template');template.innerHTML=roomNetworkPanel();
+  if(template.content.firstElementChild)panel.replaceWith(template.content.firstElementChild);
 }
 
 function changePane(name,change){
@@ -398,6 +421,12 @@ function changePane(name,change){
 }
 
 const actions = {
+  'copy-room-address':async()=>{
+    const input=document.querySelector('#room-url');
+    try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(input.value);return toast('玩家地址已复制');}}catch{}
+    input.focus();input.select();
+    toast(document.execCommand('copy')?'玩家地址已复制':'请复制已选中的玩家地址');
+  },
   'scene-action':({id})=>{
     const a=state.sceneActions.find(x=>x.id===id);
     openDialog(a.label,`<p>${escape(a.hint)}</p>${select('选择具体做法','scene-choice',a.choices.map(c=>[c.id,c.label]),a.choices[0].id)}<div id="scene-process" class="notice">${escape(a.choices[0].process)}</div>${select('结算方式','ruling',[['auto','按预设自动结算'],['manual','主动请求 KP 裁决']],'auto')}`,data=>perform('scene.action',{action:id,choice:data.get('scene-choice'),manual:data.get('ruling')==='manual'}),'执行行动','S18');
@@ -561,13 +590,13 @@ if(base.pathname==='/'){
 setInterval(async()=>{
   if(!state||busy)return;
   try{
-    const next=await api('package/state');
+    const next=await api('package/state?page='+pageId);
     const changed=JSON.stringify(next)!==JSON.stringify(state);
     state=next;connection='已同步';
-    const editing=['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName);
+    const editing=['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)&&!document.activeElement?.readOnly;
     if(changed)renderDeferred=true;
     if(renderDeferred&&!editing&&!dialog.open&&!dirtyForm){renderDeferred=false;renderPage();}
-    else if(changed)updateActivity();
+    else if(changed){updateActivity();updateRoomNetwork();}
     if(document.querySelector('#chat-history')&&!busy)await loadChat();
     await runAutoScenes();
     const label=document.querySelector('#connection');if(label)label.textContent='已同步';

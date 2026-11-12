@@ -370,7 +370,7 @@ class Package:
                       'channels': {} if preview else view['chatChannels'],
                       'preview': bool(preview), 'previewKind': '包侧公开投影' if preview else None}
             if gm:
-                result.update(characters=characters, drafts=self.state['drafts'],
+                result.update(roomId=view['roomId'], characters=characters, drafts=self.state['drafts'],
                               allLocations=self.state['locations'], npcs=self.entities(view, 'sv.npc'),
                               world=next(iter(self.entities(view, 'sv.world')), None),
                               members=client.request('/chat/members')['items'],

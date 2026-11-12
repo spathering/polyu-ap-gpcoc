@@ -1,5 +1,8 @@
 """Local package server. Uses only public host CLI and HTTP/WebSocket APIs."""
 import argparse
+from collections import deque
+import hashlib
+import threading
 import asyncio
 from contextlib import asynccontextmanager
 from http.cookies import SimpleCookie
@@ -90,6 +93,54 @@ class Runtime:
         self.setup_lock = asyncio.Lock()
         self.command = [sys.executable, '-B', str(ROOT / 'engineering/backend/scripts/run.py'), '--data-dir', str(self.host_data)]
         self.env = {**os.environ, 'PYTHONDONTWRITEBYTECODE': '1', 'PYTHONUTF8': '1'}
+        self.opened_at = time.time()
+        self.pack_version = json.loads((PACK/'manifest.json').read_text(encoding='utf-8'))['version']
+        self.net_lock = threading.RLock()
+        self.connections, self.seen_accounts = {}, {}
+        self.visits = deque(maxlen=60)
+
+    def observe_request(self, peer, path, status):
+        try:
+            _, path = slot_path(path.lstrip('/'))
+        except PackageError:
+            path = 'invalid'
+        kind = '打开页面' if path == '' else ('登录成功' if status == 200 else '登录失败') if path == 'api/v1/login' else '请求被拒绝' if status >= 400 else None
+        if kind:
+            with self.net_lock:
+                self.visits.append({'time': time.time(), 'ip': peer, 'kind': kind, 'status': status,
+                                    'local': peer in {self.args.bind, '127.0.0.1', '::1'}})
+
+    def heartbeat(self, projection, cookie, page, peer):
+        now = time.time()
+        token = hashlib.sha256(cookie.encode()).hexdigest()
+        page = page if re.fullmatch(r'[a-zA-Z0-9-]{1,64}', page or '') else 'api'
+        with self.net_lock:
+            self.connections = {k: v for k, v in self.connections.items() if now-v['lastSeen'] < 600}
+            self.connections[(token, page)] = {'accountId': projection['accountId'], 'ip': peer, 'lastSeen': now}
+            self.seen_accounts[projection['accountId']] = now
+            while len(self.connections) > 256:
+                del self.connections[min(self.connections, key=lambda k: self.connections[k]['lastSeen'])]
+
+    def forget_connection(self, cookie):
+        token = hashlib.sha256(cookie.encode()).hexdigest()
+        with self.net_lock:
+            self.connections = {k:v for k,v in self.connections.items() if k[0] != token}
+
+    def network_snapshot(self, members=(), characters=()):
+        now = time.time()
+        with self.net_lock:
+            players = []
+            for member in members:
+                account = member['accountId']
+                connections = [c for c in self.connections.values() if c['accountId'] == account]
+                live = [c for c in connections if now-c['lastSeen'] < 30]
+                recent = [c for c in connections if now-c['lastSeen'] < 120]
+                actor = next((c for c in characters if c['owner'] == account), None)
+                players.append({'accountId': account, 'name': member.get('displayName', account), 'role': member['role'],
+                    'character': actor['name'] if actor else None, 'status': 'online' if live else 'stale' if recent else 'offline',
+                    'pages': len(live), 'ips': sorted({c['ip'] for c in recent}), 'lastSeen': self.seen_accounts.get(account)})
+            return {'url': self.origin+'/', 'bind': self.args.bind, 'port': self.args.port, 'startedAt': self.opened_at,
+                    'version': self.pack_version, 'players': players, 'visits': list(self.visits)}
 
     def start(self):
         if self.process and self.process.poll() is None:
@@ -154,6 +205,12 @@ def create_app(runtime):
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
 
+    @app.middleware('http')
+    async def track_reachability(request, call_next):
+        result = await call_next(request)
+        runtime.observe_request(request.client.host if request.client else 'unknown', request.url.path, result.status_code)
+        return result
+
     def response(value, status=200, mime='application/json'):
         body = value if isinstance(value, bytes) else json.dumps(value, ensure_ascii=False).encode()
         return Response(body, status_code=status, media_type=mime, headers={
@@ -196,6 +253,8 @@ def create_app(runtime):
                 async with httpx.AsyncClient(timeout=30, follow_redirects=False, trust_env=False) as upstream:
                     result = await upstream.request(request.method, runtime.backend + '/' + path,
                         params=request.query_params, content=body, headers=headers)
+                if path == 'api/v1/logout' and result.is_success:
+                    runtime.forget_connection(cookie)
                 output = response(result.content, result.status_code, result.headers.get('content-type', 'application/json'))
                 for raw in result.headers.get_list('set-cookie'):
                     if not slot:
@@ -219,6 +278,10 @@ def create_app(runtime):
                     return response({'code': 'CSRF_REQUIRED'}, 403)
                 if path == 'package/state' and request.method == 'GET':
                     result = await asyncio.to_thread(runtime.package.projection, client, request.query_params.get('preview'))
+                    if not result['preview']:
+                        runtime.heartbeat(result, cookie, request.query_params.get('page'), request.client.host)
+                        if result['role'] == 'kp':
+                            result['network'] = runtime.network_snapshot(result['members'], result['characters'])
                     return response(result)
                 if path == 'package/scene-executor' and request.method == 'POST':
                     return response(await asyncio.to_thread(runtime.package.scene_executor, client))
@@ -309,7 +372,7 @@ def main():
         timer = threading.Timer(1.5, webbrowser.open, args=(runtime.origin,))
         timer.daemon = True
         timer.start()
-    uvicorn.run(create_app(runtime), host=args.bind, port=args.port, log_level='warning')
+    uvicorn.run(create_app(runtime), host=args.bind, port=args.port, log_level='warning', proxy_headers=False)
 
 
 if __name__ == '__main__':

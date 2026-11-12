@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "checkedAt": "2026-11-10T19:37:20.622308+08:00",
+  "checkedAt": "2026-11-12T15:53:55.330827+08:00",
   "browser": "Microsoft Edge / Playwright",
   "checks": [
     "three same-browser session slots retain separate authenticated identities",
